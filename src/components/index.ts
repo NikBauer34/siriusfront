@@ -1,5 +1,5 @@
-import AuthComp from "./Auth/AuthComp";
+import Login from "./Auth/Login"
 
 export {
-  AuthComp
+  Login
 }

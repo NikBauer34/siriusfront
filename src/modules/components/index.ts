@@ -1,5 +1,4 @@
-import FormComp from "./AuthForm/FormComp";
-
+import LoginForm from "./LoginForm"
 export {
-  FormComp
+  LoginForm
 }
