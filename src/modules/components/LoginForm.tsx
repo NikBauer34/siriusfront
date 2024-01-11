@@ -1,7 +1,14 @@
 import { useForm } from "@mantine/form";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useContext } from "react";
 import { Input, Button } from "@mantine/core";
+import { Context } from "../../main";
+import { UnderlineInput } from "../../ui/index";
+interface LoginProps {
+    nikname: string;
+    password: string;
+}
 const LoginForm: FC = () => {
+    const {user} = useContext(Context)
     const LoginHookForm = useForm({
         initialValues: {nikname: '', password: ''},
         validateInputOnChange: true,
@@ -10,12 +17,18 @@ const LoginForm: FC = () => {
             password: (val) => (val.length > 5 ? null : 'Пароль не может быть меньше шести букв')
         }
     })
+    const FormOnSubmit = ({nikname, password}: LoginProps) => {
+        user.setLoading(true)
+        user.login(nikname, password)
+    }
     const LoginFormValues: string[] = ['nikname', 'password']
     return (
-        <form onSubmit={LoginHookForm.onSubmit((val) => alert(val.nikname))}>
-            <h1>Hi</h1>
-            <Input {...LoginHookForm.getInputProps('nikname')}></Input>
-            <Input {...LoginHookForm.getInputProps('password')}></Input>
+        <form onSubmit={LoginHookForm.onSubmit((val) => FormOnSubmit(val))}>
+            {LoginFormValues.map((item, index) => {
+                return (
+                    <UnderlineInput key={item} {...LoginHookForm.getInputProps(item)}></UnderlineInput>
+                )
+            })}
             <Button type="submit">Сабмит</Button>
         </form>
     )
