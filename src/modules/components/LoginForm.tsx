@@ -39,6 +39,7 @@ const LoginForm: FC = () => {
                 )
             })}
             <Button fullWidth className="filledButton" type="submit">Войти</Button>
+            <span className="spanOr">или</span>
         </form>
     )
 }
