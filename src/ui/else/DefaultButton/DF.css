@@ -1,0 +1,10 @@
+.primary {
+    display: flex;
+    width: 666px;
+    height: 66px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 3.45px;
+    background: black;
+}

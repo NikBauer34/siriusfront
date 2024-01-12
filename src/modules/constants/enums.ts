@@ -6,3 +6,7 @@ export enum Colors {
     gradientFirst = '#4A9DCE',
     gradientSecond = '#ADCDE0'
 }
+export enum ButtonTypes {
+    primary = 'primary',
+    secondary = 'secondary'
+}
