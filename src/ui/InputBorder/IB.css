@@ -1,0 +1,15 @@
+.group {
+    position: relative;
+}
+.group>label {
+    padding: 0 0.2em;
+    position: absolute;
+    top: -0.5em;
+    left: 1em;
+    background-color: white;
+}
+.group>input {
+    padding: 0.8em;
+    border-radius: 0.5em;
+    outline:none
+}
