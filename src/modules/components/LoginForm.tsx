@@ -8,7 +8,8 @@ interface LoginProps {
     password: string;
 }
 const LoginForm: FC = () => {
-    const {user} = useContext(Context)
+    const {user, pipe} = useContext(Context)
+
     const LoginHookForm = useForm({
         initialValues: {nikname: '', password: ''},
         validateInputOnChange: true,
@@ -20,6 +21,9 @@ const LoginForm: FC = () => {
     const FormOnSubmit = ({nikname, password}: LoginProps) => {
         user.setLoading(true)
         user.login(nikname, password)
+        if (user.isError) {
+            pipe.checkPipes()
+        }
     }
     const LoginFormValues: string[] = ['nikname', 'password']
     return (

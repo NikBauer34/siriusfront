@@ -5,10 +5,12 @@ import {AppRouter} from "./pages/index.ts"
 
 function App() {
   const {user} = useContext(Context)
+  const {pipe} = useContext(Context)
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
       user.checkAuth()
+      pipe.checkPipes()
     }
   }, [])
   return (

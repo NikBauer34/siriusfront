@@ -1,5 +1,6 @@
 import Login from "./Auth/Login"
-
+import YMap from "./YMap"
 export {
-  Login
+  Login,
+  YMap
 }
