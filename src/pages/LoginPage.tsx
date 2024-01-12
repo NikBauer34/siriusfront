@@ -3,7 +3,7 @@ import { Login } from "../components/index";
 
 const LoginPage: FC = () => {
     return (
-        <Login/>
+        <Login />
     )
 }
 export default LoginPage

@@ -1,11 +1,19 @@
-import React, { FC } from 'react'
-import { LoginForm } from '../../modules/components/index'
-import { SchemeToggle } from '../../ui'
+import React, { FC } from 'react';
+import { LoginForm } from '../../modules/components/index';
+// import { SchemeToggle } from '../../ui';
+import '../../ui/styles/title.css';
+import '../../ui/styles/centerDiv.css';
+import '../../ui/styles/body.css';
+
+
 const Login: FC = () => {
     return (
-        <div>
+        <div className='centerDiv'>
+            <div className="title">
+                Вход
+            </div>
             <LoginForm></LoginForm>
-            <SchemeToggle/>
+            {/* <SchemeToggle/> */}
         </div>
     )
 }
