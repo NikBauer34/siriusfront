@@ -1,7 +1,7 @@
 import React, { createContext } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
-import {UserStore} from './modules/store/index.ts'
+import {PipeStore, UserStore} from './modules/store/index.ts'
 import { MantineProvider, createTheme } from '@mantine/core'
 import '@mantine/core/styles.css'
 
@@ -10,16 +10,19 @@ const theme = createTheme({
 });
 
 interface IContext {
-  user: UserStore
+  user: UserStore,
+  pipe: PipeStore
 }
 export const user = new UserStore()
-
+export const pipe = new PipeStore()
 export const Context = createContext<IContext>({
-  user
+  user,
+  pipe
 })
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Context.Provider value={{
-    user
+    user,
+    pipe
   }}>
     <MantineProvider defaultColorScheme='auto' theme={theme}>
       <App />

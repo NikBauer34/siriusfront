@@ -8,6 +8,7 @@ export default class UserStore {
   user = {} as UserDto;
   isAuth = false;
   isLoading = false;
+  isError = false;
   constructor(){
     makeAutoObservable(this)
   }
@@ -20,6 +21,9 @@ export default class UserStore {
   setLoading(bool: boolean): void {
     this.isLoading = bool;
   }
+  setError(bool: boolean): void {
+    this.isError = bool;
+  }
 
   async login(nikname: string, password: string): Promise<string | AxiosResponse<AuthResponse, any>>{
     try {
@@ -30,6 +34,7 @@ export default class UserStore {
       this.setUser(response.data.user)
       return response
     } catch (e: any) {
+      this.setError(true)
       return e.response?.data?.message
     }
   }
@@ -42,6 +47,7 @@ export default class UserStore {
       this.setUser(response.data.user)
       return response
     } catch (e: any) {
+      this.setError(true)
       return e.response?.data?.message
     }
   }
@@ -52,6 +58,7 @@ export default class UserStore {
       this.setAuth(false)
       this.setUser({} as UserDto)
     } catch (e: any) {
+      this.setError(true)
       console.log(e.response?.data?.message)
     }
   }
@@ -64,6 +71,7 @@ export default class UserStore {
       this.setAuth(true)
       this.setUser(response.data.user)
     } catch (e: any) {
+      this.setError(true)
       console.log(e.response?.data?.message)
     } finally {
       this.setLoading(false)
