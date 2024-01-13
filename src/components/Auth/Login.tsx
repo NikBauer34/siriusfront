@@ -15,6 +15,7 @@ const Login: FC = () => {
             <LoginForm></LoginForm>
             {/* <SchemeToggle/> */}
         </div>
-    )
-}
+    );
+};
+
 export default Login;

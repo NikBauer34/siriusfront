@@ -1,12 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 
-body{
-    background-image: url(../../img/background.png);
+*{box-sizing:border-box}
+
+body,html{
+	height:100%;
+	margin:0;
+	background-image: url(../../img/background.png);
     background-attachment: fixed;
     background-position: 0;
     background-size: cover;
     font-family: 'Montserrat';
+	font-style: normal;
+    font-weight: 400;
+	line-height:1.5;
+	scroll-behavior: smooth;
 }
 
 #root{
@@ -14,3 +22,61 @@ body{
     align-items: center;
     justify-content: center;
 }
+
+@media screen and (max-width: 1100px) and (max-height: 1400px){
+    .centerDiv {
+        width: 50%;
+    }
+}
+
+
+
+@media screen and (max-width: 1000px) and (max-height: 1100px){
+    .centerDiv {
+        width: 48%;
+    }
+}
+
+@media screen and (max-width:1000px){
+    .centerDiv{
+        width: 33%;
+    }
+
+}
+
+@media screen and (max-width:770px) and (max-height:1100px){
+
+    .centerDiv{
+        width: 52%;
+    }
+
+}
+
+@media screen and (max-width:700px){
+
+    .centerDiv{
+        width: 52%;
+    }
+
+}
+
+
+@media screen and (max-width:400px){
+
+    .centerDiv{
+        width: 68%;
+    }
+
+}
+
+@media screen and (max-width:250px){
+
+    .centerDiv{
+        width: 80%;
+    }
+
+}
+
+
+
+

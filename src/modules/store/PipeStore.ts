@@ -3,8 +3,8 @@ import { MapResponse, MapService } from "../api/index";
 import { AxiosResponse } from "axios";
 
 export default class PipeStore {
-    userpipes = {} as MapResponse[]
-    pipes = {} as MapResponse[]
+    userpipes = [] as MapResponse[]
+    pipes = [] as MapResponse[]
     isError = false;
     isLoading = false;
     constructor(){

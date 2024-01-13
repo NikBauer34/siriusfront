@@ -8,6 +8,7 @@ import HomeSVG from "./SVGs/HomeSVG";
 import BurgerSVG from "./SVGs/BurgerSVG";
 import ArrowSVG from "./SVGs/ArrowSVG";
 import DefaultButton from "./else/DefaultButton/DefaultButton";
+import OutlinedButton from "./buttons/outlinedButton/OutlinedButton";
 
 export {
     UnderlineInput,
@@ -19,5 +20,6 @@ export {
     HomeSVG,
     BurgerSVG,
     ArrowSVG,
-    DefaultButton
+    DefaultButton,
+    OutlinedButton
 }

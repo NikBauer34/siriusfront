@@ -1,3 +1,4 @@
+import RegPage from "../../pages/RegPage.tsx";
 import {LoginPage, FirstPage1, FirstPage2, SecondPage1} from "../../pages/index.ts";
 import IRouting from "./IRouting.ts";
 
@@ -8,7 +9,7 @@ export const publicRouting: IRouting[] = [
   },
   {
     path: '/registration',
-    component: LoginPage
+    component: RegPage
   }
 ]
 export const firstRouting: IRouting[] = [

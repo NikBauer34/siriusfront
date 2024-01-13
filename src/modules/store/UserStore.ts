@@ -1,15 +1,15 @@
 import axios, { AxiosResponse } from "axios";
 import { IRole, UserDto } from "../api/index.ts";
-import {makeAutoObservable} from 'mobx'
-import {AuthResponse} from "../api/index.ts";
-import {AuthService} from "../api/index.ts";
+import { makeAutoObservable } from 'mobx'
+import { AuthResponse } from "../api/index.ts";
+import { AuthService } from "../api/index.ts";
 import { API_URL } from "../constants/index.ts";
 export default class UserStore {
   user = {} as UserDto;
   isAuth = false;
   isLoading = false;
   isError = false;
-  constructor(){
+  constructor() {
     makeAutoObservable(this)
   }
   setAuth(bool: boolean): void {
@@ -25,7 +25,7 @@ export default class UserStore {
     this.isError = bool;
   }
 
-  async login(nikname: string, password: string): Promise<string | AxiosResponse<AuthResponse, any>>{
+  async login(nikname: string, password: string): Promise<string | AxiosResponse<AuthResponse, any>> {
     try {
       const response = await AuthService.login(nikname, password)
       console.log(response)
@@ -65,7 +65,7 @@ export default class UserStore {
   async checkAuth() {
     this.setLoading(true);
     try {
-      const response = await axios.get<AuthResponse>(`${API_URL}/token/refresh`, {withCredentials: true})
+      const response = await axios.get<AuthResponse>(`${API_URL}/token/refresh`, { withCredentials: true })
       console.log(response)
       localStorage.setItem('token', response.data.accessToken)
       this.setAuth(true)
