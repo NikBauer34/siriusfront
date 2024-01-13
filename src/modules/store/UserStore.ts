@@ -40,6 +40,7 @@ export default class UserStore {
   }
   async registration(name: string, surname: string, nikname: string, password: string, role: IRole): Promise<string | AxiosResponse<AuthResponse, any>> {
     try {
+      console.log('here')
       const response = await AuthService.registration(name, surname, nikname, password, role)
       console.log(response)
       localStorage.setItem('token', response.data.accessToken)

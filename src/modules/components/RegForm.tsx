@@ -47,7 +47,7 @@ const RegForm: FC = () => {
                 )
             })}
             <NativeSelect style={{marginTop:20}} variant="filled" withAsterisk label="Выберите вашу должность" data={['Начальник', 'Инженер-диагностик', 'Диагностик', 'Мастер']} />
-            <OutlinedButton className='outlinedButton'>Зарегистрироваться</OutlinedButton>
+            <OutlinedButton className='outlinedButton' type='submit'>Зарегистрироваться</OutlinedButton>
         </form>
     );
 };

@@ -4,13 +4,14 @@ import './OutlinedButton.modules.css';
 
 interface outlinedprops{
     className: string;
+    type: string;
     children: ReactNode;
 }
 
 
 const OutlinedButton: FC<outlinedprops> = (props) => {
     return(
-        <Button fullWidth className={props.className} variant="outline">{props.children}</Button>
+        <Button fullWidth className={props.className} type={props.type} variant="outline">{props.children}</Button>
     );
 };
 
