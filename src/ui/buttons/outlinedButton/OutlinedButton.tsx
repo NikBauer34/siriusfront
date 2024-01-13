@@ -10,7 +10,7 @@ interface outlinedprops{
 
 const OutlinedButton: FC<outlinedprops> = (props) => {
     return(
-        <Button fullWidth className={props.className} variant="outline">{props.children}</Button>
+        <Button  fullWidth className={props.className} variant="outline">{props.children}</Button>
     );
 };
 

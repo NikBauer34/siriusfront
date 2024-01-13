@@ -9,6 +9,8 @@ import BurgerSVG from "./SVGs/BurgerSVG";
 import ArrowSVG from "./SVGs/ArrowSVG";
 import DefaultButton from "./else/DefaultButton/DefaultButton";
 import OutlinedButton from "./buttons/outlinedButton/OutlinedButton";
+import PasswordInputDef from "./else/PasswordInputDef/PasswordInputDef";
+
 
 export {
     UnderlineInput,
@@ -21,5 +23,6 @@ export {
     BurgerSVG,
     ArrowSVG,
     DefaultButton,
-    OutlinedButton
+    OutlinedButton,
+    PasswordInputDef
 }

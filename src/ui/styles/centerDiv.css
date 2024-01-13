@@ -2,9 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #2587ff;
-    border-radius: 10px;
-    width: 22%;
-    margin-top: 8%;
+    border: 1px solid rgb(3, 115, 195);
+    border-radius: 40px;
+    width: 27%;
     background: white;
 }

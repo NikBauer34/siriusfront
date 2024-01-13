@@ -24,7 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     user,
     pipe
   }}>
-    <MantineProvider defaultColorScheme='auto' theme={theme}>
+    <MantineProvider defaultColorScheme='light' theme={theme}>
       <App />
     </MantineProvider>
   </Context.Provider>

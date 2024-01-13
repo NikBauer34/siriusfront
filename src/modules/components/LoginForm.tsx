@@ -1,5 +1,5 @@
 import { useForm } from "@mantine/form";
-import { FC, ReactNode, useContext } from "react";
+import { FC, useContext } from "react";
 import { Button } from "@mantine/core";
 import { Context } from "../../main";
 import { OutlinedButton, UnderlineInput } from "../../ui/index";
@@ -35,15 +35,11 @@ const LoginForm: FC = () => {
         user.setLoading(false)
     }
 
-    const LoginFormValues: string[] = ['nikname', 'password']
     return (
         <form className="authForm" onSubmit={LoginHookForm.onSubmit((val) => FormOnSubmit(val))}>
-            {LoginFormValues.map((item, index) => {
-                return (
-                    <UnderlineInput key={item} {...LoginHookForm.getInputProps(item)}></UnderlineInput>
-                )
-            })}
-            <Button style={{marginTop: 15}} fullWidth className="filledButton" type="submit">Войти</Button>
+            <UnderlineInput placeholder="Логин" {...LoginHookForm.getInputProps('nikname')}/>
+            <UnderlineInput placeholder="Пароль" {...LoginHookForm.getInputProps('password')}/>
+            <Button style={{ marginTop: 15 }} fullWidth className="filledButton" type="submit">Войти</Button>
             <span className="spanOr">или</span>
             <OutlinedButton className='outlinedButton'>Зарегистрироваться</OutlinedButton>
         </form>
