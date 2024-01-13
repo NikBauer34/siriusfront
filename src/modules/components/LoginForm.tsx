@@ -5,7 +5,7 @@ import { Context } from "../../main";
 import { UnderlineInput } from "../../ui/index";
 import '../../ui/styles/authForm.css';
 import '../../ui/styles/centerDiv.css';
-
+import '../../ui/styles/spanOr.css';
 
 
 interface LoginProps {

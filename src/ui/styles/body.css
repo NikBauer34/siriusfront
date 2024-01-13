@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+
 body{
     background-image: url(../../img/background.png);
     background-attachment: fixed;
     background-position: 0;
     background-size: cover;
+    font-family: 'Montserrat';
 }
 
 #root{

@@ -1,4 +1,25 @@
 .spanOr{
     color:rgb(37, 135, 255);
     font-size: 15px;
+    margin: 30px 0px;
 }
+
+/* .spanOr::after{
+    content: "";
+    position: absolute;
+    background: rgb(37, 135, 255);
+    height: 1.5px;
+    top: 35px;
+    left: 0px;
+    width: 100%;
+}
+
+.spanOr::before{
+    content: "";
+    position: absolute;
+    background: rgb(37, 135, 255);
+    height: 1.5px;
+    bottom: -300px;
+    left: 0px;
+    width: 100%;
+} */
