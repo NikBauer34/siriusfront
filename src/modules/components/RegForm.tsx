@@ -42,6 +42,7 @@ const RegForm: FC = () => {
 
     return (
         <form className="authForm" onSubmit={RegHookForm.onSubmit((val) => FormOnSubmit(val))}>
+<<<<<<< HEAD
             <UnderlineInput  placeholder="Имя" {...RegHookForm.getInputProps('name')} />
             <UnderlineInput placeholder="Фамилия" {...RegHookForm.getInputProps('surname')} />
             <UnderlineInput placeholder="Придумайте логин" {...RegHookForm.getInputProps('nikname')} /> 
@@ -49,6 +50,15 @@ const RegForm: FC = () => {
             <PasswordInputDef placeholder="Подтвердите пароль" {...RegHookForm.getInputProps('confirmPassword')} />
             <NativeSelect mt={10} mb={20} variant="filled" withAsterisk label="Выберите вашу должность" data={['Начальник', 'Инженер-диагностик', 'Диагностик', 'Мастер']} />
             <OutlinedButton className='outlinedButton'>Зарегистрироваться</OutlinedButton>
+=======
+            {RegFormValues.map((item, _index) => {
+                return (
+                    <UnderlineInput key={item} {...RegHookForm.getInputProps(item)}></UnderlineInput>
+                )
+            })}
+            <NativeSelect style={{marginTop:20}} variant="filled" withAsterisk label="Выберите вашу должность" data={['Начальник', 'Инженер-диагностик', 'Диагностик', 'Мастер']} />
+            <OutlinedButton className='outlinedButton' type='submit'>Зарегистрироваться</OutlinedButton>
+>>>>>>> b5a01952351dbd64534bc94f76c6037dfee18e76
         </form>
     );
 };
