@@ -7,6 +7,7 @@ import '../../ui/styles/authForm.css';
 import '../../ui/styles/centerDiv.css';
 import '../../ui/styles/spanOr.css';
 import '../../ui/styles/body.css';
+import { useNavigate } from "react-router-dom";
 
 interface LoginProps {
     nikname: string;
@@ -15,6 +16,7 @@ interface LoginProps {
 
 const LoginForm: FC = () => {
     const { user, pipe } = useContext(Context)
+    const navigate = useNavigate()
 
     const LoginHookForm = useForm({
         initialValues: { nikname: '', password: '' },
@@ -41,7 +43,7 @@ const LoginForm: FC = () => {
             <UnderlineInput placeholder="Пароль" {...LoginHookForm.getInputProps('password')}/>
             <Button style={{ marginTop: 15 }} fullWidth className="filledButton" type="submit">Войти</Button>
             <span className="spanOr">или</span>
-            <OutlinedButton className='outlinedButton'>Зарегистрироваться</OutlinedButton>
+            <OutlinedButton onClick={() => navigate('/registration')} className='outlinedButton'>Зарегистрироваться</OutlinedButton>
         </form>
     )
 }

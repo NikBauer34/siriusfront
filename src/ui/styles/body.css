@@ -51,13 +51,17 @@ body,html{
     .centerDiv{
         width: 52%;
     }
-
+      
 }
 
 @media screen and (max-width:700px){
 
     .centerDiv{
         width: 52%;
+    }
+
+    .title{
+        font-size: 34px;
     }
 
 }
@@ -69,6 +73,9 @@ body,html{
         width: 68%;
     }
 
+    .title{
+        font-size: 32px;
+    }
 }
 
 @media screen and (max-width:250px){
@@ -77,6 +84,9 @@ body,html{
         width: 80%;
     }
 
+    .title{
+        font-size: 32px;
+    }
 }
 
 

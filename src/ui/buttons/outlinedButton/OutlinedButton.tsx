@@ -2,16 +2,17 @@ import { Button } from "@mantine/core";
 import React, { FC, ReactNode } from "react";
 import './OutlinedButton.modules.css';
 
-interface outlinedprops{
+interface outlinedprops {
     className: string;
     type?: "button" | "submit" | "reset" | undefined;
+    onClick?: (navigate: any) => void ;
     children: ReactNode;
 }
 
 
 const OutlinedButton: FC<outlinedprops> = (props) => {
-    return(
-        <Button fullWidth className={props.className} type={props.type} variant="outline">{props.children}</Button>
+    return (
+        <Button fullWidth className={props.className} type={props.type} onClick={props.onClick} variant="outline">{props.children}</Button>
     );
 };
 
