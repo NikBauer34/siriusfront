@@ -15,15 +15,10 @@ const MainPanel: FC = () => {
     >
       <AppShell.Header>
         <Group h="100%" px="md">
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-          <MantineLogo size={30} />
+          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" /> 
         </Group>
       </AppShell.Header>
-      <AppShell.Navbar p="md">
-        {user.isLoading &&
-          <Skeleton h={56} mt="sm" animate={true} />
-        }
-      </AppShell.Navbar>
+      
       <AppShell.Main>
         <Outlet />
       </AppShell.Main>

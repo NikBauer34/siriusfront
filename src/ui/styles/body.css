@@ -16,10 +16,6 @@ body,html{
 #root{
     width: 100%;
     height: 100%;
-    background-image: url(../../img/background.png);
-    background-attachment: fixed;
-    background-position: 0;
-    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,7 +47,7 @@ body,html{
     .centerDiv{
         width: 52%;
     }
-      
+
 }
 
 @media screen and (max-width:700px){

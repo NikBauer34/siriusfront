@@ -19,26 +19,27 @@ interface regFormProps {
 const RegForm: FC = () => {
     const { user, pipe } = useContext(Context)
     const navigate = useNavigate()
+
     const RegHookForm = useForm({
         initialValues: { name: '', surname: '', nikname: '', password: '', confirmPassword: '', role: 'Мастер' },
         validateInputOnChange: true,
         validate: {
-            name: (val) => (val.length >= 2 ? null : 'Имя не может быть короче 2 букв'),
-            surname: (val) => (val.length >= 2 ? null : 'Фамилия не может быть короче 2 букв'),
-            nikname: (val) => (val.length > 3 ? null : 'Логин не может быть меньше 4 букв'),
-            password: (val) => (val.length > 5 ? null : 'Пароль не может быть меньше шести символов'),
+            name: (val) => (val.length >= 2 ? null : 'Имя не может быть меньше 2 букв'),
+            surname: (val) => (val.length >= 2 ? null : 'Фамилия не может быть меньше 2 букв'),
+            nikname: (val) => (val.length > 3 ? null : 'Логин не может быть меньше 4 символов'),
+            password: (val) => (val.length > 5 ? null : 'Пароль не может быть меньше 6 символов'),
             confirmPassword: (value, values) =>
                 value !== values.password ? 'Пароли не совпадают' : null,
         }
     })
 
-    const FormOnSubmit = ({ name, surname, nikname, password, role }: regFormProps) => {
+    const FormOnSubmit = async({ name, surname, nikname, password, role }: regFormProps) => {
         user.setLoading(true)
-        user.registration(name, surname, nikname, password, role)
+        await user.registration(name, surname, nikname, password, role)
         if (!user.isError) {
             console.log('here')
             pipe.checkPipes()
-            // navigate('/pages/sum')
+            navigate('/pages/fro')
         }
         user.setLoading(false)
     }
