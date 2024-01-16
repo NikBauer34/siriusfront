@@ -3,18 +3,18 @@ import { MapResponse, MapService } from "../api/index";
 import { AxiosResponse } from "axios";
 
 export default class PipeStore {
-    userpipes = [] as MapResponse[] | null
+    userpipes = [] as MapResponse[]
     pipes = [] as MapResponse[]
     isError = false;
     isLoading = false;
     constructor(){
         makeAutoObservable(this)
     }
-    setUserpipes(val: MapResponse[] | null) {
-        this.userpipes = val
+    setUserpipes(val: MapResponse[]) {
+        this.userpipes = Array.from(val)
     }
     setPipes(val: MapResponse[]) {
-        this.pipes = val
+        this.pipes = Array.from(val)
     }
     setError(val: boolean) {
         this.isError = val
@@ -42,6 +42,18 @@ export default class PipeStore {
         } catch (e: any) {
             this.setError(true)
             console.log(e.response?.data?.message);
+        }
+    }
+    async newUserPipe(pipe: MapResponse) {
+        try {
+            this.setLoading(true)
+            const response = await MapService.newUserPipe(pipe._id, pipe.location, pipe.magnetograms, pipe.users)
+            this.setUserpipes([...this.userpipes, pipe])
+        } catch (e: any) {
+            this.setError(true)
+            console.log(e.response?.data?.message);
+        } finally {
+            this.setLoading(false)
         }
     }
     async checkPipes() {

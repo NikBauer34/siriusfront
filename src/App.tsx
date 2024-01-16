@@ -11,6 +11,7 @@ function App() {
     if (localStorage.getItem('token')) {
       user.checkAuth()
       pipe.checkPipes()
+      console.log(pipe)
     }
   }, [])
   return (

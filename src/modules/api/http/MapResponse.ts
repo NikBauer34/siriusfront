@@ -1,6 +1,6 @@
 export interface MapResponse {
     _id: string;
-    location: number[],
+    location: [number, number],
     magnetograms: [string],
     users: [string]    
 }
