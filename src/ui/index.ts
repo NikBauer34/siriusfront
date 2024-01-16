@@ -10,6 +10,8 @@ import ArrowSVG from "./SVGs/ArrowSVG";
 import DefaultButton from "./else/DefaultButton/DefaultButton";
 import OutlinedButton from "./buttons/outlinedButton/OutlinedButton";
 import PasswordInputDef from "./else/PasswordInputDef/PasswordInputDef";
+import GradientButton from "./buttons/gradientButton/GradientButton";
+
 
 
 export {
@@ -24,5 +26,6 @@ export {
     ArrowSVG,
     DefaultButton,
     OutlinedButton,
-    PasswordInputDef
+    PasswordInputDef,
+    GradientButton
 }

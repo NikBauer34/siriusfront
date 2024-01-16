@@ -3,7 +3,7 @@ import '../../ui/styles/body.css';
 import { IRole } from "../api";
 import { Context } from "../../main";
 import { useForm } from "@mantine/form";
-import { OutlinedButton, PasswordInputDef, UnderlineInput } from "../../ui";
+import { GradientButton, PasswordInputDef, UnderlineInput } from "../../ui";
 import { NativeSelect } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 
@@ -51,7 +51,7 @@ const RegForm: FC = () => {
             <PasswordInputDef placeholder="Придумайте пароль" {...RegHookForm.getInputProps('password')} />
             <PasswordInputDef placeholder="Подтвердите пароль" {...RegHookForm.getInputProps('confirmPassword')} />
             <NativeSelect mt={10} mb={20} variant="filled" withAsterisk label="Выберите вашу должность" {...RegHookForm.getInputProps('role')} data={['Начальник', 'Инженер-диагностик', 'Диагностик', 'Мастер']} />
-            <OutlinedButton className='outlinedButton' type="submit">Зарегистрироваться</OutlinedButton>
+            <GradientButton className='outlinedButton' type="submit">Зарегистрироваться</GradientButton>
         </form>
     );
 };

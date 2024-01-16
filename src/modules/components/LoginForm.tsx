@@ -41,7 +41,7 @@ const LoginForm: FC = () => {
             <UnderlineInput placeholder="Пароль" {...LoginHookForm.getInputProps('password')}/>
             <Button style={{ marginTop: 15 }} fullWidth className="filledButton" type="submit">Войти</Button>
             <span className="spanOr">или</span>
-            <OutlinedButton className='outlinedButton' onClick={() => navigate('/registration')}>Зарегистрироваться</OutlinedButton>
+            <OutlinedButton onClick={() => navigate('/registration')} className='outlinedButton'>Зарегистрироваться</OutlinedButton>
         </form>
     )
 }
