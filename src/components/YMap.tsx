@@ -2,11 +2,10 @@ import React, { FC, useContext, useEffect, useState } from 'react'
 import { MapResponse } from '../modules/api/index'
 import { Context } from '../main'
 import {YMaps, Map, Placemark, Button} from 'react-yandex-maps'
-import { LoadingOverlay, Modal} from '@mantine/core'
+import { LoadingOverlay} from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { GetClosestMark } from '../modules/helpers'
-import {Text} from '@mantine/core'
-import { toJS } from 'mobx'
+import { YMapModal } from '../modules/components'
 const YMap: FC = () => {
     const {pipe} = useContext(Context)
 
@@ -43,15 +42,12 @@ const YMap: FC = () => {
                     {pipe.pipes?.map(placemark =>
                         <Placemark defaultGeometry={placemark.location} onClick={onClickPlacemark} key={placemark._id}></Placemark>    
                     )}
-                    {pipe.pipes != null &&
-                        <Button data={{content: 'Близ. труба'}} onClick={() => setUserGeolocation([50, 40])}></Button>
+                    {pipe.pipes.length &&
+                        <Button data={{content: 'Близ. труба'}} onClick={() => setUserGeolocation(GetClosestMark(pipe.pipes, userGeolocation))}></Button>
                     }
                 </Map>
             </YMaps>
-            <Modal opened={opened} onClose={close} transitionProps={{ transition: 'rotate-left' }}>
-                <Text>Добавить новую трубу</Text>
-                <button onClick={onModalConfirmed}>Добавить</button>
-            </Modal>
+            <YMapModal opened={opened} onModalConfirmed={onModalConfirmed} onClose={close}/>
         </>
     )
 }

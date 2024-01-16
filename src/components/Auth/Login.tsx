@@ -1,20 +1,16 @@
-import React, { FC, useContext, useEffect } from 'react';
+import React, { FC, useContext } from 'react';
 import { LoginForm } from '../../modules/components/index';
 // import { SchemeToggle } from '../../ui';
 import '../../ui/styles/title.css';
 import '../../ui/styles/centerDiv.css';
 import '../../ui/styles/body.css';
-import { Loader, LoadingOverlay, useMantineColorScheme } from '@mantine/core';
+import { Loader, LoadingOverlay } from '@mantine/core';
 import { Context } from '../../main';
-import { YMap } from '..';
 
 
 const Login: FC = () => {
     const {user} = useContext(Context)
-    const {setColorScheme} = useMantineColorScheme()
-    useEffect(() => {
-        setColorScheme('light')
-    }, [])
+
     return (
         <div className='centerDiv'>
             <LoadingOverlay visible={user.isLoading} loaderProps={{children: <Loader/>}}/>
@@ -23,7 +19,6 @@ const Login: FC = () => {
             </div>
             <LoginForm></LoginForm>
             {/* <SchemeToggle/> */}
-            <YMap></YMap>
         </div>
     );
 };
