@@ -10,7 +10,7 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem('token')) {
       user.checkAuth()
-      // pipe.checkPipes()
+      pipe.checkPipes()
     }
   }, [])
   return (

@@ -5,6 +5,7 @@ import { Context } from "../../main";
 import { useForm } from "@mantine/form";
 import { OutlinedButton, PasswordInputDef, UnderlineInput } from "../../ui";
 import { NativeSelect } from "@mantine/core";
+import { useNavigate } from "react-router-dom";
 
 interface regFormProps {
     name: string;
@@ -17,7 +18,7 @@ interface regFormProps {
 
 const RegForm: FC = () => {
     const { user, pipe } = useContext(Context)
-
+    const navigate = useNavigate()
     const RegHookForm = useForm({
         initialValues: { name: '', surname: '', nikname: '', password: '', confirmPassword: '', role: 'Мастер' },
         validateInputOnChange: true,
@@ -35,9 +36,11 @@ const RegForm: FC = () => {
         user.setLoading(true)
         user.registration(name, surname, nikname, password, role)
         if (!user.isError) {
-            // pipe.checkPipes()
-            user.setLoading(false)
+            console.log('here')
+            pipe.checkPipes()
+            // navigate('/pages/sum')
         }
+        user.setLoading(false)
     }
 
     return (
@@ -48,7 +51,7 @@ const RegForm: FC = () => {
             <PasswordInputDef placeholder="Придумайте пароль" {...RegHookForm.getInputProps('password')} />
             <PasswordInputDef placeholder="Подтвердите пароль" {...RegHookForm.getInputProps('confirmPassword')} />
             <NativeSelect mt={10} mb={20} variant="filled" withAsterisk label="Выберите вашу должность" {...RegHookForm.getInputProps('role')} data={['Начальник', 'Инженер-диагностик', 'Диагностик', 'Мастер']} />
-            <OutlinedButton className='outlinedButton'>Зарегистрироваться</OutlinedButton>
+            <OutlinedButton className='outlinedButton' type="submit">Зарегистрироваться</OutlinedButton>
         </form>
     );
 };
