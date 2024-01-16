@@ -1,33 +1,27 @@
-import React, {FC, useContext} from "react";
+import React, { FC, useContext } from "react";
 import { Context } from "../main.tsx";
 import { Route, Routes } from "react-router-dom";
-import {MainPanel} from "./layouts/index.ts";
-import { firstRouting, publicRouting, secondRouting } from "../modules/constants/index.ts";
-import {observer} from "mobx-react-lite";
+import { MainPanel } from "./layouts/index.ts";
+import { firstRouting, publicRouting } from "../modules/constants/index.ts";
+import { observer } from "mobx-react-lite";
+import { Error404 } from "./index.ts";
 const AppRouter: FC = () => {
-  const {user} = useContext(Context)
+  const { user } = useContext(Context)
+
   return (
     <Routes>
-      {(user.isAuth && user.user.role == 'первая ступень') && 
-        <Route path="pages" element={<MainPanel/>}>
-          {firstRouting.map(({path, component}) => 
+      {(user.isAuth) &&
+        <Route path="pages" element={<MainPanel />}>
+          {firstRouting.map(({ path, component }) =>
             <Route key={path} path={path} Component={component} />
           )}
-        </Route>
+        </Route>        
       }
-      {(user.isAuth && user.user.role == 'первая ступень') &&
-        <Route path="pages" element={<MainPanel/>}>
-          {firstRouting.map(({path, component}) => 
-            <Route key={path} path={path} Component={component} />
-          )}
-          {secondRouting.map(({path, component}) => 
-            <Route key={path} path={path} Component={component} />
-          )}
-        </Route>
-      }
-      {publicRouting.map(({path, component}) => 
+
+      {publicRouting.map(({ path, component }) =>
         <Route key={path} path={path} Component={component} />
       )}
+      {/* <Route path="*" Component={Error404} /> */}
     </Routes>
   )
 }

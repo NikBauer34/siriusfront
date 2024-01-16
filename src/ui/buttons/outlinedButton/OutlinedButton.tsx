@@ -4,18 +4,14 @@ import './OutlinedButton.modules.css';
 
 interface outlinedprops{
     className: string;
-    type: string;
+    type?: "button" | "submit" | "reset" | undefined;
     children: ReactNode;
 }
 
 
 const OutlinedButton: FC<outlinedprops> = (props) => {
     return(
-<<<<<<< HEAD
-        <Button  fullWidth className={props.className} variant="outline">{props.children}</Button>
-=======
         <Button fullWidth className={props.className} type={props.type} variant="outline">{props.children}</Button>
->>>>>>> b5a01952351dbd64534bc94f76c6037dfee18e76
     );
 };
 

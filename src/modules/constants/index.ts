@@ -1,9 +1,8 @@
-import { publicRouting, firstRouting, secondRouting } from "./Routing"
+import { publicRouting, firstRouting } from "./Routing"
 import {Colors, ButtonTypes} from './enums'
 export {
   publicRouting,
   firstRouting,
-  secondRouting,
   Colors,
   ButtonTypes
 }
