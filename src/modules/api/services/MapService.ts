@@ -9,7 +9,7 @@ export default class MapService {
   static async getUserPipes(): Promise<AxiosResponse<MapResponse[]>> {
     return $api.get<MapResponse[]>('/pipe/get_pipe_user')
   }
-  static async newUserPipe(_id: string, location: [number, number], magnetograms: [string], users: [string]): Promise<AxiosResponse<MapResponse>> {
-    return $api.post('/pipe/new_user_pipe', {_id, location, magnetograms, users})
+  static async newUserPipe(_id: string): Promise<AxiosResponse<MapResponse>> {
+    return $api.post('/pipe/new_user_pipe', {_id})
   }
 }

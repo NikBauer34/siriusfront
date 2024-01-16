@@ -33,14 +33,15 @@ const RegForm: FC = () => {
         }
     })
 
-    const FormOnSubmit = async({ name, surname, nikname, password, role }: regFormProps) => {
+    const FormOnSubmit = ({ name, surname, nikname, password, role }: regFormProps) => {
         user.setLoading(true)
-        await user.registration(name, surname, nikname, password, role)
+        user.registration(name, surname, nikname, password, role)
         if (!user.isError) {
             console.log('here')
             pipe.checkPipes()
             navigate('/pages/fro')
         }
+        console.log('here')
         user.setLoading(false)
     }
 

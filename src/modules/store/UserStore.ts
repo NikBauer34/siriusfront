@@ -27,6 +27,7 @@ export default class UserStore {
 
   async login(nikname: string, password: string): Promise<string | AxiosResponse<AuthResponse, any>> {
     try {
+      this.setLoading(true)
       const response = await AuthService.login(nikname, password)
       console.log(response)
       localStorage.setItem('token', response.data.accessToken)
@@ -37,10 +38,13 @@ export default class UserStore {
     } catch (e: any) {
       this.setError(true)
       return e.response?.data?.message
+    } finally {
+      this.setLoading(false)
     }
   }
   async registration(name: string, surname: string, nikname: string, password: string, role: IRole): Promise<string | AxiosResponse<AuthResponse, any>> {
     try {
+      this.setLoading(true)
       const response = await AuthService.registration(name, surname, nikname, password, role)
       console.log(response)
       localStorage.setItem('token', response.data.accessToken)
@@ -51,6 +55,8 @@ export default class UserStore {
     } catch (e: any) {
       this.setError(true)
       return e.response?.data?.message
+    } finally {
+      this.setLoading(false)
     }
   }
   async logout() {
@@ -66,9 +72,9 @@ export default class UserStore {
     }
   }
   async checkAuth() {
-    this.setLoading(true);
     try {
       const response = await axios.get<AuthResponse>(`${API_URL}/token/refresh`, { withCredentials: true })
+      this.setLoading(true);
       console.log(response)
       localStorage.setItem('token', response.data.accessToken)
       this.setAuth(true)

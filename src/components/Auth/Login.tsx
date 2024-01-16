@@ -6,6 +6,7 @@ import '../../ui/styles/centerDiv.css';
 import '../../ui/styles/body.css';
 import { Loader, LoadingOverlay, useMantineColorScheme } from '@mantine/core';
 import { Context } from '../../main';
+import { YMap } from '..';
 
 
 const Login: FC = () => {
@@ -22,6 +23,7 @@ const Login: FC = () => {
             </div>
             <LoginForm></LoginForm>
             {/* <SchemeToggle/> */}
+            <YMap></YMap>
         </div>
     );
 };

@@ -2,16 +2,14 @@ import React, { FC, useContext, useEffect, useState } from 'react'
 import { MapResponse } from '../modules/api/index'
 import { Context } from '../main'
 import {YMaps, Map, Placemark, Button} from 'react-yandex-maps'
-import { Modal} from '@mantine/core'
+import { LoadingOverlay, Modal} from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { GetClosestMark } from '../modules/helpers'
 import {Text} from '@mantine/core'
 import { toJS } from 'mobx'
 const YMap: FC = () => {
     const {pipe} = useContext(Context)
-    console.log(toJS(pipe.pipes))
-    console.log('--------------')
-    console.log('here')
+
     const [opened, { open, close }] = useDisclosure(false)
     const [userGeolocation, setUserGeolocation] = useState<[number, number]>([44, 39])
     const [chosenPlacemark, setChosenPlacemark] = useState<MapResponse>({} as MapResponse)
@@ -40,6 +38,7 @@ const YMap: FC = () => {
     return (
         <>
             <YMaps apikey='361bda94-9a2c-4af2-bae4-8796cee17db6'>
+                <LoadingOverlay visible={pipe.isLoading}></LoadingOverlay>
                 <Map state={{ center: userGeolocation, zoom: 9 }}>
                     {pipe.pipes?.map(placemark =>
                         <Placemark defaultGeometry={placemark.location} onClick={onClickPlacemark} key={placemark._id}></Placemark>    
