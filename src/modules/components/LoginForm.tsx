@@ -8,7 +8,6 @@ import '../../ui/styles/centerDiv.css';
 import '../../ui/styles/spanOr.css';
 import '../../ui/styles/body.css';
 import { useNavigate } from "react-router-dom";
-
 interface LoginProps {
     nikname: string;
     password: string;
@@ -17,7 +16,6 @@ interface LoginProps {
 const LoginForm: FC = () => {
     const { user, pipe } = useContext(Context)
     const navigate = useNavigate()
-
     const LoginHookForm = useForm({
         initialValues: { nikname: '', password: '' },
         validateInputOnChange: true,
@@ -31,8 +29,8 @@ const LoginForm: FC = () => {
         user.setLoading(true)
         user.login(nikname, password)
         if (!user.isError) {
-            // pipe.checkPipes()
-
+            pipe.checkPipes()
+            // navigate('/pages/sum')
         }
         user.setLoading(false)
     }
