@@ -3,14 +3,14 @@ import { MapResponse, MapService } from "../api/index";
 import { AxiosResponse } from "axios";
 
 export default class PipeStore {
-    userpipes = [] as MapResponse[]
+    userpipes = [] as MapResponse[] | null
     pipes = [] as MapResponse[]
     isError = false;
     isLoading = false;
     constructor(){
         makeAutoObservable(this)
     }
-    setUserpipes(val: MapResponse[]) {
+    setUserpipes(val: MapResponse[] | null) {
         this.userpipes = val
     }
     setPipes(val: MapResponse[]) {
