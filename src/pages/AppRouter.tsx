@@ -21,7 +21,7 @@ const AppRouter: FC = () => {
       {publicRouting.map(({ path, component }) =>
         <Route key={path} path={path} Component={component} />
       )}
-      {/* <Route path="*" Component={Error404} /> */}
+      <Route path="*" Component={Error404} />
     </Routes>
   )
 }
