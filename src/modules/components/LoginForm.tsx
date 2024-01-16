@@ -20,8 +20,8 @@ const LoginForm: FC = () => {
         initialValues: { nikname: '', password: '' },
         validateInputOnChange: true,
         validate: {
-            nikname: (val) => (val.length > 5 ? null : 'Никнэйм не может быть меньше шести букв'),
-            password: (val) => (val.length > 5 ? null : 'Пароль не может быть меньше шести букв')
+            nikname: (val) => (val.length > 3 ? null : 'Логин не может быть меньше 4 букв'),
+            password: (val) => (val.length > 5 ? null : 'Пароль не может быть меньше шести символов')
         }
     })
 
@@ -29,7 +29,7 @@ const LoginForm: FC = () => {
         user.setLoading(true)
         user.login(nikname, password)
         if (!user.isError) {
-            pipe.checkPipes()
+            // pipe.checkPipes()
 
         }
         user.setLoading(false)
