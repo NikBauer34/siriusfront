@@ -1,9 +1,17 @@
-import React, { FC } from 'react';
+import React, { FC, useContext, useEffect } from 'react';
+import { YMap } from '../components';
+import PipeSelect from '../components/PipeSelect';
+import { Context } from '../main';
 
 const MainPage: FC = () => {
+    const {pipe} = useContext(Context)
+    useEffect(() => {
+        pipe.checkPipes()
+    }, [])
     return (
         <div>
-            <h1>this is working</h1>
+            <YMap/>
+            <PipeSelect></PipeSelect>
         </div>
     );
 };

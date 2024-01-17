@@ -45,6 +45,7 @@ export default class PipeStore {
         try {
             const response = await MapService.getUserPipes()
             console.log(response)
+            localStorage.setItem('userpipes', JSON.stringify(response.data))
             this.setUserpipes(response.data)
             this.setError(false)
         } catch (e: any) {
@@ -55,13 +56,16 @@ export default class PipeStore {
     async newUserPipe(pipe: MapResponse) {
         try {
             this.setLoading(true)
-            const response = await MapService.newUserPipe(pipe._id)
+            await MapService.newUserPipe(pipe._id)
             this.setUserpipes([...this.userpipes, pipe])
+            let filtered = this.pipes.filter(obj => obj._id !== pipe._id)
+            this.setPipes(filtered)
             this.setError(false)
         } catch (e: any) {
             this.setError(true)
             console.log(e.response?.data?.message);
         } finally {
+            console.log('There')
             this.setLoading(false)
         }
     }
