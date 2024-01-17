@@ -2,11 +2,12 @@ import { useForm } from "@mantine/form";
 import { FC, useContext } from "react";
 import { Button } from "@mantine/core";
 import { Context } from "../../main";
-import { OutlinedButton, UnderlineInput } from "../../ui/index";
+import { OutlinedButton, PasswordInputDef, UnderlineInput } from "../../ui/index";
 import '../../ui/styles/authForm.css';
 import '../../ui/styles/centerDiv.css';
 import '../../ui/styles/spanOr.css';
 import '../../ui/styles/body.css';
+import '../../ui/styles/formContainer.css';
 import { useNavigate } from "react-router-dom";
 interface LoginProps {
     nikname: string;
@@ -36,13 +37,17 @@ const LoginForm: FC = () => {
     }
 
     return (
-        <form className="authForm" onSubmit={LoginHookForm.onSubmit((val) => FormOnSubmit(val))}>
-            <UnderlineInput placeholder="Логин" {...LoginHookForm.getInputProps('nikname')}/>
-            <UnderlineInput placeholder="Пароль" {...LoginHookForm.getInputProps('password')}/>
-            <Button style={{ marginTop: 15 }} fullWidth className="filledButton" type="submit">Войти</Button>
-            <span className="spanOr">или</span>
-            <OutlinedButton onClick={() => navigate('/registration')} className='outlinedButton'>Зарегистрироваться</OutlinedButton>
-        </form>
+        <div className="formContainer">
+            <form className="authForm" onSubmit={LoginHookForm.onSubmit((val) => FormOnSubmit(val))}>
+                <div className="formFields">
+                    <UnderlineInput placeholder="Логин" {...LoginHookForm.getInputProps('nikname')} />
+                    <PasswordInputDef placeholder="Пароль" {...LoginHookForm.getInputProps('password')} />
+                </div>
+                <Button style={{ marginTop: 15 }} fullWidth className="filledButton" type="submit">Войти</Button>
+                <span className="spanOr">или</span>
+                <OutlinedButton onClick={() => navigate('/registration')} className='outlinedButton'>Зарегистрироваться</OutlinedButton>
+            </form>
+        </div>
     )
 }
 export default LoginForm;

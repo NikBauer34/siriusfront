@@ -11,7 +11,7 @@ import DefaultButton from "./else/DefaultButton/DefaultButton";
 import OutlinedButton from "./buttons/outlinedButton/OutlinedButton";
 import PasswordInputDef from "./else/PasswordInputDef/PasswordInputDef";
 import GradientButton from "./buttons/gradientButton/GradientButton";
-import Background from "./background/Background";
+
 
 
 export {
@@ -27,6 +27,5 @@ export {
     DefaultButton,
     OutlinedButton,
     PasswordInputDef,
-    GradientButton,
-    Background
+    GradientButton
 }

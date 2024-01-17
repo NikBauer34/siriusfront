@@ -1,6 +1,6 @@
 .authForm{
     display: flex;
-    width: 70%;
+    width: 100%;
     align-items: center;
     flex-direction: column;
     margin: auto;

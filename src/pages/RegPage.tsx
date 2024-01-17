@@ -1,12 +1,15 @@
 import React, { FC } from "react";
 import Reg from "../components/Auth/Reg";
-import { Background } from "../ui/index";
+import '../ui/styles/bg.css';
+import background from '../img/background.png';
 
 const RegPage: FC = () => { 
     return(
-        <Background backgroundImage="url(../img/background.png)">
+        <div className="bg" style={{
+            backgroundImage:`url(${background})`
+        }}>
             <Reg />
-        </Background>    
+        </div>    
     );
 };
 
