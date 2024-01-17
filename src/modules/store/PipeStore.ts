@@ -7,7 +7,7 @@ import { StatisticsResponse } from "../api/http/StatisticsResponse";
 export default class PipeStore {
     userpipes = [] as MapResponse[]
     pipes = [] as MapResponse[]
-    selectedpipe = ''
+    selectedpipe = {} as MapResponse
     isError = false;
     isLoading = false;
     constructor(){
@@ -19,8 +19,8 @@ export default class PipeStore {
     setPipes(val: MapResponse[]) {
         this.pipes = Array.from(val)
     }
-    setSelectedPipe(val: string) {
-        this.selectedpipe = val
+    setSelectedPipe(val: MapResponse) {
+        this.selectedpipe = Object.assign({}, val)
     }
     setError(val: boolean) {
         this.isError = val
