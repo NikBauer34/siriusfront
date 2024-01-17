@@ -1,9 +1,11 @@
 import React, { FC, useContext } from "react";
 import '../../ui/styles/body.css';
+import '../../ui/styles/spanOr.css';
+import '../../ui/styles/formContainer.css';
 import { IRole } from "../api";
 import { Context } from "../../main";
 import { useForm } from "@mantine/form";
-import { GradientButton, PasswordInputDef, UnderlineInput } from "../../ui";
+import { GradientButton, OutlinedButton, PasswordInputDef, UnderlineInput } from "../../ui";
 import { NativeSelect } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 
@@ -47,15 +49,21 @@ const RegForm: FC = () => {
     }
 
     return (
-        <form className="authForm" onSubmit={RegHookForm.onSubmit((val) => FormOnSubmit(val))}>
-            <UnderlineInput  placeholder="Имя" {...RegHookForm.getInputProps('name')} />
-            <UnderlineInput placeholder="Фамилия" {...RegHookForm.getInputProps('surname')} />
-            <UnderlineInput placeholder="Придумайте логин" {...RegHookForm.getInputProps('nikname')} /> 
-            <PasswordInputDef placeholder="Придумайте пароль" {...RegHookForm.getInputProps('password')} />
-            <PasswordInputDef placeholder="Подтвердите пароль" {...RegHookForm.getInputProps('confirmPassword')} />
-            <NativeSelect mt={10} mb={20} variant="filled" withAsterisk label="Выберите вашу должность" {...RegHookForm.getInputProps('role')} data={['Начальник', 'Инженер-диагностик', 'Диагностик', 'Мастер']} />
-            <GradientButton className='outlinedButton' type="submit">Зарегистрироваться</GradientButton>
-        </form>
+        <div className="formContainer">
+            <form className="authForm" onSubmit={RegHookForm.onSubmit((val) => FormOnSubmit(val))}>
+                <div className="formFields">
+                    <UnderlineInput placeholder="Имя" {...RegHookForm.getInputProps('name')} />
+                    <UnderlineInput placeholder="Фамилия" {...RegHookForm.getInputProps('surname')} />
+                    <UnderlineInput placeholder="Придумайте логин" {...RegHookForm.getInputProps('nikname')} />
+                    <PasswordInputDef placeholder="Придумайте пароль" {...RegHookForm.getInputProps('password')} />
+                    <PasswordInputDef placeholder="Подтвердите пароль" {...RegHookForm.getInputProps('confirmPassword')} />
+                    <NativeSelect mt={10} mb={20} variant="filled" withAsterisk label="Выберите вашу должность" {...RegHookForm.getInputProps('role')} data={['Начальник', 'Инженер-диагностик', 'Диагностик', 'Мастер']} />
+                </div>
+                <GradientButton type="submit">Зарегистрироваться</GradientButton>
+                <span className="spanOr">или</span>
+                <OutlinedButton onClick={() => navigate('/login')} className='outlinedButton'>Войти</OutlinedButton>
+            </form>
+        </div>
     );
 };
 

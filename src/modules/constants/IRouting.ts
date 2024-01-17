@@ -1,6 +1,6 @@
 import { FC } from "react";
 
 export default interface IRouting {
-  path: string,
-  component: FC
+  path: string;
+  component: FC;
 }

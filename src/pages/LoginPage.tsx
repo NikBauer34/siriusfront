@@ -1,13 +1,16 @@
 import React, { FC } from "react";
 import { Login } from "../components/index";
-import { Background } from "../ui/index";
+import '../ui/styles/bg.css';
+import background from '../img/background.png';
 
 const LoginPage: FC = () => {
     return (
-        <Background backgroundImage="url(../img/background.png)">
+        <div className="bg" style={{
+            backgroundImage:`url(${background})`
+        }}>
             <Login />
-        </Background>
-            
-    )
-}
+        </div>           
+    );
+};
+
 export default LoginPage;

@@ -2,7 +2,6 @@ import { Button } from '@mantine/core';
 import React, { FC, ReactNode } from 'react';
 
 interface gradientprops {
-    className: string;
     type?: "button" | "submit" | "reset" | undefined;
     onClick?: (navigate: any) => void ;
     children: ReactNode;
@@ -13,7 +12,7 @@ const GradientButton: FC<gradientprops> = (props) => {
     return(
         <Button
             fullWidth 
-            className={props.className} 
+            className="gradientbutton"
             type={props.type} 
             onClick={props.onClick} 
             variant="gradient"

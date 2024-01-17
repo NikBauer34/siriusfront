@@ -1,0 +1,27 @@
+::-webkit-scrollbar{
+	display: none;
+}	
+
+::-webkit-scrollbar-thumb{
+	background:#88bdff;
+	border-radius:10px;
+}
+
+::webkit-scrollbar-track{
+	background:#c4d9db;
+}
+
+.formContainer {
+    display: flex;
+    width: 70%;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+}
+
+.formFields {
+    height: 115px; 
+    width: 100%;
+    overflow-y: auto;  
+    margin-bottom: 20px;  
+}
