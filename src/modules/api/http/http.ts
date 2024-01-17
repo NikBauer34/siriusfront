@@ -1,6 +1,6 @@
-import axios from 'axios'
-import { AuthResponse } from './AuthResponse.ts'
-import { API_URL } from '../../constants/index.ts'
+import axios from 'axios';
+import { AuthResponse } from './AuthResponse.ts';
+import { API_URL } from '../../constants/index.ts';
 
 const $api = axios.create({
   withCredentials: true,
@@ -28,4 +28,4 @@ $api.interceptors.response.use((config) => {
   }
   throw error
 })
-export default $api
+export default $api;

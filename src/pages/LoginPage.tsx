@@ -6,8 +6,8 @@ const LoginPage: FC = () => {
     return (
         <Background backgroundImage="url(../img/background.png)">
             <Login />
-        </Background>
-            
-    )
-}
+        </Background>           
+    );
+};
+
 export default LoginPage;

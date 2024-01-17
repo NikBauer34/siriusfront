@@ -1,5 +1,6 @@
-import RegPage from "../../pages/RegPage.tsx";
-import { LoginPage, FirstPage1, FirstPage2, SecondPage1 } from "../../pages/index.ts";
+import RegPage from "../../pages/RegPage";
+import MainPage from "../../pages/MainPage";
+import { LoginPage } from "../../pages/index";
 import IRouting from "./IRouting.ts";
 
 export const publicRouting: IRouting[] = [
@@ -15,23 +16,10 @@ export const publicRouting: IRouting[] = [
 ]
 export const firstRouting: IRouting[] = [
   {
-    path: 'fro',
-    component: FirstPage1
-  },
-  {
-    path: 'frs',
-    component: FirstPage2
-  }, {
-    path: '*',
-    component: RegPage
+    path: 'main',
+    component: MainPage
   }
 ]
 export const secondRouting: IRouting[] = [
-  {
-    path: 'sro',
-    component: SecondPage1
-  }, {
-    path: '*',
-    component: RegPage
-  }
+
 ]

@@ -5,6 +5,7 @@ import { MainPanel } from "./layouts/index.ts";
 import { firstRouting, publicRouting } from "../modules/constants/index.ts";
 import { observer } from "mobx-react-lite";
 import { Error404 } from "./index.ts";
+
 const AppRouter: FC = () => {
   const { user } = useContext(Context)
 
@@ -21,6 +22,7 @@ const AppRouter: FC = () => {
       {publicRouting.map(({ path, component }) =>
         <Route key={path} path={path} Component={component} />
       )}
+      
       <Route path="*" Component={Error404} />
     </Routes>
   )
