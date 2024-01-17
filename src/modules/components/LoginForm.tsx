@@ -31,7 +31,7 @@ const LoginForm: FC = () => {
         user.login(nikname, password)
         if (!user.isError) {
             pipe.checkPipes()
-            // navigate('/pages/sum')
+            navigate('/pages/main')
         }
         user.setLoading(false)
     }

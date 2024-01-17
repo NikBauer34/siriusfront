@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 const MainPage: FC = () => {
-    return(
+    return (
         <div>
             <h1>this is working</h1>
         </div>

@@ -16,13 +16,13 @@ const AppRouter: FC = () => {
           {firstRouting.map(({ path, component }) =>
             <Route key={path} path={path} Component={component} />
           )}
-        </Route>        
+        </Route>
       }
 
       {publicRouting.map(({ path, component }) =>
         <Route key={path} path={path} Component={component} />
       )}
-      
+
       <Route path="*" Component={Error404} />
     </Routes>
   )

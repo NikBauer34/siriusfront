@@ -2,13 +2,20 @@ import React, { FC, useContext } from 'react';
 import { Title, Text, Button, Container, Group } from '@mantine/core';
 import './Error404.modules.css';
 import { Context } from '../../main';
+import { useNavigate } from 'react-router-dom';
 
 
-const Error404:FC = () => {
+const Error404: FC = () => {
   const { user } = useContext(Context)
-
+  const navigate = useNavigate();
   const backHome = () => {
     user.setLoading(true)
+    if (user.isAuth) {
+      navigate('/pages/main')
+    } else {
+      navigate('/registration')
+    }
+    user.setLoading(false)
   }
 
   return (
