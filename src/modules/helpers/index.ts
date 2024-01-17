@@ -1,4 +1,4 @@
 import GetClosestMark from "./GetClosestMark";
 export {
-    GetClosestMark
+    GetClosestMark,
 }

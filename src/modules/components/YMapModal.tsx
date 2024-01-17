@@ -1,12 +1,16 @@
-import { Modal } from "@mantine/core";
-import {useDiscl}
+import { Modal, Text, Button } from "@mantine/core";
 import React, { FC } from "react";
-import { YMapsProps } from "react-yandex-maps";
-interface YMapModal {
-    opened: boolean
+interface YMapModalProps {
+    opened: boolean;
+    onClose: () => void;
+    onModalConfirmed: () => void;
 }
-const YMapModal: FC<YMapsProps> = (props) => {
+const YMapModal: FC<YMapModalProps> = (props) => {
     return (
-        <Modal opened={}></Modal>
+        <Modal opened={props.opened} onClose={props.onClose} transitionProps={{ transition: 'rotate-left' }}>
+            <Text>Добавить новую трубу</Text>
+            <Button onClick={props.onModalConfirmed}>Добавить</Button>
+        </Modal>
     )
 }
+export default YMapModal

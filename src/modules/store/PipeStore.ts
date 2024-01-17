@@ -47,7 +47,7 @@ export default class PipeStore {
     async newUserPipe(pipe: MapResponse) {
         try {
             this.setLoading(true)
-            const response = await MapService.newUserPipe(pipe._id, pipe.location, pipe.magnetograms, pipe.users)
+            const response = await MapService.newUserPipe(pipe._id)
             this.setUserpipes([...this.userpipes, pipe])
         } catch (e: any) {
             this.setError(true)
@@ -58,9 +58,9 @@ export default class PipeStore {
     }
     async checkPipes() {
         try {
-        this.setLoading(true)
-        this.getMapPipes()
-        this.getUserPipes()
+            this.setLoading(true)
+            this.getMapPipes()
+            this.getUserPipes()
 
         } catch (e: any) {
             this.setError(true)
