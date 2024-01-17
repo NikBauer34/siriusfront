@@ -1,12 +1,17 @@
 import { BarChart } from "@mantine/charts";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import { StatisticsResponse } from "../modules/api/http/StatisticsResponse";
-import { pipe } from "../main";
+import { Context } from "../main";
 
 const Statistics: FC = () => {
-    const [data, setData] = useState<StatisticsResponse[]>([{month: 'Январь', defects: 0}]) //заглушка
+    const {pipe} = useContext(Context)
+    const [data, setData] = useState<StatisticsResponse[] | any>([{month: 'Январь', defects: 0}]) //заглушка
+    const getStatistics = async () => {
+        let pipeData = await pipe.getPipeStatistics(pipe.selectedpipe)
+        setData(pipeData)
+    }
     useEffect(() => {
-        let testData = pipe.getPipeStatistics(pipe.selectedpipe)
+        getStatistics()
     }, [])
     return (
         <BarChart 
@@ -14,9 +19,10 @@ const Statistics: FC = () => {
             data={data}
             dataKey="month"
             series={[
-                {name: pipe.selectedpipe, color: 'violet'}
+                {name: pipe.selectedpipe.title, color: 'violet'}
             ]}
             tickLine="y"
         />
     )
 }
+export default Statistics

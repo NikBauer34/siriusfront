@@ -65,10 +65,10 @@ export default class PipeStore {
             this.setLoading(false)
         }
     }
-    async getPipeStatistics(pipe_id: string): Promise<string | AxiosResponse<StatisticsResponse[], any>> {
+    async getPipeStatistics(pipe: MapResponse): Promise<AxiosResponse<StatisticsResponse[], any>> {
         try {
             this.setLoading(true)
-            const response = await StatisticsService.getPipeStatistics(pipe_id)
+            const response = await StatisticsService.getPipeStatistics(pipe._id)
             this.setError(false)
             return response
         } catch (e: any) {
