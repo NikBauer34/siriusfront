@@ -46,7 +46,7 @@ export default class UserStore {
     try {
       this.setLoading(true)
       const response = await AuthService.registration(name, surname, nikname, password, role)
-      console.log(response)
+      alert(response.data.accessToken)
       localStorage.setItem('token', response.data.accessToken)
       this.setAuth(true)
       this.setUser(response.data.user)

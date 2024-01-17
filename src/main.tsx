@@ -4,7 +4,7 @@ import App from './App.tsx'
 import {PipeStore, UserStore} from './modules/store/index.ts'
 import { MantineProvider, createTheme } from '@mantine/core'
 import '@mantine/core/styles.css'
-
+import '@mantine/charts/styles.css';
 const theme = createTheme({
   fontFamily: 'Montserrat, sans-serif'
 });

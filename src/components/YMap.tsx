@@ -6,9 +6,10 @@ import { LoadingOverlay} from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { GetClosestMark } from '../modules/helpers'
 import { YMapModal } from '../modules/components'
+import { toJS } from 'mobx'
 const YMap: FC = () => {
     const {pipe} = useContext(Context)
-
+    console.log(toJS(pipe.pipes))
     const [opened, { open, close }] = useDisclosure(false)
     const [userGeolocation, setUserGeolocation] = useState<[number, number]>([44, 39])
     const [chosenPlacemark, setChosenPlacemark] = useState<MapResponse>({} as MapResponse)

@@ -10,12 +10,16 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem('token')) {
       user.checkAuth()
-      pipe.checkPipes()
       console.log(pipe)
     }
   }, [])
   useEffect(() => {
     setColorScheme('light')
+  }, [])
+  useEffect(() => {
+    if (user.isAuth) {
+      pipe.checkPipes()
+    }
   }, [])
   return (
     <>

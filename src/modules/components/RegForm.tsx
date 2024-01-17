@@ -39,9 +39,10 @@ const RegForm: FC = () => {
         if (!user.isError) {
             console.log('here')
             pipe.checkPipes()
+            user.setLoading(false)
             navigate('/pages/fro')
         }
-        console.log('here')
+        console.log('There')
         user.setLoading(false)
     }
 
