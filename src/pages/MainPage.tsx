@@ -8,13 +8,12 @@ import { Context } from '../main';
 
 const MainPage: FC = () => {
     const {pipe} = useContext(Context)
-
     return (
         <div>
             <PipeSelect></PipeSelect>
             <YMap/>
             
-            {pipe.selectedpipe ? <Statistics></Statistics> : <h1>Заглушка</h1>}
+            {Object.keys(pipe.selectedpipe).length ? <Statistics /> : <h1>Заглушка</h1>}
         </div>
     );
 };

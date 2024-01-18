@@ -74,6 +74,8 @@ export default class PipeStore {
     async getPipeStatistics(pipe: MapResponse): Promise<StatisticsResponse[]> {
         try {
             this.setLoading(true)
+            console.log('selected=------')
+            console.log(toJS(this.selectedpipe))
             const response = await StatisticsService.getPipeStatistics(pipe._id)
             this.setError(false)
             return response.data
