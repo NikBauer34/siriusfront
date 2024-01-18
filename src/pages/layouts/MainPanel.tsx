@@ -2,7 +2,7 @@ import { AppShell, Burger, Group, Skeleton } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import React, { FC, useContext, useEffect } from "react";
 import { Context, pipe } from "../../main.tsx";
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import '../../ui/styles/mainPanelStyles/iconUser.css';
 import '../../ui/styles/mainPanelStyles/userImg.css';
 import '../../ui/styles/mainPanelStyles/commonDiv.css';
@@ -11,11 +11,14 @@ import logoGazprom from '../../img/gazprom.png';
 
 
 const MainPanel: FC = () => {
+  const location = useLocation();
   const [opened, { toggle }] = useDisclosure();
-  const { user, pipe } = useContext(Context)
+  const { user, pipe } = useContext(Context);
+
   useEffect(() => {
-    pipe.checkPipes()
-  }, [])
+    pipe.checkPipes();
+  }, []);
+
   return (
     <AppShell
       header={{ height: 60 }}
@@ -37,8 +40,8 @@ const MainPanel: FC = () => {
             <img className="userImg" src={userIconImg} />
           </div>
           <div className="commonDiv">
-            <div className="menu">Сводка</div>
-            <div className="menu">Разметки</div>
+            <div className={`menu ${location.pathname === "/pages/main" ? "menu-main" : "menu"}`}>Сводка</div>
+            <div className={`menu ${location.pathname === "/pages/layouts" ? "menu-layouts" : "menu"}`}>Разметки</div>
           </div>
           <div className="commonDiv">
             <img className="logoImg" src={logoGazprom} />

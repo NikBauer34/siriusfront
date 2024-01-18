@@ -19,6 +19,11 @@ export const firstRouting: IRouting[] = [
     path: 'main',
     component: MainPage
   }
+  //,
+  // {
+  //   path: 'magnitograms',
+  //   component: 
+  // }
 ]
 export const secondRouting: IRouting[] = [
 
