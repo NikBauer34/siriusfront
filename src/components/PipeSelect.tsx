@@ -6,17 +6,14 @@ import { MapResponse } from "../modules/api";
 
 const PipeSelect: FC = () => {
     const {pipe} = useContext(Context)
-    const [selectedPipes, setSelectedPipes] = useState<MapResponse[] | null>(null)
     useEffect(() => {
-        getUserPipes()
+        pipe.checkPipes()
     }, [])
-    const getUserPipes = async() => {
-        let data = await pipe.getUserPipes()
-        setSelectedPipes(data)
-    }
+    console.log('abasb')
+    console.log(toJS(pipe.userpipes))
     let PipeList: string[] = ['']
-    if (selectedPipes != null) {
-        PipeList = selectedPipes.map(obj => obj.title)
+    if (pipe.userpipes != null) {
+        PipeList = pipe.userpipes.map(obj => obj.title)
     }
     console.log('dfhsdfhsdfh')
     console.log(PipeList)
