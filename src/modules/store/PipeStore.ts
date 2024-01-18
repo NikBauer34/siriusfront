@@ -45,7 +45,6 @@ export default class PipeStore {
         try {
             const response = await MapService.getUserPipes()
             console.log(response)
-            localStorage.setItem('userpipes', JSON.stringify(response.data))
             this.setUserpipes(response.data)
             this.setError(false)
         } catch (e: any) {

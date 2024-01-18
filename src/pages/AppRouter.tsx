@@ -11,17 +11,13 @@ const AppRouter: FC = () => {
 
   return (
     <Routes>
-      {(user.isAuth) &&
-        <Route path="pages" element={<MainPanel />}>
-          {firstRouting.map(({ path, component }) =>
-            <Route key={path} path={path} Component={component} />
-          )}
-        </Route>
-      }
-
       {publicRouting.map(({ path, component }) =>
         <Route key={path} path={path} Component={component} />
       )}
+      {user.isAuth && firstRouting.map(({path, component}) => 
+        <Route key={path} path={path} Component={component}/>
+      )}
+
       <Route path="*" Component={Error404} />
     </Routes>
   )

@@ -5,21 +5,16 @@ import { AppRouter } from "./pages/index.ts"
 import { useMantineColorScheme } from "@mantine/core"
 
 function App() {
-  const { user, pipe } = useContext(Context)
+  const { user } = useContext(Context)
   const {setColorScheme} = useMantineColorScheme()
   useEffect(() => {
     if (localStorage.getItem('token')) {
       user.checkAuth()
-      console.log(pipe)
+      console.log(user)
     }
   }, [])
   useEffect(() => {
     setColorScheme('light')
-  }, [])
-  useEffect(() => {
-    if (user.isAuth) {
-      pipe.checkPipes()
-    }
   }, [])
   return (
     <>

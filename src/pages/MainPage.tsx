@@ -10,8 +10,8 @@ const MainPage: FC = () => {
     }, [])
     return (
         <div>
-            <YMap/>
-            <PipeSelect></PipeSelect>
+            {/* <YMap/> */}
+            {/* <PipeSelect></PipeSelect> */}
         </div>
     );
 };

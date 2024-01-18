@@ -5,7 +5,7 @@ import { toJS } from "mobx";
 
 const PipeSelect: FC = () => {
     const {pipe} = useContext(Context)
-    console.log('---------')
+    console.log('Hello---------')
     console.log(toJS(pipe.userpipes))
     let PipeList = pipe.userpipes.map(obj => obj.title)
     const onSelected = (value: string) => {
@@ -15,7 +15,7 @@ const PipeSelect: FC = () => {
         }
     }
     return (
-        <DefaultSelect label="Выберите трубу" data={PipeList} onClick={(value: string) => onSelected(value)}/>
+        <DefaultSelect label="Выберите трубу" data={[...new Set(PipeList)]} onClick={(value: string) => onSelected(value)}/>
     )
 }
 export default PipeSelect
