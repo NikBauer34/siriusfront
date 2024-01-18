@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect, useState } from 'react'
+import React, { ChangeEvent, FC, useContext, useEffect, useState } from 'react'
 import { MapResponse } from '../modules/api/index'
 import { Context } from '../main'
 import {YMaps, Map, Placemark, Button} from 'react-yandex-maps'
@@ -11,24 +11,25 @@ const YMap: FC = () => {
     const {pipe} = useContext(Context)
     console.log(toJS(pipe.pipes))
     const [opened, { open, close }] = useDisclosure(false)
-    const [userGeolocation, setUserGeolocation] = useState<[number, number]>([44, 39])
+    const [userGeolocation, setUserGeolocation] = useState<[number, number]>([50, 49])
     const [chosenPlacemark, setChosenPlacemark] = useState<MapResponse>({} as MapResponse)
-    const getGeolocationSucces = (position: any) => {
-        console.log(position.coords.latitude)
-        console.log(position.coords.longitude)
-        setUserGeolocation([position.coords.latitude, position.coords.longitude])
-    }
-    const getGeolocationError = () => {
-        setUserGeolocation([44, 39])
-    }
-    useEffect(() => {
-        if ('geolocation' in navigator) {
-            navigator.geolocation.getCurrentPosition(getGeolocationSucces, getGeolocationError)
-        } else {
-            getGeolocationError()
-        }
-    }, [])
+    // const getGeolocationSucces = (position: any) => {
+    //     console.log(position.coords.latitude)
+    //     console.log(position.coords.longitude)
+    //     setUserGeolocation([position.coords.latitude, position.coords.longitude])
+    // }
+    // const getGeolocationError = () => {
+    //     setUserGeolocation([44, 39])
+    // }
+    // useEffect(() => {
+    //     if ('geolocation' in navigator) {
+    //         navigator.geolocation.getCurrentPosition(getGeolocationSucces, getGeolocationError)
+    //     } else {
+    //         getGeolocationError()
+    //     }
+    // }, [])
     const onModalConfirmed = () => {
+        console.log(toJS(chosenPlacemark))
         pipe.newUserPipe(chosenPlacemark)
     }
     const onClickPlacemark = (placemark: MapResponse) => {
@@ -41,7 +42,7 @@ const YMap: FC = () => {
                 <LoadingOverlay visible={pipe.isLoading}></LoadingOverlay>
                 <Map state={{ center: userGeolocation, zoom: 9 }}>
                     {pipe.pipes?.map(placemark =>
-                        <Placemark defaultGeometry={placemark.location} onClick={onClickPlacemark} key={placemark._id}></Placemark>    
+                        <Placemark defaultGeometry={placemark.location} onClick={() => onClickPlacemark(placemark)} key={placemark._id}></Placemark>    
                     )}
                     {pipe.pipes.length &&
                         <Button data={{content: 'Близ. труба'}} onClick={() => setUserGeolocation(GetClosestMark(pipe.pipes, userGeolocation))}></Button>

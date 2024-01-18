@@ -1,12 +1,15 @@
 import { AppShell, Burger, Group, Skeleton } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { MantineLogo } from '@mantinex/mantine-logo';
-import React, { FC, useContext } from "react";
-import { Context } from "../../main.tsx";
+import React, { FC, useContext, useEffect } from "react";
+import { Context, pipe } from "../../main.tsx";
 import { Outlet } from 'react-router-dom';
 const MainPanel: FC = () => {
   const [opened, { toggle }] = useDisclosure();
-  const { user } = useContext(Context)
+  const { user, pipe } = useContext(Context)
+  useEffect(() => {
+    pipe.checkPipes()
+  }, [])
   return (
     <AppShell
       header={{ height: 60 }}

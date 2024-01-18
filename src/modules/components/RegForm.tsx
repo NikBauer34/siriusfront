@@ -38,6 +38,7 @@ const RegForm: FC = () => {
     const FormOnSubmit = ({ name, surname, nikname, password, role }: regFormProps) => {
         user.setLoading(true)
         user.registration(name, surname, nikname, password, role)
+        console.log(user.isAuth)
         if (!user.isError) {
             console.log('here')
             pipe.checkPipes()
@@ -51,14 +52,14 @@ const RegForm: FC = () => {
     return (
         <div className="formContainer">
             <form className="authForm" onSubmit={RegHookForm.onSubmit((val) => FormOnSubmit(val))}>
-                <div className="formFields">
+                {/* <div className="formFields"> */}
                     <UnderlineInput placeholder="Имя" {...RegHookForm.getInputProps('name')} />
                     <UnderlineInput placeholder="Фамилия" {...RegHookForm.getInputProps('surname')} />
                     <UnderlineInput placeholder="Придумайте логин" {...RegHookForm.getInputProps('nikname')} />
                     <PasswordInputDef placeholder="Придумайте пароль" {...RegHookForm.getInputProps('password')} />
                     <PasswordInputDef placeholder="Подтвердите пароль" {...RegHookForm.getInputProps('confirmPassword')} />
                     <NativeSelect mt={10} mb={20} variant="filled" withAsterisk label="Выберите вашу должность" {...RegHookForm.getInputProps('role')} data={['Начальник', 'Инженер-диагностик', 'Диагностик', 'Мастер']} />
-                </div>
+                {/* </div> */}
                 <GradientButton type="submit">Зарегистрироваться</GradientButton>
                 <span className="spanOr">или</span>
                 <OutlinedButton onClick={() => navigate('/login')} className='outlinedButton'>Войти</OutlinedButton>
