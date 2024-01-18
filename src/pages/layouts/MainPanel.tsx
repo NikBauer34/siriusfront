@@ -19,6 +19,10 @@ const MainPanel: FC = () => {
     pipe.checkPipes();
   }, []);
 
+  const handleUserImgClick = () => {
+    toggle();
+  };
+
   return (
     <AppShell
       header={{ height: 60 }}
@@ -36,7 +40,7 @@ const MainPanel: FC = () => {
           height: '100%',
         }}>
           {/* <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" /> */}
-          <div className="iconUser">
+          <div className="iconUser" onClick={handleUserImgClick}>
             <img className="userImg" src={userIconImg} />
           </div>
           <div className="commonDiv">
