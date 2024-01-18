@@ -48,7 +48,7 @@ const YMap: FC = () => {
         <>
             <YMaps apikey='361bda94-9a2c-4af2-bae4-8796cee17db6'>
                 <LoadingOverlay visible={pipe.isLoading}></LoadingOverlay>
-                <Map state={{ center: userGeolocation, zoom: 9 }} width={1200}>
+                <Map state={{ center: userGeolocation, zoom: 9 }} width={1200}  >
                     {pipe.pipes?.map(placemark =>
                         <Placemark defaultGeometry={placemark.location} onClick={() => onClickPlacemark(placemark)} key={placemark._id}></Placemark>
                     )}

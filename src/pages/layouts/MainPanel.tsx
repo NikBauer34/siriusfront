@@ -1,6 +1,6 @@
 import { AppShell, Burger, Group, Skeleton } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import React, { FC, useContext, useEffect } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import { Context, pipe } from "../../main.tsx";
 import { Outlet, useLocation } from 'react-router-dom';
 import '../../ui/styles/mainPanelStyles/iconUser.css';
@@ -12,23 +12,22 @@ import logoGazprom from '../../img/gazprom.png';
 
 const MainPanel: FC = () => {
   const location = useLocation();
-  const [opened, { toggle }] = useDisclosure();
+  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
+  const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+  // const [opened, { toggle }] = useDisclosure();
   const { user, pipe } = useContext(Context);
 
   useEffect(() => {
     pipe.checkPipes();
   }, []);
 
-  const handleUserImgClick = () => {
-    toggle();
-  };
+
 
   return (
     <AppShell
       header={{ height: 60 }}
-      navbar={{ width: 60, breakpoint: 'sm', collapsed: { mobile: !opened } }}
+      navbar={{ width: 60, breakpoint: 'sm', collapsed: { mobile: !mobileOpened, desktop: !desktopOpened }, }}
       padding="md"
-
     >
       <AppShell.Header className="header" style={{
         background: '#4a9dce',
@@ -39,10 +38,9 @@ const MainPanel: FC = () => {
           justifyContent: 'space-between',
           height: '100%',
         }}>
-          {/* <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" /> */}
-          <div className="iconUser" onClick={handleUserImgClick}>
-            <img className="userImg" src={userIconImg} />
-          </div>
+          <Burger style={{ filter: 'invert(1)' }} opened={mobileOpened} onClick={toggleMobile} hiddenFrom="sm" size="sm" />
+          <Burger style={{ filter: 'invert(1)' }} opened={desktopOpened} onClick={toggleDesktop} visibleFrom="sm" size="sm" />
+          {/* <Burger opened={isOpen} onClick={handleUserImgClick} hiddenFrom="sm" size="sm" /> */}
           <div className="commonDiv">
             <div className={`menu ${location.pathname === "/pages/main" ? "menu-main" : "menu"}`}>Сводка</div>
             <div className={`menu ${location.pathname === "/pages/layouts" ? "menu-layouts" : "menu"}`}>Разметки</div>
@@ -52,7 +50,14 @@ const MainPanel: FC = () => {
           </div>
         </Group>
       </AppShell.Header>
-
+      <AppShell.Navbar p="md">
+        {/* Navbar */}
+        {Array(5)
+          .fill(0)
+          .map((_, index) => (
+            <Skeleton key={index} h={28} mt="sm" animate={false} />
+          ))}
+      </AppShell.Navbar>
       <AppShell.Main>
         <Outlet />
       </AppShell.Main>
