@@ -1,18 +1,18 @@
 import React, { ChangeEvent, FC, useContext, useEffect, useState } from 'react'
 import { MapResponse } from '../modules/api/index'
 import { Context } from '../main'
-import {YMaps, Map, Placemark, Button} from 'react-yandex-maps'
-import { LoadingOverlay} from '@mantine/core'
+import { YMaps, Map, Placemark, Button } from 'react-yandex-maps'
+import { LoadingOverlay } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { GetClosestMark } from '../modules/helpers'
 import { YMapModal } from '../modules/components'
 import { toJS } from 'mobx'
 const YMap: FC = () => {
-    const {pipe} = useContext(Context)
+    const { pipe } = useContext(Context)
     useEffect(() => {
         getUserPipes()
     }, [])
-    const getUserPipes = async() => {
+    const getUserPipes = async () => {
         let data = await pipe.getUserPipes()
         console.log('Here')
         console.log(data)
@@ -48,18 +48,18 @@ const YMap: FC = () => {
         <>
             <YMaps apikey='361bda94-9a2c-4af2-bae4-8796cee17db6'>
                 <LoadingOverlay visible={pipe.isLoading}></LoadingOverlay>
-                <Map state={{ center: userGeolocation, zoom: 9 }}>
+                <Map state={{ center: userGeolocation, zoom: 9 }} width={1200}>
                     {pipe.pipes?.map(placemark =>
-                        <Placemark defaultGeometry={placemark.location} onClick={() => onClickPlacemark(placemark)} key={placemark._id}></Placemark>    
+                        <Placemark defaultGeometry={placemark.location} onClick={() => onClickPlacemark(placemark)} key={placemark._id}></Placemark>
                     )}
-                    {pipe.pipes.length 
-                        ? <Button data={{content: 'Близ. труба'}} onClick={() => setUserGeolocation(GetClosestMark(pipe.pipes, userGeolocation))}></Button>
-                        : <Button data={{content: 'Нет труб'}}></Button>
+                    {pipe.pipes.length
+                        ? <Button data={{ content: 'Близ. труба' }} onClick={() => setUserGeolocation(GetClosestMark(pipe.pipes, userGeolocation))} />
+                        : <Button data={{ content: 'Нет труб' }} />
                     }
                 </Map>
             </YMaps>
-            <YMapModal opened={opened} onModalConfirmed={onModalConfirmed} onClose={close}/>
+            <YMapModal opened={opened} onModalConfirmed={onModalConfirmed} onClose={close} />
         </>
     )
 }
-export default YMap
+export default YMap;

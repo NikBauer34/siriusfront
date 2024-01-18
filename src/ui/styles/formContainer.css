@@ -1,5 +1,6 @@
 ::-webkit-scrollbar{
-	display: none;
+	width: 5px;
+    margin: 3px;
 }	
 
 ::-webkit-scrollbar-thumb{

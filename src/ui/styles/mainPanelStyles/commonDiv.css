@@ -12,7 +12,11 @@
     color: white;
 }
 
-.menu:active{
+.menu-main{
+    color:white
+}
+
+.menu-layouts{
     color: white;
 }
 

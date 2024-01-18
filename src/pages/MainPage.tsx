@@ -13,8 +13,9 @@ const MainPage: FC = () => {
     // }, [])
     return (
         <div>
-            <YMap/>
             <PipeSelect></PipeSelect>
+            <YMap/>
+            
             {/* {pipe.selectedpipe ? <Statistics></Statistics> : <h1>Заглушка</h1>} */}
         </div>
     );

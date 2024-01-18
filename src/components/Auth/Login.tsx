@@ -6,8 +6,6 @@ import '../../ui/styles/centerDiv.css';
 import '../../ui/styles/body.css';
 import { Loader, LoadingOverlay } from '@mantine/core';
 import { Context } from '../../main';
-import { YMap } from '..';
-import PipeSelect from '../PipeSelect';
 
 
 const Login: FC = () => {
@@ -23,8 +21,6 @@ const Login: FC = () => {
             </div>
             <LoginForm></LoginForm>
             {/* <SchemeToggle/> */}
-            <YMap />
-            <PipeSelect/>
         </div>
     );
 };

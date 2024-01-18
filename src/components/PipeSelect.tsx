@@ -5,7 +5,7 @@ import { toJS } from "mobx";
 import { MapResponse } from "../modules/api";
 
 const PipeSelect: FC = () => {
-    const {pipe} = useContext(Context)
+    const { pipe } = useContext(Context);
     useEffect(() => {
         pipe.checkPipes()
     }, [])
@@ -25,7 +25,7 @@ const PipeSelect: FC = () => {
         }
     }
     return (
-        <DefaultSelect label="Выберите трубу" data={[...new Set(PipeList)]} onClick={(value: string) => onSelected(value)}/>
+        <DefaultSelect label="Выберите трубу" data={[...new Set(PipeList)]} onClick={(value: string) => onSelected(value)} />
     )
 }
 export default PipeSelect
