@@ -1,9 +1,15 @@
 import { AppShell, Burger, Group, Skeleton } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { MantineLogo } from '@mantinex/mantine-logo';
 import React, { FC, useContext, useEffect } from "react";
 import { Context, pipe } from "../../main.tsx";
 import { Outlet } from 'react-router-dom';
+import '../../ui/styles/mainPanelStyles/iconUser.css';
+import '../../ui/styles/mainPanelStyles/userImg.css';
+import '../../ui/styles/mainPanelStyles/commonDiv.css';
+import userIconImg from '../../img/user.png';
+import logoGazprom from '../../img/gazprom.png';
+
+
 const MainPanel: FC = () => {
   const [opened, { toggle }] = useDisclosure();
   const { user, pipe } = useContext(Context)
@@ -15,11 +21,28 @@ const MainPanel: FC = () => {
       header={{ height: 60 }}
       navbar={{ width: 60, breakpoint: 'sm', collapsed: { mobile: !opened } }}
       padding="md"
-      
+
     >
-      <AppShell.Header>
-        <Group h="100%" px="md">
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+      <AppShell.Header className="header" style={{
+        background: '#4a9dce',
+      }} >
+        <Group h="100%" px="md" style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          height: '100%',
+        }}>
+          {/* <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" /> */}
+          <div className="iconUser">
+            <img className="userImg" src={userIconImg} />
+          </div>
+          <div className="commonDiv">
+            <div className="menu">Сводка</div>
+            <div className="menu">Разметки</div>
+          </div>
+          <div className="commonDiv">
+            <img className="logoImg" src={logoGazprom} />
+          </div>
         </Group>
       </AppShell.Header>
 

@@ -1,0 +1,17 @@
+.commonDiv{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    justify-items: center;
+    width: 20%;
+    color:#dcdbdb;
+    height: 100%;
+}
+
+.menu:hover{
+    color: white;
+}
+
+.menu:active{
+    color: white;
+}

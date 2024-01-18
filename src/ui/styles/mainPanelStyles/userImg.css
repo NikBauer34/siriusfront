@@ -1,0 +1,7 @@
+.userImg{
+    width: 50px;
+}
+
+.userImg:hover{
+    filter: contrast(5);
+}
