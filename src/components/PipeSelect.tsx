@@ -11,7 +11,7 @@ const PipeSelect: FC = () => {
     }, [])
     console.log('abasb')
     console.log(toJS(pipe.userpipes))
-    let PipeList: string[] = ['']
+    let PipeList: string[] | null = null
     if (pipe.userpipes != null) {
         PipeList = pipe.userpipes.map(obj => obj.title)
     }
