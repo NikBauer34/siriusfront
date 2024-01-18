@@ -52,8 +52,9 @@ const YMap: FC = () => {
                     {pipe.pipes?.map(placemark =>
                         <Placemark defaultGeometry={placemark.location} onClick={() => onClickPlacemark(placemark)} key={placemark._id}></Placemark>    
                     )}
-                    {pipe.pipes.length &&
-                        <Button data={{content: 'Близ. труба'}} onClick={() => setUserGeolocation(GetClosestMark(pipe.pipes, userGeolocation))}></Button>
+                    {pipe.pipes.length 
+                        ? <Button data={{content: 'Близ. труба'}} onClick={() => setUserGeolocation(GetClosestMark(pipe.pipes, userGeolocation))}></Button>
+                        : <Button data={{content: 'Нет труб'}}></Button>
                     }
                 </Map>
             </YMaps>
