@@ -7,17 +7,15 @@ import { Context } from '../main';
 
 
 const MainPage: FC = () => {
-    // const {pipe} = useContext(Context)
-    // useEffect(() => {
-    //     pipe.checkPipes()
-    // }, [])
+    const {pipe} = useContext(Context)
+
     return (
         <div>
             <PipeSelect></PipeSelect>
             <YMap />
             <Statistics />
 
-            {/* {pipe.selectedpipe ? <Statistics></Statistics> : <h1>Заглушка</h1>} */}
+            {pipe.selectedpipe ? <Statistics></Statistics> : <h1>Заглушка</h1>}
         </div>
     );
 };
