@@ -9,7 +9,15 @@ import { YMapModal } from '../modules/components'
 import { toJS } from 'mobx'
 const YMap: FC = () => {
     const {pipe} = useContext(Context)
-    console.log(toJS(pipe.pipes))
+    useEffect(() => {
+        getUserPipes()
+    }, [])
+    const getUserPipes = async() => {
+        let data = await pipe.getUserPipes()
+        console.log('Here')
+        console.log(data)
+        console.log(toJS(pipe.userpipes))
+    }
     const [opened, { open, close }] = useDisclosure(false)
     const [userGeolocation, setUserGeolocation] = useState<[number, number]>([50, 49])
     const [chosenPlacemark, setChosenPlacemark] = useState<MapResponse>({} as MapResponse)
@@ -44,8 +52,9 @@ const YMap: FC = () => {
                     {pipe.pipes?.map(placemark =>
                         <Placemark defaultGeometry={placemark.location} onClick={() => onClickPlacemark(placemark)} key={placemark._id}></Placemark>    
                     )}
-                    {pipe.pipes.length &&
-                        <Button data={{content: 'Близ. труба'}} onClick={() => setUserGeolocation(GetClosestMark(pipe.pipes, userGeolocation))}></Button>
+                    {pipe.pipes.length 
+                        ? <Button data={{content: 'Близ. труба'}} onClick={() => setUserGeolocation(GetClosestMark(pipe.pipes, userGeolocation))}></Button>
+                        : <Button data={{content: 'Нет труб'}}></Button>
                     }
                 </Map>
             </YMaps>

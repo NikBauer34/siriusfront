@@ -8,6 +8,7 @@ interface DefaultSelectProps {
 }
 const DefaultSelect: FC<DefaultSelectProps> = (props) => {
     const [searchValue, setSearchValue] = useState('');
+    console.log(props.data)
     return (
         <Select
             searchable

@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, toJS } from "mobx";
 import { MapResponse, MapService } from "../api/index";
 import { AxiosResponse } from "axios";
 import StatisticsService from "../api/services/StatisticsService";
@@ -28,29 +28,29 @@ export default class PipeStore {
     setLoading(val: boolean) {
         this.isLoading = val
     }
-    async getMapPipes() {
+    async getMapPipes(): Promise<MapResponse[]> {
         try {
             const response = await MapService.GetMapProps()
             console.log(response)
             this.setPipes(response.data)
             this.setError(false)
-            return response
+            return response.data
         } catch (e: any) {
             this.setError(true)
-            console.log(e.response?.data?.message);
+            return e.response?.data?.message;
             
         }
     }
-    async getUserPipes() {
+    async getUserPipes(): Promise<MapResponse[]> {
         try {
             const response = await MapService.getUserPipes()
             console.log(response)
-            localStorage.setItem('userpipes', JSON.stringify(response.data))
             this.setUserpipes(response.data)
             this.setError(false)
+            return response.data
         } catch (e: any) {
             this.setError(true)
-            console.log(e.response?.data?.message);
+            return (e.response?.data?.message);
         }
     }
     async newUserPipe(pipe: MapResponse) {
@@ -58,6 +58,8 @@ export default class PipeStore {
             this.setLoading(true)
             await MapService.newUserPipe(pipe._id)
             this.setUserpipes([...this.userpipes, pipe])
+            console.log('userpipes---')
+            console.log(toJS(this.userpipes))
             let filtered = this.pipes.filter(obj => obj._id !== pipe._id)
             this.setPipes(filtered)
             this.setError(false)
@@ -69,12 +71,12 @@ export default class PipeStore {
             this.setLoading(false)
         }
     }
-    async getPipeStatistics(pipe: MapResponse): Promise<AxiosResponse<StatisticsResponse[], any>> {
+    async getPipeStatistics(pipe: MapResponse): Promise<StatisticsResponse[]> {
         try {
             this.setLoading(true)
             const response = await StatisticsService.getPipeStatistics(pipe._id)
             this.setError(false)
-            return response
+            return response.data
         } catch (e: any) {
             this.setError(true)
             console.log(e?.response?.data?.message)
