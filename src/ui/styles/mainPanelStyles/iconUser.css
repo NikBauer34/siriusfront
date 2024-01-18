@@ -4,3 +4,14 @@
     align-items: center;
     justify-content: flex-start;
 }
+
+.m-d4fb9cad, .m-d4fb9cad:after, .m-d4fb9cad:before {
+    background-color: #fff;
+    display: block;
+    height: calc(var(--burger-size)/12);
+    outline: calc(0.0625rem*var(--mantine-scale)) solid transparent;
+    transition-duration: var(--burger-transition-duration,.3s);
+    transition-property: background-color,transform;
+    transition-timing-function: var(--burger-transition-timing-function,ease);
+    width: var(--burger-size);
+}   
