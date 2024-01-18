@@ -2,6 +2,7 @@ import { BarChart, AreaChart } from "@mantine/charts";
 import React, { FC, useContext, useEffect, useState } from "react";
 import { StatisticsResponse } from "../modules/api/http/StatisticsResponse";
 import { Context } from "../main";
+import '../ui/styles/statistics.css'
 import '@mantine/charts/styles.css'
 
 const Statistics: FC = () => {
@@ -31,11 +32,15 @@ const Statistics: FC = () => {
     // }, [])
     return (
         <BarChart
+            color="black"
             h={300}
             data={data}
+            className="chart"
             dataKey="month"
+            xAxisProps={{color: 'black'}}
+            yAxisProps={{color: 'black'}}
             series={[
-                { name: pipe.selectedpipe.title, color: 'violet.6' }
+                { name: 'defects', color: 'violet.6' }
             ]}
             tickLine="y"
         />
