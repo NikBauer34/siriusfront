@@ -9,6 +9,9 @@ import { YMapModal } from '../modules/components'
 import { toJS } from 'mobx'
 const YMap: FC = () => {
     const {pipe} = useContext(Context)
+    useEffect(() => {
+        pipe.checkPipes()
+    }, [])
     console.log(toJS(pipe.pipes))
     const [opened, { open, close }] = useDisclosure(false)
     const [userGeolocation, setUserGeolocation] = useState<[number, number]>([50, 49])
