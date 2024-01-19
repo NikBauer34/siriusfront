@@ -3,6 +3,7 @@ import { MapResponse, MapService } from "../api/index";
 import { AxiosResponse } from "axios";
 import StatisticsService from "../api/services/StatisticsService";
 import { StatisticsResponse } from "../api/http/StatisticsResponse";
+import { GetMergedArrays } from "../helpers";
 
 export default class PipeStore {
     userpipes = [] as MapResponse[]
@@ -33,6 +34,7 @@ export default class PipeStore {
     async getMapPipes(): Promise<MapResponse[]> {
         try {
             const response = await MapService.GetMapProps()
+            console.log('here')
             console.log(response)
             this.setPipes(response.data)
             this.setError(false)

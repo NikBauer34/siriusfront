@@ -16,7 +16,7 @@ const AppRouter: FC = () => {
         <Route key={path} path={path} Component={component} />
       )}
       {(user.isAuth) &&
-        <Route path="pages" element={<MainPanel />}>
+        <Route path="/" element={<MainPanel />}>
           {firstRouting.map(({ path, component }) =>
             <Route key={path} path={path} Component={component} />
           )}

@@ -43,7 +43,7 @@ const RegForm: FC = () => {
             console.log('here')
             pipe.checkPipes()
             user.setLoading(false)
-            navigate('/pages/main')
+            navigate('/main')
         }
         navigate('/pages/main')
         console.log('There')
