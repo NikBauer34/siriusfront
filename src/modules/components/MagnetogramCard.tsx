@@ -2,6 +2,7 @@ import { Divider, Button } from "@mantine/core";
 import React, { FC } from "react";
 import { Colors } from "../constants";
 import { useNavigate } from "react-router-dom";
+import { MagnetogramResponse } from "../api/http/MagnetogramResponse";
 interface MagnetogramCardProps {
     magnetogram: MagnetogramResponse
 }

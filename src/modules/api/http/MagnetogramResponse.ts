@@ -1,12 +1,15 @@
-interface MagnetogramResponse {
+export interface MagnetogramResponse {
     _id: string
     title: string;
-    info: [{
-        version: string;
-        markup: number[];
-        defects_count: string;
-        date: Date;
-    }];
     author: string;
     pipe: string
+}
+export interface MagnetogramMarkupData {
+    markup: number[]
+}
+export interface MagnetogramVersionsData {
+    info: [{
+        version: string,
+        date: Date
+    }]
 }
