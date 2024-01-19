@@ -4,13 +4,13 @@ import '../ui/styles/bg.css';
 import background from '../img/background.png';
 import { RegForm } from "../modules/components";
 
-const RegPage: FC = () => { 
-    return(
+const RegPage: FC = () => {
+    return (
         <div className="bg" style={{
-            backgroundImage:`url(${background})`
+            backgroundImage: `url(${background})`
         }}>
             <Reg />
-        </div>    
+        </div>
     );
 };
 

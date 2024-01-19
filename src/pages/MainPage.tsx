@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const MainPage: FC = () => {
-    const {pipe, user} = useContext(Context)
+    const { pipe, user } = useContext(Context)
     const navigate = useNavigate()
     // useEffect(() => {
     //     checkPipes()
@@ -17,7 +17,7 @@ const MainPage: FC = () => {
     useEffect(() => {
         checkPipes()
     }, [])
-    const checkPipes = async() => {
+    const checkPipes = async () => {
         pipe.setLoading(true)
         await user.checkAuth()
         await pipe.checkPipes()
@@ -27,13 +27,13 @@ const MainPage: FC = () => {
     return (
         <>
             {pipe.isLoading
-            ? <Loader h={300} />
-            : <div>
-                
-                <YMap/>
-                <PipeSelect />
-                {/* <Statistics /> */}
-            </div>
+                ? <Loader h={300} />
+                : <div>
+
+                    <YMap />
+                    <PipeSelect />
+                    {/* <Statistics /> */}
+                </div>
             }
         </>
     );
