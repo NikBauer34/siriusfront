@@ -21,6 +21,8 @@ export default class PipeStore {
     }
     setSelectedPipe(val: MapResponse) {
         this.selectedpipe = Object.assign({}, val)
+        console.log('selected pipe, store')
+        console.log(toJS(this.selectedpipe))
     }
     setError(val: boolean) {
         this.isError = val
@@ -90,9 +92,10 @@ export default class PipeStore {
     async checkPipes() {
         try {
             this.setLoading(true)
-            this.getMapPipes()
             this.getUserPipes()
+            this.getMapPipes()
 
+            this.setLoading(false)
         } catch (e: any) {
             this.setError(true)
             console.log(e.response?.data?.message)

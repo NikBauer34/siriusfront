@@ -9,15 +9,7 @@ import { YMapModal } from '../modules/components'
 import { toJS } from 'mobx'
 const YMap: FC = () => {
     const { pipe } = useContext(Context)
-    useEffect(() => {
-        getUserPipes()
-    }, [])
-    const getUserPipes = async () => {
-        let data = await pipe.getUserPipes()
-        console.log('Here')
-        console.log(data)
-        console.log(toJS(pipe.userpipes))
-    }
+    
     const [opened, { open, close }] = useDisclosure(false)
     const [userGeolocation, setUserGeolocation] = useState<[number, number]>([50, 49])
     const [chosenPlacemark, setChosenPlacemark] = useState<MapResponse>({} as MapResponse)

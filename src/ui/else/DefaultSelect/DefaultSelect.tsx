@@ -22,7 +22,7 @@ const DefaultSelect: FC<DefaultSelectProps> = (props) => {
                 allowDeselect
                 mt="md"
                 nothingFoundMessage="Nothing found..."
-                onClick={() => props.onClick(searchValue)}
+                onChange={() => props.onClick(searchValue)}
             />
             : <Select disabled/>
             }
