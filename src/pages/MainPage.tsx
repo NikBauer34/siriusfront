@@ -27,13 +27,13 @@ const MainPage: FC = () => {
     return (
         <>
             {pipe.isLoading
-                ? <Loader h={300} />
-                : <div>
-
-                    <YMap />
-                    <PipeSelect />
-                    {/* <Statistics /> */}
-                </div>
+            ? <Loader h={300} />
+            : <div>
+                
+                <YMap/>
+                <PipeSelect mode='pipe'/>
+                {/* <Statistics /> */}
+            </div>
             }
         </>
     );
