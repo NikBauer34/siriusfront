@@ -1,5 +1,5 @@
-import React, { FC } from "react";
+// import React, { FC } from "react";
 
-const Magnetograms: FC = () => {
+// const Magnetograms: FC = () => {
     
-}
+// }

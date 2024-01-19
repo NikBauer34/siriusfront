@@ -38,7 +38,7 @@ const PipeSelect: FC = () => {
         <>
             <DefaultSelect label="Выберите трубу" data={[...new Set(PipeList)]} onClick={(value: string) => onSelected(value)} />
             {selectedPipeValue != null
-            ? Object.keys(selectedPipeValue).length != 0  ? <Statistics pipe_id={selectedPipeValue._id}/> : <h1>Пока ничего не выбрано</h1>
+            ? Object.keys(selectedPipeValue).length != 0  ? <Statistics pipe_id={selectedPipeValue._id}/> : <h3>Пока ничего не выбрано</h3>
             : <h1>Ничего</h1>
             }
         </>
