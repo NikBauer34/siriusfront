@@ -1,4 +1,4 @@
-export type IRole = string
+export type IRole = string;
 export interface UserDto {
   user_id: string;
   name: string;

@@ -1,0 +1,10 @@
+.iconLogout{
+    stroke: rgb(66, 130, 234);
+}
+
+.logout{
+    color:rgb(66, 130, 234);
+    display: flex;
+    justify-content: flex-start;
+    cursor: pointer;
+}

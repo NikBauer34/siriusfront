@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import React, { FC, useContext, useState } from "react";
 import '../../ui/styles/body.css';
 import '../../ui/styles/spanOr.css';
 import '../../ui/styles/formContainer.css';
@@ -6,7 +6,7 @@ import { IRole } from "../api";
 import { Context } from "../../main";
 import { useForm } from "@mantine/form";
 import { GradientButton, OutlinedButton, PasswordInputDef, UnderlineInput } from "../../ui";
-import { NativeSelect } from "@mantine/core";
+import { Loader, NativeSelect } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 
 interface regFormProps {
@@ -21,6 +21,7 @@ interface regFormProps {
 const RegForm: FC = () => {
     const { user, pipe } = useContext(Context)
     const navigate = useNavigate()
+    const [isLoading, setIsLoading] = useState(false);
 
     const RegHookForm = useForm({
         initialValues: { name: '', surname: '', nikname: '', password: '', confirmPassword: '', role: 'Мастер' },
@@ -36,35 +37,42 @@ const RegForm: FC = () => {
     })
 
     const FormOnSubmit = ({ name, surname, nikname, password, role }: regFormProps) => {
-        user.setLoading(true)
+        user.setLoading(true);
+        setIsLoading(true);
         user.registration(name, surname, nikname, password, role)
         console.log(user.isAuth)
         if (!user.isError) {
             console.log('here')
-            pipe.checkPipes()
-            user.setLoading(false)
-            navigate('/pages/main')
+            pipe.checkPipes();
+            user.setLoading(false);
+            setIsLoading(false);
+            navigate('/main')
         }
-        navigate('/pages/main')
+        navigate('/main')
         console.log('There')
         user.setLoading(false)
+        setIsLoading(false);
     }
 
     return (
         <div className="formContainer">
-            <form className="authForm" onSubmit={RegHookForm.onSubmit((val) => FormOnSubmit(val))}>
-                <div className="formFields">
-                    <UnderlineInput placeholder="Имя" {...RegHookForm.getInputProps('name')} />
-                    <UnderlineInput placeholder="Фамилия" {...RegHookForm.getInputProps('surname')} />
-                    <UnderlineInput placeholder="Придумайте логин" {...RegHookForm.getInputProps('nikname')} />
-                    <PasswordInputDef placeholder="Придумайте пароль" {...RegHookForm.getInputProps('password')} />
-                    <PasswordInputDef placeholder="Подтвердите пароль" {...RegHookForm.getInputProps('confirmPassword')} />
-                    <NativeSelect mt={10} mb={20} variant="filled" withAsterisk label="Выберите вашу должность" {...RegHookForm.getInputProps('role')} data={['Начальник', 'Инженер-диагностик', 'Диагностик', 'Мастер']} />
-                </div>
-                <GradientButton type="submit">Зарегистрироваться</GradientButton>
-                <span className="spanOr">или</span>
-                <OutlinedButton onClick={() => navigate('/login')} className='outlinedButton'>Войти</OutlinedButton>
-            </form>
+            {isLoading ? (
+                <Loader />
+            ) : (
+                <form className="authForm" onSubmit={RegHookForm.onSubmit((val) => FormOnSubmit(val))}>
+                    <div className="formFields">
+                        <UnderlineInput placeholder="Имя" {...RegHookForm.getInputProps('name')} />
+                        <UnderlineInput placeholder="Фамилия" {...RegHookForm.getInputProps('surname')} />
+                        <UnderlineInput placeholder="Придумайте логин" {...RegHookForm.getInputProps('nikname')} />
+                        <PasswordInputDef placeholder="Придумайте пароль" {...RegHookForm.getInputProps('password')} />
+                        <PasswordInputDef placeholder="Подтвердите пароль" {...RegHookForm.getInputProps('confirmPassword')} />
+                        <NativeSelect mt={10} mb={20} variant="filled" withAsterisk label="Выберите вашу должность" {...RegHookForm.getInputProps('role')} data={['Начальник', 'Инженер-диагностик', 'Диагностик', 'Мастер']} />
+                    </div>
+                    <GradientButton type="submit">Зарегистрироваться</GradientButton>
+                    <span className="spanOr">или</span>
+                    <OutlinedButton onClick={() => navigate('/login')} className='outlinedButton'>Войти</OutlinedButton>
+                </form>
+            )}
         </div>
     );
 };

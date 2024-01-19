@@ -6,9 +6,13 @@ import { AuthService } from "../api/index.ts";
 import { API_URL } from "../constants/index.ts";
 export default class UserStore {
   user = {} as UserDto;
+  // name = this.user.name as string;
+  // surname = this.user.surname as string;
+  // role = this.user.role as IRole;
   isAuth = false;
   isLoading = false;
   isError = false;
+
   constructor() {
     makeAutoObservable(this)
   }
@@ -27,47 +31,47 @@ export default class UserStore {
 
   async login(nikname: string, password: string): Promise<string | AxiosResponse<AuthResponse, any>> {
     try {
-      this.setLoading(true)
+      this.setLoading(true);
       const response = await AuthService.login(nikname, password)
       console.log(response)
       localStorage.setItem('token', response.data.accessToken)
-      this.setAuth(true)
+      this.setAuth(true);
       this.setUser(response.data.user)
-      this.setError(false)
+      this.setError(false);
       return response
     } catch (e: any) {
-      this.setError(true)
+      this.setError(true);
       return e.response?.data?.message
     } finally {
-      this.setLoading(false)
+      this.setLoading(false);
     }
   }
   async registration(name: string, surname: string, nikname: string, password: string, role: IRole): Promise<string | AxiosResponse<AuthResponse, any>> {
     try {
-      this.setLoading(true)
+      this.setLoading(true);
       const response = await AuthService.registration(name, surname, nikname, password, role)
       alert(response.data.accessToken)
       localStorage.setItem('token', response.data.accessToken)
-      this.setAuth(true)
+      this.setAuth(true);
       this.setUser(response.data.user)
-      this.setError(false)
+      this.setError(false);
       return response
     } catch (e: any) {
-      this.setError(true)
+      this.setError(true);
       return e.response?.data?.message
     } finally {
-      this.setLoading(false)
+      this.setLoading(false);
     }
   }
   async logout() {
     try {
       const response = await AuthService.logout()
-      localStorage.removeItem('token')
-      this.setAuth(false)
-      this.setUser({} as UserDto)
-      this.setError(false)
+      localStorage.removeItem('token');
+      this.setAuth(false);
+      this.setUser({} as UserDto);
+      this.setError(false);
     } catch (e: any) {
-      this.setError(true)
+      this.setError(true);
       console.log(e.response?.data?.message)
     }
   }
@@ -77,14 +81,14 @@ export default class UserStore {
       this.setLoading(true);
       console.log(response)
       localStorage.setItem('token', response.data.accessToken)
-      this.setAuth(true)
+      this.setAuth(true);
       this.setUser(response.data.user)
-      this.setError(false)
+      this.setError(false);
     } catch (e: any) {
-      this.setError(true)
+      this.setError(true);
       console.log(e.response?.data?.message)
     } finally {
-      this.setLoading(false)
+      this.setLoading(false);
     }
   }
 }

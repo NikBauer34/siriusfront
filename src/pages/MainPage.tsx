@@ -15,7 +15,7 @@ const MainPage: FC = () => {
             <YMap />
             <Statistics />
 
-            {pipe.selectedpipe ? <Statistics></Statistics> : <h1>Заглушка</h1>}
+            {/* {pipe.selectedpipe ? <Statistics></Statistics> : <h1>Заглушка</h1>} */}
         </div>
     );
 };

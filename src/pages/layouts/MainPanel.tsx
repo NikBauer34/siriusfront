@@ -1,32 +1,41 @@
-import { AppShell, Burger, Group, Skeleton } from "@mantine/core";
+import { AppShell, Burger, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import React, { FC, useContext, useEffect, useState } from "react";
 import { Context, pipe } from "../../main.tsx";
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import '../../ui/styles/mainPanelStyles/iconUser.css';
 import '../../ui/styles/mainPanelStyles/userImg.css';
 import '../../ui/styles/mainPanelStyles/commonDiv.css';
-import userIconImg from '../../img/user.png';
+import '../../ui/styles/mainPanelStyles/leftnavdiv.css';
+import '../../ui/styles/mainPanelStyles/iconLogout.css';
 import logoGazprom from '../../img/gazprom.png';
+import { IconArrowBarLeft } from "@tabler/icons-react";
 
 
 const MainPanel: FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
   // const [opened, { toggle }] = useDisclosure();
   const { user, pipe } = useContext(Context);
+  // name, surname, role,
 
   useEffect(() => {
     pipe.checkPipes();
   }, []);
 
-
+  const logout = () => {
+    user.logout();
+    navigate('/registration');
+    console.log(user.isAuth); //выводит true..?
+  }
 
   return (
     <AppShell
       header={{ height: 60 }}
-      navbar={{ width: 60, breakpoint: 'sm', collapsed: { mobile: !mobileOpened, desktop: !desktopOpened }, }}
+      navbar={{ width: 200, breakpoint: 'sm', collapsed: { mobile: !mobileOpened, desktop: desktopOpened }, }}
       padding="md"
     >
       <AppShell.Header className="header" style={{
@@ -42,8 +51,14 @@ const MainPanel: FC = () => {
           <Burger style={{ filter: 'invert(1)' }} opened={desktopOpened} onClick={toggleDesktop} visibleFrom="sm" size="sm" />
           {/* <Burger opened={isOpen} onClick={handleUserImgClick} hiddenFrom="sm" size="sm" /> */}
           <div className="commonDiv">
-            <div className={`menu ${location.pathname === "/pages/main" ? "menu-main" : "menu"}`}>Сводка</div>
-            <div className={`menu ${location.pathname === "/pages/layouts" ? "menu-layouts" : "menu"}`}>Разметки</div>
+            <div
+              className={`menu ${location.pathname === "/main" ? "menu-main" : "menu"}`}
+              onClick={() => navigate('/main')}
+            >Сводка</div>
+            <div
+              className={`menu ${location.pathname === "/marking" ? "menu-layouts" : "menu"}`}
+              onClick={() => navigate('/marking')}
+            >Разметки</div>
           </div>
           <div className="commonDiv">
             <img className="logoImg" src={logoGazprom} />
@@ -51,12 +66,23 @@ const MainPanel: FC = () => {
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md">
-        {/* Navbar */}
-        {Array(5)
-          .fill(0)
-          .map((_, index) => (
-            <Skeleton key={index} h={28} mt="sm" animate={false} />
-          ))}
+        <div className="leftnavdiv">
+          <div>
+            {/* {name.name} */}
+          </div>
+          <div>
+            {/* {surname.surname} */}
+          </div>
+          <div>
+            {/* {role.role} */}
+          </div>
+        </div>
+        <div className="logout">
+          <IconArrowBarLeft className="iconLogout"  />
+          <div style={{marginLeft:'8px'}} onClick={logout}>Выйти</div>
+        </div>
+        {/* <Skeleton h={28} mt="sm" animate={true} /> */}
+
       </AppShell.Navbar>
       <AppShell.Main>
         <Outlet />

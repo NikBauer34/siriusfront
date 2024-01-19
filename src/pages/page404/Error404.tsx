@@ -11,7 +11,7 @@ const Error404: FC = () => {
   const backHome = () => {
     user.setLoading(true)
     if (user.isAuth) {
-      navigate('/pages/main')
+      navigate('/main')
     } else {
       navigate('/registration')
     }
