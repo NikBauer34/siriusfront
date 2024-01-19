@@ -6,36 +6,29 @@ import { MantineProvider, createTheme } from '@mantine/core';
 import '@mantine/core/styles.css';
 import '@mantine/charts/styles.css';
 import MagnetogramStore from './modules/store/MagnetogramStore.ts';
-import { AxiosResponse } from 'axios';
-import { AuthResponse, UserDto } from './modules/api/index.ts';
-
+import PageStore from './modules/store/PageStore.ts';
 const theme = createTheme({
   fontFamily: 'Montserrat, sans-serif'
 });
 
 interface IContext {
-  user: UserStore;
-  // name: UserStore;
-  // surname: UserStore;
-  // role: UserStore;
-  pipe: PipeStore;
-  magnetogram: MagnetogramStore;
+  user: UserStore,
+  pipe: PipeStore,
+  magnetogram: MagnetogramStore,
+  page: PageStore
 }
-
-export const user = new UserStore();
-// export const name = new UserStore();
-// export const surname = new UserStore();
-// export const role = new UserStore();
-export const pipe = new PipeStore();
-export const magnetogram = new MagnetogramStore();
-
+export const user = new UserStore()
+export const pipe = new PipeStore()
+export const magnetogram = new MagnetogramStore()
+export const page = new PageStore()
 export const Context = createContext<IContext>({
   user,
   // name,
   // surname,
   // role,
   pipe,
-  magnetogram
+  magnetogram,
+  page
 })
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Context.Provider value={{
@@ -44,7 +37,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     // surname,
     // role,
     pipe,
-    magnetogram
+    magnetogram,
+    page
   }}>
     <MantineProvider defaultColorScheme='light' theme={theme}>
       <App />

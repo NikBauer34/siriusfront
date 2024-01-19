@@ -7,10 +7,8 @@ import { observer } from "mobx-react-lite";
 import { Error404 } from "./index.ts";
 
 const AppRouter: FC = () => {
-  const { user, pipe } = useContext(Context)
-  useEffect(() => {
-    pipe.checkPipes()
-  }, [])
+  const { user, page, pipe } = useContext(Context)
+
 
   return (
     <Routes>
@@ -24,8 +22,9 @@ const AppRouter: FC = () => {
           )}
         </Route>
       }
-
-      <Route path="*" Component={Error404} />
+      {/* {(!page.isLoading && !pipe.isLoading) &&
+        <Route path="*" Component={Error404} />  
+      } */}
     </Routes>
   )
 }

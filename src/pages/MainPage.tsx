@@ -3,20 +3,42 @@ import { YMap } from '../components';
 import PipeSelect from '../components/PipeSelect';
 import Statistics from '../components/Statistics';
 import { Context } from '../main';
+import { Loader, Button } from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const MainPage: FC = () => {
-    const {pipe} = useContext(Context)
-
+    const {pipe, user} = useContext(Context)
+    const navigate = useNavigate()
+    useEffect(() => {
+        checkPipes()
+    }, [pipe.userpipes, pipe.pipes])
+    useEffect(() => {
+        checkPipes()
+    }, [])
+    const checkPipes = async() => {
+        pipe.setLoading(true)
+        await user.checkAuth()
+        await pipe.checkPipes()
+        pipe.setLoading(false)
+    }
+    const onButtonClicked = () => {
+        user.logout()
+        navigate('/login')
+    }
     return (
-        <div>
-            <PipeSelect></PipeSelect>
-            <YMap />
-            <Statistics />
-
-            {/* {pipe.selectedpipe ? <Statistics></Statistics> : <h1>Заглушка</h1>} */}
-        </div>
+        <>
+            {pipe.isLoading
+            ? <Loader h={300} />
+            : <div>
+                <PipeSelect></PipeSelect>
+                <YMap/>
+                <Button onClick={onButtonClicked}>Выйти</Button>
+                {Object.keys(pipe.selectedpipe).length ? <Statistics /> : <h1>Заглушка</h1>}
+            </div>
+            }
+        </>
     );
 };
 

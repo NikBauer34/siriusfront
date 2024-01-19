@@ -3,6 +3,7 @@ import { MapResponse, MapService } from "../api/index";
 import { AxiosResponse } from "axios";
 import StatisticsService from "../api/services/StatisticsService";
 import { StatisticsResponse } from "../api/http/StatisticsResponse";
+import { GetMergedArrays } from "../helpers";
 
 export default class PipeStore {
     userpipes = [] as MapResponse[]
@@ -21,6 +22,8 @@ export default class PipeStore {
     }
     setSelectedPipe(val: MapResponse) {
         this.selectedpipe = Object.assign({}, val)
+        console.log('selected pipe, store')
+        console.log(toJS(this.selectedpipe))
     }
     setError(val: boolean) {
         this.isError = val
@@ -31,6 +34,7 @@ export default class PipeStore {
     async getMapPipes(): Promise<MapResponse[]> {
         try {
             const response = await MapService.GetMapProps()
+            console.log('here')
             console.log(response)
             this.setPipes(response.data)
             this.setError(false)
@@ -74,6 +78,8 @@ export default class PipeStore {
     async getPipeStatistics(pipe: MapResponse): Promise<StatisticsResponse[]> {
         try {
             this.setLoading(true)
+            console.log('selected=------')
+            console.log(toJS(this.selectedpipe))
             const response = await StatisticsService.getPipeStatistics(pipe._id)
             this.setError(false)
             return response.data
@@ -88,9 +94,10 @@ export default class PipeStore {
     async checkPipes() {
         try {
             this.setLoading(true)
-            this.getMapPipes()
             this.getUserPipes()
+            this.getMapPipes()
 
+            this.setLoading(false)
         } catch (e: any) {
             this.setError(true)
             console.log(e.response?.data?.message)
