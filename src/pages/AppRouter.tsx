@@ -22,9 +22,9 @@ const AppRouter: FC = () => {
           )}
         </Route>
       }
-      {/* {(!page.isLoading && !pipe.isLoading) &&
+      {(!page.isLoading && !pipe.isLoading) &&
         <Route path="*" Component={Error404} />  
-      } */}
+      }
     </Routes>
   )
 }

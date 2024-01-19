@@ -23,10 +23,6 @@ const MainPage: FC = () => {
         await pipe.checkPipes()
         pipe.setLoading(false)
     }
-    const onButtonClicked = () => {
-        user.logout()
-        navigate('/login')
-    }
     return (
         <>
             {pipe.isLoading
@@ -34,7 +30,6 @@ const MainPage: FC = () => {
             : <div>
                 <PipeSelect></PipeSelect>
                 <YMap/>
-                <Button onClick={onButtonClicked}>Выйти</Button>
                 {Object.keys(pipe.selectedpipe).length ? <Statistics /> : <h1>Заглушка</h1>}
             </div>
             }
