@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { AuthResponse } from './AuthResponse.ts';
-import { API_URL } from '../../constants/index.ts';
+const API_URL = 'http://localhost:4000'
 
 const $api = axios.create({
   withCredentials: true,

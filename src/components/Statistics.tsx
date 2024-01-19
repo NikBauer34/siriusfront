@@ -6,18 +6,23 @@ import '../ui/styles/statistics.css'
 import '@mantine/charts/styles.css'
 import { Loader } from "@mantine/core";
 import { toJS } from "mobx";
-import {pipe} from '../main'
-const Statistics: FC = () => {
+import StatisticsService from "../modules/api/services/StatisticsService";
+interface StatisticsProps {
+    pipe_id: string
+}
+const Statistics: FC<StatisticsProps> = (props) => {
+    const {pipe} = useContext(Context)
     const [data, setData] = useState<StatisticsResponse[] | null>(null) //заглушка
-    const getStatistics = async () => {
-        let pipeData = await pipe.getPipeStatistics(pipe.selectedpipe)
-        console.log(toJS(pipe.selectedpipe))
-        setData(pipeData)
-        console.log(data)
-    }
+    useEffect(() => {
+        console.log('changed')
+    }, [pipe.selectedpipe])
     useEffect(() => {
         getStatistics()
     }, [])
+    const getStatistics = async() => {
+        const response = await StatisticsService.getPipeStatistics(props.pipe_id)
+        setData(response.data)
+    }
     return (
         <>
             {data != null

@@ -31,6 +31,9 @@ export default class PipeStore {
     setLoading(val: boolean) {
         this.isLoading = val
     }
+    get selectedPipe() {
+        return this.selectedpipe
+    }
     async getMapPipes(): Promise<MapResponse[]> {
         try {
             const response = await MapService.GetMapProps()
@@ -75,12 +78,12 @@ export default class PipeStore {
             this.setLoading(false)
         }
     }
-    async getPipeStatistics(pipe: MapResponse): Promise<StatisticsResponse[]> {
+    async getPipeStatistics(pipe_id: string): Promise<StatisticsResponse[]> {
         try {
             this.setLoading(true)
             console.log('selected=------')
             console.log(toJS(this.selectedpipe))
-            const response = await StatisticsService.getPipeStatistics(pipe._id)
+            const response = await StatisticsService.getPipeStatistics(pipe_id)
             this.setError(false)
             return response.data
         } catch (e: any) {

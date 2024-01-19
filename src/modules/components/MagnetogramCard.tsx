@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const MagnetogramCard: FC<MagnetogramResponse> = (props) => {
     const navigate = useNavigate()
     const onButtonClick = (magnetogram_id: string) => {
-        navigate(`/pages/magnetogram/${magnetogram_id}`)
+        navigate(`/magnetogram?magnetogram=${magnetogram_id}`)
     }
     return (
         <div className="">

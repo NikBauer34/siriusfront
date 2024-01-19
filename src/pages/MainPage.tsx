@@ -11,9 +11,9 @@ import { useNavigate } from 'react-router-dom';
 const MainPage: FC = () => {
     const {pipe, user} = useContext(Context)
     const navigate = useNavigate()
-    useEffect(() => {
-        checkPipes()
-    }, [pipe.userpipes, pipe.pipes])
+    // useEffect(() => {
+    //     checkPipes()
+    // }, [pipe.userpipes, pipe.pipes])
     useEffect(() => {
         checkPipes()
     }, [])
@@ -23,14 +23,16 @@ const MainPage: FC = () => {
         await pipe.checkPipes()
         pipe.setLoading(false)
     }
+
     return (
         <>
             {pipe.isLoading
             ? <Loader h={300} />
             : <div>
-                <PipeSelect></PipeSelect>
+                
                 <YMap/>
-                {Object.keys(pipe.selectedpipe).length ? <Statistics /> : <h1>Заглушка</h1>}
+                <PipeSelect />
+                {/* <Statistics /> */}
             </div>
             }
         </>

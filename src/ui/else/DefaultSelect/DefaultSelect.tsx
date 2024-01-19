@@ -18,7 +18,6 @@ const DefaultSelect: FC<DefaultSelectProps> = (props) => {
                 className="select"
                 label={props.label}
                 data={props.data}
-                defaultValue={props.data[0]}
                 allowDeselect
                 mt="md"
                 nothingFoundMessage="Nothing found..."

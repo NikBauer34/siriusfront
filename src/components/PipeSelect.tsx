@@ -2,10 +2,12 @@ import React, { FC, useContext, useEffect, useMemo, useState } from "react";
 import { DefaultSelect } from "../ui";
 import { Context } from "../main";
 import { toJS } from "mobx";
+import { MapResponse } from "../modules/api";
+import Statistics from "./Statistics";
 
 const PipeSelect: FC = () => {
     const { pipe } = useContext(Context);
-
+    const [selectedPipeValue, setSelectedPipeValue] = useState<MapResponse | null>({} as MapResponse)
     useEffect(() => {
         console.log('pipe select user pipes')
         console.log(toJS(pipe.userpipes))
@@ -27,13 +29,19 @@ const PipeSelect: FC = () => {
     const onSelected = (value: string) => {
         let selectedPipe = pipe.userpipes.find(obj => obj.title == value)
         if (selectedPipe) {
-            console.log('selected value')
-            pipe.setSelectedPipe(selectedPipe)
-            console.log(toJS(pipe.selectedpipe))
+            console.log('gvgjh')
+            setSelectedPipeValue(toJS(selectedPipe))
+            console.log(selectedPipeValue)
         }
     }
     return (
-        <DefaultSelect label="Выберите трубу" data={[...new Set(PipeList)]} onClick={(value: string) => onSelected(value)} />
+        <>
+            <DefaultSelect label="Выберите трубу" data={[...new Set(PipeList)]} onClick={(value: string) => onSelected(value)} />
+            {selectedPipeValue != null
+            ? Object.keys(selectedPipeValue).length != 0  ? <Statistics pipe_id={selectedPipeValue._id}/> : <h1>Пока ничего не выбрано</h1>
+            : <h1>Ничего</h1>
+            }
+        </>
     )
 }
 export default PipeSelect
