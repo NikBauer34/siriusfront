@@ -85,7 +85,7 @@ const MainPanel: FC = () => {
         {/* <Skeleton h={28} mt="sm" animate={true} /> */}
 
       </AppShell.Navbar>
-      <AppShell.Main>
+      <AppShell.Main display={'flex'} style={{justifyContent:'center'}}>
         <Outlet />
       </AppShell.Main>
     </AppShell>

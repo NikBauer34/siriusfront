@@ -13,7 +13,7 @@ const Error404: FC = () => {
     if (user.isAuth) {
       navigate('/main')
     } else {
-      navigate('/registration')
+      navigate('/login')
     }
     user.setLoading(false)
   }
