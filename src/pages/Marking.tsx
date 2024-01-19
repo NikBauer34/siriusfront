@@ -5,7 +5,7 @@ const Marking: FC = () => {
     return (
         <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-start' }}>
             <header style={{width:'100%'}}>
-                <PipeSelect />
+                <PipeSelect mode='magnetogram'/>
             </header>
         </div>
     );

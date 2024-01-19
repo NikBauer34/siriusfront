@@ -31,7 +31,7 @@ const MainPage: FC = () => {
             : <div>
                 
                 <YMap/>
-                <PipeSelect />
+                <PipeSelect mode='pipe'/>
                 {/* <Statistics /> */}
             </div>
             }

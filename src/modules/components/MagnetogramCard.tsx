@@ -2,17 +2,20 @@ import { Divider, Button } from "@mantine/core";
 import React, { FC } from "react";
 import { Colors } from "../constants";
 import { useNavigate } from "react-router-dom";
-
-const MagnetogramCard: FC<MagnetogramResponse> = (props) => {
+interface MagnetogramCardProps {
+    magnetogram: MagnetogramResponse
+}
+const MagnetogramCard: FC<MagnetogramCardProps> = (props) => {
     const navigate = useNavigate()
     const onButtonClick = (magnetogram_id: string) => {
         navigate(`/magnetogram?magnetogram=${magnetogram_id}`)
     }
     return (
         <div className="">
-            <h1>{props.title}</h1>
+            <h1>{props.magnetogram.title}</h1>
             <Divider my="sm" color={Colors.gradientFirst}/>
-            <Button style={{marginTop: 15}} fullWidth onClick={() => onButtonClick(props._id)}>Подробнее</Button>
+            <Button style={{marginTop: 15}} fullWidth onClick={() => onButtonClick(props.magnetogram._id)}>Подробнее</Button>
         </div>
     )
 }
+export default MagnetogramCard
