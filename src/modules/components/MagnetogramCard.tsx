@@ -9,7 +9,7 @@ interface MagnetogramCardProps {
 const MagnetogramCard: FC<MagnetogramCardProps> = (props) => {
     const navigate = useNavigate()
     const onButtonClick = (magnetogram_id: string) => {
-        navigate(`/magnetogram?magnetogram=${magnetogram_id}`)
+        navigate(`/magnetogram?magnetogram=${magnetogram_id}&i=0`)
     }
     return (
         <div className="">
