@@ -19,18 +19,12 @@ const Magnetograms: FC<MagnetogramsProps> = ({pipe_id}) => {
             setData(response)
         }
     }
+    if (magnetogram.isLoading) {
+        return <Loader h={300}/>
+    }
     return (
         <div>
-            {/* {magnetogram.isLoading 
-            ? <Loader h={300} /> 
-            : data == null ? <List 
-            items={data} 
-            renderItem={(magnetograms: MagnetogramResponse) => <MagnetogramCard magnetogram={magnetograms}/>}/>
-            : <h2>У трубы нет магнитограмм</h2>
-            } */}
-            {magnetogram.isLoading
-            ? <Loader h={300} />
-            : data != null 
+            {data != null 
             ? <List 
             items={data} 
             renderItem={(magnetograms: MagnetogramResponse) => <MagnetogramCard magnetogram={magnetograms}/>}/>

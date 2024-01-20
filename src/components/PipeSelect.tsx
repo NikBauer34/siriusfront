@@ -34,8 +34,8 @@ const PipeSelect: FC<PipeSelectProps> = ({mode}) => {
     }
     return (
         <>
-            <div style={{height: 30, width: 30}} ref={ref}></div>
-            <button onClick={() => console.log(GetSquareAmount(ref, 5, 1, 3))}>ClickMe</button>
+            {/* <div style={{height: 30, width: 30}} ref={ref}></div>
+            <button onClick={() => console.log(GetSquareAmount(ref, 5, 1, 3))}>ClickMe</button> */}
             <DefaultSelect label="Выберите трубу" data={[...new Set(PipeList)]} onClick={(value: string) => onSelected(value)} />
             {selectedPipeValue != null
             ? Object.keys(selectedPipeValue).length != 0  ? mode == 'pipe' ? <Statistics pipe_id={selectedPipeValue._id}/> : <Magnetograms pipe_id={selectedPipeValue._id}/> : <h3>Пока ничего не выбрано</h3>

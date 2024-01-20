@@ -18,8 +18,11 @@ const Statistics: FC<StatisticsProps> = (props) => {
         getStatistics()
     }, [])
     const getStatistics = async() => {
-        const response = await StatisticsService.getPipeStatistics(props.pipe_id)
-        setData(response.data)
+        const response = await pipe.getPipeStatistics(props.pipe_id)
+        setData(response)
+    }
+    if (pipe.isLoading) {
+        return <Loader h={300} />
     }
     return (
         <>

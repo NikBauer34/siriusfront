@@ -1,15 +1,19 @@
-import { Divider, Button } from "@mantine/core";
-import React, { FC } from "react";
+import { Divider, Button, Container } from "@mantine/core";
+import React, { FC, useContext } from "react";
 import { Colors } from "../constants";
 import { useNavigate } from "react-router-dom";
 import { MagnetogramResponse } from "../api/http/MagnetogramResponse";
+import { Context } from "../../main";
 interface MagnetogramCardProps {
     magnetogram: MagnetogramResponse
 }
 const MagnetogramCard: FC<MagnetogramCardProps> = (props) => {
     const navigate = useNavigate()
+    const {page} = useContext(Context)
     const onButtonClick = (magnetogram_id: string) => {
+        page.setLoading(true)
         navigate(`/magnetogram?magnetogram=${magnetogram_id}&i=0`)
+        page.setLoading(false)
     }
     return (
         <div className="">
