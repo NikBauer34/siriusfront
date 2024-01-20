@@ -8,19 +8,19 @@ import { useNavigate } from 'react-router-dom';
 
 
 const MainPage: FC = () => {
-    const { pipe, user, page } = useContext(Context)
+    // const { pipe, user, page } = useContext(Context)
     const navigate = useNavigate()
     // useEffect(() => {
     //     checkPipes()
     // }, [pipe.userpipes, pipe.pipes])
-    useEffect(() => {
-        page.setLoading(false)
-        checkPipes()
-    }, [])
-    const checkPipes = () => {
-        user.checkAuth()
-        pipe.checkPipes()
-    }
+    // useEffect(() => {
+    //     page.setLoading(false)
+    //     checkPipes()
+    // }, [])
+    // const checkPipes = () => {
+    //     user.checkAuth()
+    //     pipe.checkPipes()
+    // }
 
     return (
         <>
