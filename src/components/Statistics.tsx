@@ -13,9 +13,7 @@ interface StatisticsProps {
 const Statistics: FC<StatisticsProps> = (props) => {
     const {pipe} = useContext(Context)
     const [data, setData] = useState<StatisticsResponse[] | null>(null) //заглушка
-    useEffect(() => {
-        console.log('changed')
-    }, [pipe.selectedpipe])
+
     useEffect(() => {
         getStatistics()
     }, [])

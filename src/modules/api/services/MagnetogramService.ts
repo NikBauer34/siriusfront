@@ -3,7 +3,7 @@ import { $api, MapService } from "..";
 import { MagnetogramMarkupData, MagnetogramResponse, MagnetogramVersionsData } from "../http/MagnetogramResponse";
 
 export default class MagnetogramService {
-    static async getPipeMagnetograms(pipe_id: string): Promise<AxiosResponse<MagnetogramResponse[]>> {
+    static async getPipeMagnetograms(pipe_id: string): Promise<AxiosResponse<MagnetogramResponse[] | []>> {
         return $api.get<MagnetogramResponse[]>(`/magnetogram/get_pipe_magnetograms/${pipe_id}`)
     }
     static async getMagnetogramMarkupData(magnetogram_id: string, page: number, bundle: number): Promise<AxiosResponse<MagnetogramMarkupData>> {

@@ -37,19 +37,15 @@ const RegForm: FC = () => {
     })
 
     const FormOnSubmit = ({ name, surname, nikname, password, role }: regFormProps) => {
-        user.setLoading(true);
-        setIsLoading(true);
         user.registration(name, surname, nikname, password, role)
         console.log(user.isAuth)
         if (!user.isError) {
-            console.log('here')
             pipe.checkPipes();
             user.setLoading(false);
             setIsLoading(false);
             navigate('/main')
         }
         navigate('/main')
-        console.log('There')
         user.setLoading(false)
         setIsLoading(false);
     }

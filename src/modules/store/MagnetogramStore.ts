@@ -14,7 +14,7 @@ export default class MagnetogramStore {
     setLoading(val: boolean) {
         this.isLoading = val
     }
-    async getPipeMagnetograms(pipe_id: string): Promise<MagnetogramResponse[]> {
+    async getPipeMagnetograms(pipe_id: string): Promise<MagnetogramResponse[] | []> {
         try {
             this.setLoading(true)
             const magnetograms = await MagnetogramService.getPipeMagnetograms(pipe_id)

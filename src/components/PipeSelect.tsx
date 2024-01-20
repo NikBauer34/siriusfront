@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect, useMemo, useState } from "react";
+import React, { FC, useContext, useMemo, useState } from "react";
 import { DefaultSelect } from "../ui";
 import { Context } from "../main";
 import { toJS } from "mobx";
@@ -11,10 +11,7 @@ interface PipeSelectProps {
 const PipeSelect: FC<PipeSelectProps> = ({mode}) => {
     const { pipe } = useContext(Context);
     const [selectedPipeValue, setSelectedPipeValue] = useState<MapResponse | null>({} as MapResponse)
-    useEffect(() => {
-        console.log('pipe select user pipes')
-        console.log(toJS(pipe.userpipes))
-    }, [pipe.userpipes])
+
     const getPipeList = () => {
         if (pipe.userpipes == null || pipe.userpipes == undefined) { 
             return null
@@ -27,14 +24,10 @@ const PipeSelect: FC<PipeSelectProps> = ({mode}) => {
     if (pipe.userpipes != null) {
         PipeList = useMemo(getPipeList, [pipe.userpipes])
     }
-    console.log('Pipelist')
-    console.log(PipeList)
     const onSelected = (value: string) => {
         let selectedPipe = pipe.userpipes.find(obj => obj.title == value)
         if (selectedPipe) {
-            console.log('gvgjh')
             setSelectedPipeValue(toJS(selectedPipe))
-            console.log(selectedPipeValue)
         }
     }
     return (
