@@ -1,7 +1,6 @@
 import React, { FC, useContext, useEffect } from 'react';
 import { YMap } from '../components';
 import PipeSelect from '../components/PipeSelect';
-import Statistics from '../components/Statistics';
 import { Context } from '../main';
 import { Loader, Button } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
@@ -26,15 +25,16 @@ const MainPage: FC = () => {
 
     return (
         <>
-            {pipe.isLoading
-            ? <Loader h={300} />
-            : <div>
-                
-                <YMap/>
-                <PipeSelect mode='pipe'/>
-                {/* <Statistics /> */}
-            </div>
-            }
+                {pipe.isLoading
+                ? <Loader h={300} />
+                : <div>
+                    <React.Suspense fallback={<Loader h={300} />}>
+                        <YMap/>
+                    </React.Suspense>
+                    <PipeSelect mode='pipe'/>
+                    {/* <Statistics /> */}
+                </div>
+                }
         </>
     );
 };

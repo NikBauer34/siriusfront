@@ -8,7 +8,7 @@ import { Error404 } from "./index.ts";
 
 const AppRouter: FC = () => {
   const { user, page, pipe } = useContext(Context)
-
+  
 
   return (
     <Routes>
