@@ -12,9 +12,12 @@ const Magnetograms: FC<MagnetogramsProps> = ({pipe_id}) => {
     const [data, setData] = useState<MagnetogramResponse[] | null>(null)
     useEffect(() => {
         getMagnetograms()
-    }, [])
+        console.log('pipe_id effected')
+    }, [pipe_id])
     const getMagnetograms = async() => {
         const response = await magnetogram.getPipeMagnetograms(pipe_id)
+        console.log('tyiff')
+        console.log(response)
         if (response.length != 0) {
             setData(response)
         }
@@ -22,12 +25,15 @@ const Magnetograms: FC<MagnetogramsProps> = ({pipe_id}) => {
     if (magnetogram.isLoading) {
         return <Loader h={300}/>
     }
+    if (magnetogram.isError) {
+        return <h1>Труба не выбрана</h1>
+    }
     return (
         <div>
             {data != null 
             ? <List 
             items={data} 
-            renderItem={(magnetograms: MagnetogramResponse) => <MagnetogramCard magnetogram={magnetograms}/>}/>
+            renderItem={(magnetograms: MagnetogramResponse) => <MagnetogramCard key={magnetograms._id} magnetogram={magnetograms}/>}/>
             : <h1>У трубы нет магнитограмм</h1>}
         </div>
     )

@@ -11,6 +11,9 @@ const MainPage: FC = () => {
     // const { pipe, user, page } = useContext(Context)
     const navigate = useNavigate()
     // useEffect(() => {
+    //     console.log('observer')
+    // }, [pipe.userpipes])
+    // useEffect(() => {
     //     checkPipes()
     // }, [pipe.userpipes, pipe.pipes])
     // useEffect(() => {

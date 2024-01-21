@@ -22,14 +22,16 @@ const MainPanel: FC = () => {
   const { user, pipe } = useContext(Context);
   // name, surname, role,
 
-  useEffect(() => {
-    pipe.checkPipes();
-  }, []);
+  // useEffect(() => {
+  //   if (user.isAuth) {
+  //     pipe.checkPipes();
+  //   }
+  // }, []);
 
   const logout = () => {
     user.logout();
     navigate('/registration');
-    console.log(user.isAuth); //выводит true..?
+    // console.log(user.isAuth); //выводит true..?
   }
 
   return (
@@ -69,13 +71,13 @@ const MainPanel: FC = () => {
       <AppShell.Navbar p="md">
         <div className="leftnavdiv">
           <div>
-            {/* {name.name} */}
+            {user.user.name}
           </div>
           <div>
-            {/* {surname.surname} */}
+            {user.user.nikname}
           </div>
           <div>
-            {/* {role.role} */}
+            {user.user.user_id}
           </div>
         </div>
         <div className="logout">

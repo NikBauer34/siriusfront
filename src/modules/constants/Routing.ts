@@ -3,6 +3,7 @@ import MainPage from "../../pages/MainPage";
 import Marking from "../../pages/Marking.tsx";
 import { LoginPage } from "../../pages/index";
 import IRouting from "./IRouting.ts";
+import MarkupPage from "../../pages/MarkupPage.tsx";
 
 export const publicRouting: IRouting[] = [
   {
@@ -24,6 +25,10 @@ export const firstRouting: IRouting[] = [
   {
     path: 'marking',
     component: Marking
+  },
+  {
+    path: 'markup',
+    component: MarkupPage
   }
 ]
 export const secondRouting: IRouting[] = [

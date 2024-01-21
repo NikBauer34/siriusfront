@@ -5,6 +5,8 @@ interface ListProps<T> {
 }
 
 export default function List<T>(props: ListProps<T>) {
+    console.log('items')
+    console.log(props.items)
     return (
         <>
             {props.items != null &&

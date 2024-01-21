@@ -12,7 +12,7 @@ const MagnetogramCard: FC<MagnetogramCardProps> = (props) => {
     const { page } = useContext(Context)
     const onButtonClick = (magnetogram_id: string) => {
         page.setLoading(true)
-        navigate(`/magnetogram?magnetogram=${magnetogram_id}&i=0`)
+        navigate(`/markup?id=${magnetogram_id}&i=0`)
         page.setLoading(false)
     }
     return (

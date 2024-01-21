@@ -10,6 +10,8 @@ export interface MagnetogramMarkupData {
 export interface MagnetogramVersionsData {
     info: [{
         version: string,
-        date: Date
+        date: Date,
+        defects_count: number,
+        markup: number[]
     }]
 }
