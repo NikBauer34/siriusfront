@@ -71,13 +71,13 @@ const MainPanel: FC = () => {
       <AppShell.Navbar p="md">
         <div className="leftnavdiv">
           <div>
-            {/* {name.name} */}
+            {user.user.name}
           </div>
           <div>
-            {/* {surname.surname} */}
+            {user.user.nikname}
           </div>
           <div>
-            {/* {role.role} */}
+            {user.user.user_id}
           </div>
         </div>
         <div className="logout">

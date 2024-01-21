@@ -13,6 +13,7 @@ const PipeSelect: FC<PipeSelectProps> = ({mode}) => {
     const ref = useRef(null)
     const { pipe } = useContext(Context);
     const [selectedPipeValue, setSelectedPipeValue] = useState<MapResponse | null>({} as MapResponse)
+    let PipeList: string[] | null = null
     useEffect(() => {
         pipe.checkPipes()
     }, [])
@@ -24,7 +25,6 @@ const PipeSelect: FC<PipeSelectProps> = ({mode}) => {
             return PipeList
         }
     }
-    let PipeList: string[] | null = null
     if (pipe.userpipes != null) {
         PipeList = useMemo(getPipeList, [pipe.userpipes])
     }

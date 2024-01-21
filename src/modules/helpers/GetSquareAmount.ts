@@ -4,13 +4,10 @@ export default function GetSquareAmount(ref: RefObject<HTMLElement>, squareside:
     const element = ref.current?.getBoundingClientRect()
     console.log(element?.width)
     if (element != null) {
-        let all_space = Math.floor((element.width - (borderspace * 2)))
-        console.log(all_space)
-        let squareSide = Math.ceil(all_space / spacebetweensquares)
-        console.log(squareSide)
-        let value = Math.floor(squareSide / squareside)
-        console.log(value)
-        return value
+        let all_width = element.width - (borderspace * 2) - spacebetweensquares
+        let square_plus_space_amount = all_width / (squareside + spacebetweensquares)
+        return square_plus_space_amount
+
     }
     return 0
 }
