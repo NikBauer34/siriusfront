@@ -22,14 +22,16 @@ const MainPanel: FC = () => {
   const { user, pipe } = useContext(Context);
   // name, surname, role,
 
-  useEffect(() => {
-    pipe.checkPipes();
-  }, []);
+  // useEffect(() => {
+  //   if (user.isAuth) {
+  //     pipe.checkPipes();
+  //   }
+  // }, []);
 
   const logout = () => {
     user.logout();
     navigate('/registration');
-    console.log(user.isAuth); //выводит true..?
+    // console.log(user.isAuth); //выводит true..?
   }
 
   return (

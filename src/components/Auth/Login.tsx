@@ -10,9 +10,9 @@ import { Context } from '../../main';
 
 const Login: FC = () => {
     const {user, pipe} = useContext(Context)
-    useEffect(() => {
-        pipe.checkPipes()
-    }, [])
+    // useEffect(() => {
+    //     pipe.checkPipes()
+    // }, [])
     return (
         <div className='centerDiv'>
             <LoadingOverlay visible={user.isLoading} loaderProps={{children: <Loader/>}}/>

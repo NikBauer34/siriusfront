@@ -8,7 +8,7 @@ import { Loader } from "@mantine/core";
 import { toJS } from "mobx";
 import StatisticsService from "../modules/api/services/StatisticsService";
 interface StatisticsProps {
-    pipe_id: string
+    pipe_id: string | undefined
 }
 const Statistics: FC<StatisticsProps> = (props) => {
     const {pipe} = useContext(Context)
@@ -16,10 +16,16 @@ const Statistics: FC<StatisticsProps> = (props) => {
 
     useEffect(() => {
         getStatistics()
-    }, [])
+    }, [props.pipe_id])
+
     const getStatistics = async() => {
-        const response = await pipe.getPipeStatistics(props.pipe_id)
-        setData(response)
+        if (props.pipe_id != undefined) {
+            const response = await pipe.getPipeStatistics(props.pipe_id)
+            setData(response)
+        }
+    }
+    if (props.pipe_id == undefined) {
+        return <h1>Не выбрана труба</h1>
     }
     if (pipe.isLoading) {
         return <Loader h={300} />

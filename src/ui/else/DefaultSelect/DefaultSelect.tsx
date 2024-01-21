@@ -4,7 +4,7 @@ import './DS.css'
 interface DefaultSelectProps {
     label?: string;
     data: string[] | null;
-    onClick: (value: string) => void
+    onChange: (value: string) => void
 }
 const DefaultSelect: FC<DefaultSelectProps> = (props) => {
     const [searchValue, setSearchValue] = useState('');
@@ -21,7 +21,7 @@ const DefaultSelect: FC<DefaultSelectProps> = (props) => {
                 allowDeselect
                 mt="md"
                 nothingFoundMessage="Nothing found..."
-                onChange={() => props.onClick(searchValue)}
+                onChange={() => props.onChange(searchValue)}
             />
             : <Select disabled/>
             }
