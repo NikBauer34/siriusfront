@@ -9,10 +9,10 @@ import { YMapModal } from '../modules/components'
 import { toJS } from 'mobx'
 const YMap: FC = () => {
     const { pipe } = useContext(Context)
-    
     const [opened, { open, close }] = useDisclosure(false)
     const [userGeolocation, setUserGeolocation] = useState<[number, number]>([50, 49])
     const [chosenPlacemark, setChosenPlacemark] = useState<MapResponse>({} as MapResponse)
+
     const getGeolocationSucces = (position: any) => {
         console.log(position.coords.latitude)
         console.log(position.coords.longitude)

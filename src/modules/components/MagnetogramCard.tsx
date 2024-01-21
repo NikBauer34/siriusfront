@@ -9,7 +9,7 @@ interface MagnetogramCardProps {
 }
 const MagnetogramCard: FC<MagnetogramCardProps> = (props) => {
     const navigate = useNavigate()
-    const {page} = useContext(Context)
+    const { page } = useContext(Context)
     const onButtonClick = (magnetogram_id: string) => {
         page.setLoading(true)
         navigate(`/magnetogram?magnetogram=${magnetogram_id}&i=0`)
@@ -18,8 +18,8 @@ const MagnetogramCard: FC<MagnetogramCardProps> = (props) => {
     return (
         <div className="">
             <h1>{props.magnetogram.title}</h1>
-            <Divider my="sm" color={Colors.gradientFirst}/>
-            <Button style={{marginTop: 15}} fullWidth onClick={() => onButtonClick(props.magnetogram._id)}>Подробнее</Button>
+            <Divider my="sm" color={Colors.gradientFirst} />
+            <Button style={{ marginTop: 15 }} fullWidth onClick={() => onButtonClick(props.magnetogram._id)}>Подробнее</Button>
         </div>
     )
 }

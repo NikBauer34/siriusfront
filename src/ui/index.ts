@@ -12,8 +12,8 @@ import OutlinedButton from "./buttons/outlinedButton/OutlinedButton";
 import PasswordInputDef from "./else/PasswordInputDef/PasswordInputDef";
 import GradientButton from "./buttons/gradientButton/GradientButton";
 import DefaultSelect from "./else/DefaultSelect/DefaultSelect";
-
-
+import FilledSquare from "./else/FilledSquare/FilledSquare";
+import TriangleSquare from "./else/TriangleSquare/TriangleSquare";
 
 export {
     UnderlineInput,
@@ -29,5 +29,7 @@ export {
     OutlinedButton,
     PasswordInputDef,
     GradientButton,
-    DefaultSelect
+    DefaultSelect,
+    FilledSquare,
+    TriangleSquare
 }

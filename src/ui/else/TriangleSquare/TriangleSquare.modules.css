@@ -1,0 +1,14 @@
+.commonForTriangle{
+    width: 20px;
+    height: 20px;
+}
+
+.Triangles {
+    width: 0;
+    height: 0;
+    border-top: 10px solid grey;
+    border-left: 10px solid grey;
+    border-right: 10px solid blue;
+    border-bottom: 10px solid blue; 
+}
+
