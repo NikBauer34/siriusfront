@@ -37,7 +37,7 @@ const YMap: FC = () => {
         setChosenPlacemark(placemark)
     }
     return (
-        <>
+        <div>
             <YMaps apikey='361bda94-9a2c-4af2-bae4-8796cee17db6'>
                 <LoadingOverlay visible={pipe.isLoading}></LoadingOverlay>
                 <Map state={{ center: userGeolocation, zoom: 9 }} width={1200} height={'440px'} >
@@ -51,7 +51,7 @@ const YMap: FC = () => {
                 </Map>
             </YMaps>
             <YMapModal opened={opened} onModalConfirmed={onModalConfirmed} onClose={close} />
-        </>
+        </div>
     )
 }
 export default YMap;

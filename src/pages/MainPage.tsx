@@ -28,7 +28,7 @@ const MainPage: FC = () => {
         <>
             {pipe.isLoading
             ? <Loader h={300} />
-            : <div>
+            : <div style={{display:'flex', justifyContent:'center', width:'100%', flexDirection:'column', alignItems:'center'}}>
                 
                 <YMap/>
                 <PipeSelect mode='pipe'/>
