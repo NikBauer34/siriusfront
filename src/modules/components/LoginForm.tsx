@@ -15,8 +15,7 @@ interface LoginProps {
 }
 
 const LoginForm: FC = () => {
-    const { user, pipe } = useContext(Context)
-    const [isLoading, setIsLoading] = useState(false);
+    const { user, pipe, page } = useContext(Context)
     const navigate = useNavigate()
 
     const LoginHookForm = useForm({
@@ -29,34 +28,28 @@ const LoginForm: FC = () => {
     })
 
     const FormOnSubmit = ({ nikname, password }: LoginProps) => {
-        user.setLoading(true);
-        setIsLoading(true);
         user.login(nikname, password)
         if (!user.isError) {
             pipe.checkPipes();
-            user.setLoading(false);
-            setIsLoading(false);
+            page.setLoading(true)
             navigate('/main')
+            page.setLoading(false)
         }
-        user.setLoading(false);
-        setIsLoading(false);
     }
-
+    if (user.isLoading) {
+        return <Loader h={300} />
+    }
     return (
         <div className="formContainer">
-            {isLoading ? (
-                <Loader />
-            ) : (
-                <form className="authForm" onSubmit={LoginHookForm.onSubmit((val) => FormOnSubmit(val))}>
-                    <div className="formFields">
-                        <UnderlineInput placeholder="Логин" {...LoginHookForm.getInputProps('nikname')} />
-                        <PasswordInputDef placeholder="Пароль" {...LoginHookForm.getInputProps('password')} />
-                    </div>
-                    <Button style={{ marginTop: 15 }} fullWidth className="filledButton" type="submit">Войти</Button>
-                    <span className="spanOr">или</span>
-                    <OutlinedButton onClick={() => navigate('/registration')} className='outlinedButton'>Зарегистрироваться</OutlinedButton>
-                </form>
-            )}
+            <form className="authForm" onSubmit={LoginHookForm.onSubmit((val) => FormOnSubmit(val))}>
+                <div className="formFields">
+                    <UnderlineInput placeholder="Логин" {...LoginHookForm.getInputProps('nikname')} />
+                    <PasswordInputDef placeholder="Пароль" {...LoginHookForm.getInputProps('password')} />
+                </div>
+                <Button style={{ marginTop: 15 }} fullWidth className="filledButton" type="submit">Войти</Button>
+                <span className="spanOr">или</span>
+                <OutlinedButton onClick={() => navigate('/registration')} className='outlinedButton'>Зарегистрироваться</OutlinedButton>
+            </form>
         </div>
     )
 }

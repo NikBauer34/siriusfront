@@ -14,7 +14,7 @@ export default class MagnetogramStore {
     setLoading(val: boolean) {
         this.isLoading = val
     }
-    async getPipeMagnetograms(pipe_id: string): Promise<MagnetogramResponse[]> {
+    async getPipeMagnetograms(pipe_id: string): Promise<MagnetogramResponse[] | []> {
         try {
             this.setLoading(true)
             const magnetograms = await MagnetogramService.getPipeMagnetograms(pipe_id)
@@ -27,10 +27,10 @@ export default class MagnetogramStore {
             this.setLoading(false)
         }
     }
-    async getMagnetogramMarkupData(magnetogram_id: string, page: number, bundle: number): Promise<MagnetogramMarkupData> {
+    async getMagnetogramMarkupData(magnetogram_id: string, page: number, bundle: number, i: number): Promise<MagnetogramMarkupData> {
         try {
             this.setLoading(true)
-            const magnetogram = await MagnetogramService.getMagnetogramMarkupData(magnetogram_id, page, bundle)
+            const magnetogram = await MagnetogramService.getMagnetogramMarkupData(magnetogram_id, page, bundle, i)
             this.setError(false)
             return magnetogram.data
         } catch (e: any) {

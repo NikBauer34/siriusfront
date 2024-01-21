@@ -17,9 +17,15 @@ function App() {
   useEffect(() => {
     setColorScheme('light')
   }, [])
-  if (page.isLoading) {
-    return <Loader h={300} />
-  }
+  // const beforeUnload = () => {
+  //   page.setLoading(true)
+  // }
+  // useEffect(() => {
+  //   window.addEventListener('beforeunload', beforeUnload)
+  //   return () => {
+  //     window.removeEventListener('beforeunload', beforeUnload)
+  //   }
+  // }, [])
   return (
     <>
       <BrowserRouter>

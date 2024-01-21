@@ -1,7 +1,6 @@
 import React, { FC, useContext, useEffect } from 'react';
 import { YMap } from '../components';
 import PipeSelect from '../components/PipeSelect';
-import Statistics from '../components/Statistics';
 import { Context } from '../main';
 import { Loader, Button } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
@@ -9,32 +8,30 @@ import { useNavigate } from 'react-router-dom';
 
 
 const MainPage: FC = () => {
-    const { pipe, user } = useContext(Context)
+    // const { pipe, user, page } = useContext(Context)
     const navigate = useNavigate()
     // useEffect(() => {
     //     checkPipes()
     // }, [pipe.userpipes, pipe.pipes])
-    useEffect(() => {
-        checkPipes()
-    }, [])
-    const checkPipes = async () => {
-        pipe.setLoading(true)
-        await user.checkAuth()
-        await pipe.checkPipes()
-        pipe.setLoading(false)
-    }
+    // useEffect(() => {
+    //     page.setLoading(false)
+    //     checkPipes()
+    // }, [])
+    // const checkPipes = () => {
+    //     user.checkAuth()
+    //     pipe.checkPipes()
+    // }
 
     return (
         <>
-            {pipe.isLoading
-            ? <Loader h={300} />
-            : <div style={{display:'flex', justifyContent:'center', width:'100%', flexDirection:'column', alignItems:'center'}}>
-                
-                <YMap/>
-                <PipeSelect mode='pipe'/>
+            <div style={{ display: 'flex', justifyContent: 'center', width: '100%', flexDirection: 'column', alignItems: 'center' }}>
+                {/* <React.Suspense fallback={<Loader h={300} />}> */}
+                <YMap />
+                {/* </React.Suspense> */}
+                <PipeSelect mode='pipe' />
                 {/* <Statistics /> */}
             </div>
-            }
+
         </>
     );
 };
