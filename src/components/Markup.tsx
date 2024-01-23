@@ -52,7 +52,7 @@ const Markup: FC = () => {
     }
     return (
         <div ref={ref} style={{width: "100%", height: "100%"}}>
-            <List items={currentArray} renderItem={(square: number) => <FilledSquare background={square == 1 ? 'red' : 'grey'}/>}/>
+            <List items={currentArray} renderItem={(square: number) => <FilledSquare key={String(new Date())} background={square == 1 ? 'red' : 'grey'}/>}/>
             {i != 0 &&
                 <button onClick={() => setI(i--)}>Влево</button>
             }

@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import MagnetogramService from "../api/services/MagnetogramService";
-import { MagnetogramMarkupData, MagnetogramResponse, MagnetogramVersionsData } from "../api/http/MagnetogramResponse";
+import { MagnetogramMarkupData, MagnetogramResponse, MagnetogramVersionsComparison, MagnetogramVersionsData } from "../api/http/MagnetogramResponse";
 
 export default class MagnetogramStore {
     isLoading = false;
@@ -53,6 +53,19 @@ export default class MagnetogramStore {
             return e?.response?.data?.message
         } finally {
             this.setLoading(false)
+        }
+    }
+    async getMagnetogramVersionsComparison(id: string, first_version: number, second_version: number): Promise<MagnetogramVersionsComparison> {
+        try {
+            this.setLoading(true)
+            const magnetogram_comparison = await MagnetogramService.getMagnetogramVersionsComparison(id, first_version, second_version)
+            this.setError(false)
+            return magnetogram_comparison.data
+        } catch (e: any) {
+            this.setError(true)
+            return e?.response?.data?.message
+        } finally {
+            this.setLoading(true)
         }
     }
 }
