@@ -38,7 +38,7 @@ const MainPanel: FC = () => {
     <AppShell
       w={'100%'}
       header={{ height: 60 }}
-      navbar={{ width: 200, breakpoint: 'sm', collapsed: { mobile: mobileOpened, desktop: desktopOpened }, }}
+      navbar={{ width: 200, breakpoint: 'sm', collapsed: { mobile: !mobileOpened, desktop: !desktopOpened }, }}
       padding="md"
     >
       <AppShell.Header className="header" style={{

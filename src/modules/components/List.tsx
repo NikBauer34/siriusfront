@@ -10,7 +10,7 @@ export default function List<T>(props: ListProps<T>) {
     console.log(props.items)
     return (
         <Grid>
-            {props.items != null &&
+            {props.items != null && props.items[0] != undefined &&
                 props.items && props.items.map(props.renderItem)
             }
         </Grid>
