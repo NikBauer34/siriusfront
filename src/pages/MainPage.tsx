@@ -1,10 +1,10 @@
 import React, { FC, useContext, useEffect } from 'react';
 import { YMap } from '../components';
 import PipeSelect from '../components/PipeSelect';
-import { Context } from '../main';
-import { Loader, Button } from '@mantine/core';
+// import { Context } from '../main';
+// import { Loader, Button } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
-
+import '../ui/styles/divMain.css';
 
 
 const MainPage: FC = () => {
@@ -27,7 +27,7 @@ const MainPage: FC = () => {
 
     return (
         <>
-            <div style={{ display: 'flex', justifyContent: 'center', width: '100%', flexDirection: 'column', alignItems: 'center' }}>
+            <div className='divMain'>
                 {/* <React.Suspense fallback={<Loader h={300} />}> */}
                 <YMap />
                 {/* </React.Suspense> */}

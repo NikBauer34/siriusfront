@@ -6,15 +6,16 @@ import { Loader } from "@mantine/core";
 import { GetSquareAmount } from "../modules/helpers";
 import { List } from "../modules/components";
 import { FilledSquare } from "../ui";
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 
 const Markup: FC = () => {
-    const [searchParams, setSearchParams] = useSearchParams()
-    let ref = useRef(null)
-    const {magnetogram} = useContext(Context)
-    const [data, setData] = useState<MagnetogramMarkupData | null>(null)
-    let [i, setI] = useState(0)
+    const [searchParams, setSearchParams] = useSearchParams();
+    let ref = useRef(null);
+    const {magnetogram} = useContext(Context);
+    const [data, setData] = useState<MagnetogramMarkupData | null>(null);
+    let [i, setI] = useState(0);
     useEffect(() => {
-        getMarkup()
+        getMarkup();
     }, [])
     const getMarkup = async() => {
 //        const response = await magnetogram.getMagnetogramMarkupData(searchParams.get("id") || '0', Number(searchParams.get("i")) || 0)
@@ -22,7 +23,7 @@ const Markup: FC = () => {
         let response = {} as MagnetogramMarkupData
         response.markup = [0, 1, 0, 1, 0, 1, 0, 0, 1]
         console.log(response)
-        setData(response)
+        setData(response);
     }
     const getDataMatrix = () => {
         if (data?.markup != undefined) {
@@ -37,8 +38,8 @@ const Markup: FC = () => {
         }
         return []
     }
-    let dataMatrix = useMemo(getDataMatrix, [data])
-    let currentArray = useMemo(() => dataMatrix[i], [dataMatrix, i])
+    let dataMatrix = useMemo(getDataMatrix, [data]);
+    let currentArray = useMemo(() => dataMatrix[i], [dataMatrix, i]);
     console.log('datamatrix')
     console.log(dataMatrix)
     console.log('currentarray')
@@ -48,18 +49,18 @@ const Markup: FC = () => {
         return <Loader h={300} />
     }
     if (magnetogram.isError) {
-        return <h1>Ошибочка</h1>
+        return <h1>Ошибка</h1>
     }
     return (
-        <div ref={ref} style={{width: "100%", height: "100%"}}>
+        <div ref={ref} style={{width: "100%", height: "100%", color:'#4a9dce'}}>
             <List items={currentArray} renderItem={(square: number) => <FilledSquare background={square == 1 ? 'red' : 'grey'}/>}/>
             {i != 0 &&
-                <button onClick={() => setI(i--)}>Влево</button>
+                <IconChevronLeft onClick={() => setI(i--)}>Влево</IconChevronLeft>
             }
             {dataMatrix[i++] == undefined &&
-                <button onClick={() => setI(i++)}>Вправо</button>
+                <IconChevronRight onClick={() => setI(i++)}>Вправо</IconChevronRight>
             }
         </div>
     )
 }
-export default Markup
+export default Markup;

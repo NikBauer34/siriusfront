@@ -21,10 +21,11 @@ body,html{
     justify-content: center;
 }
 
-@media screen and (max-width: 1100px) and (max-height: 1400px){
+@media screen and (max-width: 1110px) and (max-height: 1400px){
     .centerDiv {
         width: 50%;
     }
+    
 }
 
 
@@ -33,6 +34,8 @@ body,html{
     .centerDiv {
         width: 48%;
     }
+
+    
 }
 
 @media screen and (max-width:1000px){

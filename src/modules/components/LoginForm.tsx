@@ -22,8 +22,8 @@ const LoginForm: FC = () => {
         initialValues: { nikname: '', password: '' },
         validateInputOnChange: true,
         validate: {
-            nikname: (val) => (val.length > 3 ? null : 'Логин не может быть меньше 4 букв'),
-            password: (val) => (val.length > 5 ? null : 'Пароль не может быть меньше шести символов')
+            nikname: (val) => (val.length > 3 ? null : 'Логин не может быть меньше 4 символов'),
+            password: (val) => (val.length > 5 ? null : 'Пароль не может быть меньше 6 символов')
         }
     })
 

@@ -61,10 +61,7 @@ const MainPanel: FC = () => {
             <div
               className={`menu ${location.pathname === "/marking" ? "menu-layouts" : "menu"}`}
               onClick={() => navigate('/marking')}
-            >Разметки</div>
-          </div>
-          <div className="commonDiv">
-            <img className="logoImg" src={logoGazprom} />
+            >Дефекты</div>
           </div>
         </Group>
       </AppShell.Header>
