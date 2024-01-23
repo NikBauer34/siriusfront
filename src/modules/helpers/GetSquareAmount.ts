@@ -5,7 +5,7 @@ export default function GetSquareAmount(ref: RefObject<HTMLElement>, squareside:
     console.log(element?.width)
     if (element != null) {
         let all_width = element.width - (borderspace * 2) - spacebetweensquares
-        let square_plus_space_amount = all_width / (squareside + spacebetweensquares)
+        let square_plus_space_amount = Math.floor(all_width / (squareside + spacebetweensquares))
         return square_plus_space_amount
 
     }
