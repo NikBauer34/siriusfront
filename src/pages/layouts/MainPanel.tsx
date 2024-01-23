@@ -9,7 +9,7 @@ import '../../ui/styles/mainPanelStyles/commonDiv.css';
 import '../../ui/styles/mainPanelStyles/leftnavdiv.css';
 import '../../ui/styles/mainPanelStyles/iconLogout.css';
 import logoGazprom from '../../img/gazprom.png';
-import { IconArrowBarLeft } from "@tabler/icons-react";
+import { IconArrowBarLeft, IconUser } from "@tabler/icons-react";
 
 
 const MainPanel: FC = () => {
@@ -38,7 +38,7 @@ const MainPanel: FC = () => {
     <AppShell
       w={'100%'}
       header={{ height: 60 }}
-      navbar={{ width: 200, breakpoint: 'sm', collapsed: { mobile: !mobileOpened, desktop: !desktopOpened }, }}
+      navbar={{ width: 200, breakpoint: 'sm', collapsed: { mobile: mobileOpened, desktop: desktopOpened }, }}
       padding="md"
     >
       <AppShell.Header className="header" style={{
@@ -68,16 +68,19 @@ const MainPanel: FC = () => {
           </div>
         </Group>
       </AppShell.Header>
-      <AppShell.Navbar p="md">
-        <div className="leftnavdiv">
-          <div>
-            {user.user.name}
+      <AppShell.Navbar p="0" className="navbar">
+        <div className="leftnavdiv" >
+          <div style={{marginBottom:'30px', width:'40px'}}>
+            <IconUser width={40} height={40}/>
           </div>
           <div>
-            {user.user.nikname}
+            {user.user.surname} {user.user.name}
           </div>
+          {/* <div>
+            @{user.user.nikname}
+          </div> */}
           <div>
-            {user.user.user_id}
+            {user.user.role}
           </div>
         </div>
         <div className="logout">

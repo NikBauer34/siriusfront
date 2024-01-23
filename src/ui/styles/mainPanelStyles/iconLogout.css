@@ -5,6 +5,17 @@
 .logout{
     color:rgb(66, 130, 234);
     display: flex;
+    width: 100%;
     justify-content: flex-start;
     cursor: pointer;
+    padding: var(--mantine-spacing-md);
 }
+
+.logout:hover{
+    color:white;
+    background: rgb(66, 130, 234);
+    .iconLogout{
+        stroke: white;
+    }
+}
+
