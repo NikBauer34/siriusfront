@@ -29,13 +29,13 @@ const Magnetograms: FC<MagnetogramsProps> = ({pipe_id}) => {
         return <h1>Труба не выбрана</h1>
     }
     return (
-        <div>
+        <>
             {data != null 
             ? <List 
             items={data} 
             renderItem={(magnetograms: MagnetogramResponse) => <MagnetogramCard key={magnetograms._id} magnetogram={magnetograms}/>}/>
             : <h1>У трубы нет магнитограмм</h1>}
-        </div>
+        </>
     )
 }
 export default Magnetograms

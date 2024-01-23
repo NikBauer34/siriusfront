@@ -65,7 +65,7 @@ export default class MagnetogramStore {
             this.setError(true)
             return e?.response?.data?.message
         } finally {
-            this.setLoading(true)
+            this.setLoading(false)
         }
     }
 }
