@@ -12,7 +12,7 @@ const Markup: FC = () => {
     let ref = useRef(null)
     const {magnetogram} = useContext(Context)
     const [data, setData] = useState<MagnetogramMarkupData | null>(null)
-    const [i, setI] = useState(0)
+    let [i, setI] = useState(0)
     useEffect(() => {
         getMarkup()
     }, [])
@@ -43,6 +43,7 @@ const Markup: FC = () => {
     console.log(dataMatrix)
     console.log('currentarray')
     console.log(currentArray)
+    console.log('i: ' + i)
     if (magnetogram.isLoading) {
         return <Loader h={300} />
     }
@@ -52,7 +53,12 @@ const Markup: FC = () => {
     return (
         <div ref={ref} style={{width: "100%", height: "100%"}}>
             <List items={currentArray} renderItem={(square: number) => <FilledSquare background={square == 1 ? 'red' : 'grey'}/>}/>
-            <button onClick={() => setI(1)}>Click</button>
+            {i != 0 &&
+                <button onClick={() => setI(i--)}>Влево</button>
+            }
+            {dataMatrix[i++] == undefined &&
+                <button onClick={() => setI(i++)}>Вправо</button>
+            }
         </div>
     )
 }
