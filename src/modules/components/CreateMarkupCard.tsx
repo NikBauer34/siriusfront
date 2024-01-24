@@ -1,15 +1,27 @@
 import { Button, Divider } from "@mantine/core";
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { Colors } from "../constants";
 import { GradientButton } from "../../ui";
 import { useDisclosure } from "@mantine/hooks";
 import CreateMarkupModal from "./CreateMarkupModal";
-
-const CreateMagnetogramCard: FC = () => {
+import { Context } from "../../main";
+interface CreateMagnetogramCardProps {
+    pipe_id: string
+}
+const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = ({pipe_id}) => {
     const [opened, { open, close }] = useDisclosure(false);
-    const onModalConfirmed = (value: string, file: File | null) => {
-        console.log(value)
-        console.log(file)
+    const {magnetogram} = useContext(Context)
+    const onModalConfirmed = async(title: string, file: File | null) => {
+        const formdata = new FormData()
+        formdata.append("pipe_id", pipe_id)
+        formdata.append("version", "1.0.0")
+        formdata.append("title", title)
+        if (file != null) {
+            formdata.append("file", file)
+        }
+        const response = await magnetogram.createMagnetogram(formdata)
+        console.log(response)
+        close()
     }
     return (
         <>

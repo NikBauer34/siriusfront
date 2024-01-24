@@ -39,7 +39,7 @@ const Magnetograms: FC<MagnetogramsProps> = ({pipe_id}) => {
                     notFoundMessage="Не найдено магнитограмм"
                     renderItem={(magnetograms: MagnetogramResponse) => <MagnetogramCard key={magnetograms._id} magnetogram={magnetograms}/>}
                     lastComponentItems={[0]}
-                    renderLastComponentItems={(item: any) => <CreateMarkupCard key={item}/>}
+                    renderLastComponentItems={(item: any) => <CreateMarkupCard key={item} pipe_id={data[0].pipe}/>}
                     />
             </div>
             : <h1>У трубы нет магнитограмм</h1>}
