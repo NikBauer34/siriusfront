@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { MagnetogramResponse } from "../api/http/MagnetogramResponse";
 import { Context } from "../../main";
 interface MagnetogramCardProps {
-    magnetogram: MagnetogramResponse
+    magnetogram: MagnetogramResponse,
 }
 const MagnetogramCard: FC<MagnetogramCardProps> = (props) => {
     const navigate = useNavigate()

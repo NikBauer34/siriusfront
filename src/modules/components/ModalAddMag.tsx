@@ -1,19 +1,20 @@
 import React, { FC, ReactNode } from 'react';
-import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button } from '@mantine/core';
+import { Modal } from '@mantine/core';
 
 interface modalprops {
     title?: string;
     children?: ReactNode;
+    opened: boolean;
+    onClose: () => void;
+    onModalConfirmed: () => void;
 }
 
 const ModalAddMag: FC<modalprops> = (props) => {
-    const [opened, { open, close }] = useDisclosure(false);
 
     return (
         <Modal
-            opened={opened}
-            onClose={close}
+            opened={props.opened}
+            onClose={props.onClose}
             title={props.title}
             overlayProps={{
                 backgroundOpacity: 0.55,

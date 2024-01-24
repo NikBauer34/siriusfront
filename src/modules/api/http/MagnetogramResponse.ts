@@ -25,3 +25,15 @@ export interface MagnetogramVersionsComparison {
     first_version: MagnetogramVersion,
     second_version: MagnetogramVersion
 }
+export interface MagnetogramCreation {
+    _id: string
+    title: string;
+    author: string;
+    pipe: string
+    info: [{
+        version: string,
+        date: Date,
+        defects_count?: number,
+        markup: number[]
+    }]
+}
