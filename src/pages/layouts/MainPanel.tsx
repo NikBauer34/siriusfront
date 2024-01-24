@@ -45,9 +45,6 @@ const MainPanel: FC = () => {
         background: '#4a9dce',
       }} >
         <Group h="100%" px="md" style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
           height: '100%',
         }}>
           <Burger style={{ filter: 'invert(1)' }} opened={mobileOpened} onClick={toggleMobile} hiddenFrom="sm" size="sm" />
@@ -61,14 +58,14 @@ const MainPanel: FC = () => {
             <div
               className={`menu ${location.pathname === "/marking" ? "menu-layouts" : "menu"}`}
               onClick={() => navigate('/marking')}
-            >Дефекты</div>
+            >Магнитограммы</div>
           </div>
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="0" className="navbar">
         <div className="leftnavdiv" >
-          <div style={{marginBottom:'30px', width:'40px'}}>
-            <IconUser width={40} height={40}/>
+          <div style={{ marginBottom: '30px', width: '40px' }}>
+            <IconUser width={40} height={40} />
           </div>
           <div>
             {user.user.surname} {user.user.name}

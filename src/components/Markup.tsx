@@ -11,14 +11,14 @@ import { randomId } from "@mantine/hooks";
 const Markup: FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     let ref = useRef(null);
-    const {magnetogram} = useContext(Context);
+    const { magnetogram } = useContext(Context);
     const [data, setData] = useState<MagnetogramMarkupData | null>(null);
     let [i, setI] = useState(0);
     useEffect(() => {
         getMarkup();
     }, [])
-    const getMarkup = async() => {
-//        const response = await magnetogram.getMagnetogramMarkupData(searchParams.get("id") || '0', Number(searchParams.get("i")) || 0)
+    const getMarkup = async () => {
+        //        const response = await magnetogram.getMagnetogramMarkupData(searchParams.get("id") || '0', Number(searchParams.get("i")) || 0)
         // const response = [0, 1, 0, 1, 0, 1, 0, 0, 1]
         let response = {} as MagnetogramMarkupData
         response.markup = [0, 1, 0, 1, 0, 1, 0, 0, 1]

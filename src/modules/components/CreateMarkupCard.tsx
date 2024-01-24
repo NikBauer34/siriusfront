@@ -1,6 +1,7 @@
 import { Button, Divider } from "@mantine/core";
 import React, { FC } from "react";
 import { Colors } from "../constants";
+import { GradientButton } from "../../ui";
 
 const CreateMagnetogramCard: FC = () => {
     return (
@@ -8,8 +9,8 @@ const CreateMagnetogramCard: FC = () => {
             {/* <h1>Hi</h1>
             <Divider my="sm" />
             <Button style={{ marginTop: 15 }} fullWidth >Подробнее</Button> */}
-            <Button>Создать новую магнитограмму</Button>
+            <GradientButton>Создать</GradientButton>
         </div>
     )
 }
-export default CreateMagnetogramCard
+export default CreateMagnetogramCard;

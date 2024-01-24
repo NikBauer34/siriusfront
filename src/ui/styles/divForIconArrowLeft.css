@@ -1,0 +1,8 @@
+.divForIconArrowLeft{
+    display: flex;
+    align-items: center;
+    color:rgb(37, 135, 255);
+    cursor: pointer;
+    height: max-content;
+    width: max-content;
+}
