@@ -5,6 +5,7 @@ import { PipeStore, UserStore } from './modules/store/index.ts';
 import { MantineProvider, createTheme } from '@mantine/core';
 import '@mantine/core/styles.css';
 import '@mantine/charts/styles.css';
+import '@mantine/dropzone/styles.css';
 import MagnetogramStore from './modules/store/MagnetogramStore.ts';
 import PageStore from './modules/store/PageStore.ts';
 const theme = createTheme({

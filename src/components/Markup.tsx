@@ -7,7 +7,7 @@ import { GetSquareAmount } from "../modules/helpers";
 import { List } from "../modules/components";
 import { FilledSquare } from "../ui";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
-
+import { randomId } from "@mantine/hooks";
 const Markup: FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     let ref = useRef(null);
@@ -53,7 +53,7 @@ const Markup: FC = () => {
     }
     return (
         <div ref={ref} style={{width: "100%", height: "100%", color:'#4a9dce'}}>
-            <List items={currentArray} notFoundMessage='Магнитограмма не найдена' renderItem={(square: number) => <FilledSquare key={String(new Date())} background={square == 1 ? 'red' : 'grey'}/>}/>
+            <List items={currentArray} notFoundMessage='Магнитограмма не найдена' renderItem={(square: number) => <FilledSquare key={randomId()} background={square == 1 ? 'red' : 'grey'}/>}/>
             {i != 0 &&
                 <IconChevronLeft onClick={() => setI(i--)}>Влево</IconChevronLeft>
             }
