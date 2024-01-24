@@ -6,6 +6,8 @@ import { GetSquareAmount } from "../modules/helpers";
 import { List } from "../modules/components";
 import { TriangleSquare } from "../ui";
 import { Loader } from "@mantine/core";
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import { randomId } from "@mantine/hooks";
 // import { GetSquareAmount } from "../modules/helpers";
 
 const Comparison: FC = () => {
