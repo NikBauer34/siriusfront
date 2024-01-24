@@ -13,15 +13,14 @@ const MarkupPage: FC = () => {
             <Markup />
             <ModalAddMag
                 withCloseButton={false}
-                opened={true}
+                opened={false}
                 title="Создать новую магнитограмму"
                 onClose={() => true}
                 onModalConfirmed={() => false}
             >
                 <div>
-                    <img src={Fedya} />
+                    <img src={Fedya} style={{width:'165px', height:'165px'}}/>
                 </div>
-                
             </ModalAddMag>
             <ArrowBack onClick={() => navigate('/marking')} />
         </>

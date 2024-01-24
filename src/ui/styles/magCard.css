@@ -1,10 +1,12 @@
-.magCard{
+.magCard {
     display: flex;
-    width: calc(100%/3);
+    width: 25%;
     padding: 33px 29px 39px 30px;
     flex-direction: column;
     align-items: center;
     gap: 29px;
     flex-shrink: 0;
-    
+    border-radius: 20px;
+    border: 2px solid #D2E1EA;
+    margin: 17px 40px;
 }

@@ -1,11 +1,10 @@
-import { Button, Divider } from "@mantine/core";
 import React, { FC, useContext } from "react";
-import { Colors } from "../constants";
-import { GradientButton } from "../../ui";
 import { useDisclosure } from "@mantine/hooks";
 import { Context } from "../../main";
 import { ModalAddMag } from ".";
-import MagnetogramCard from "./MagnetogramCard";
+import { IconCirclePlus } from "@tabler/icons-react";
+import '../../ui/styles/magCard.css';
+
 interface CreateMagnetogramCardProps {
     pipe_id: string
 }
@@ -26,11 +25,17 @@ const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = ({ pipe_id }) => {
     }
     return (
         <>
-            <div>
+            <div className="magCard" color="#4a9dce">
                 {/* <MagnetogramCard /> */}
-                <GradientButton onClick={open}>Создать</GradientButton>
+                <IconCirclePlus style={{cursor:'pointer', width:'90px', height:'90px', margin:0}}  onClick={open}/>
+                <h3 style={{margin:0}} >Создать новую магнитограмму</h3>
             </div>
-            <ModalAddMag withCloseButton={false} title="Создать новую магнитограмму" opened={opened} onClose={close} onModalConfirmed={onModalConfirmed} />
+            <ModalAddMag
+                withCloseButton={false}
+                title="Создать новую магнитограмму"
+                opened={opened} onClose={close}
+                onModalConfirmed={onModalConfirmed}
+            />
         </>
     )
 }

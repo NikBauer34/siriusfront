@@ -21,15 +21,15 @@ const MagnetogramCard: FC<MagnetogramCardProps> = (props) => {
     }
     return (
         <div className="magCard">
-            <h1 style={{
+            <h3 style={{
                 borderBottom: '3px solid var(--primary, #4A9DCE)',
                 width: '-webkit-fill-available'
             }}>
                 {props.magnetogram.title}
-            </h1>
+            </h3>
             {/* <Divider my="sm" color={Colors.gradientFirst} /> */}
             <Button style={{ marginTop: 15 }} fullWidth onClick={() => onButtonClick(props.magnetogram._id)}>Подробнее</Button>
         </div>
     )
 }
-export default MagnetogramCard
+export default MagnetogramCard;

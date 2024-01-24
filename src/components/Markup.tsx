@@ -9,6 +9,7 @@ import { FilledSquare } from "../ui";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { randomId } from "@mantine/hooks";
 import { Button } from "@mantine/core";
+
 const Markup: FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     let ref = useRef(null);
