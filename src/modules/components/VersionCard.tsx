@@ -11,11 +11,11 @@ const VersionCard: FC<VersionCardProps> = (props) => {
     const navigate = useNavigate()
     const HandleClick = (_id: string, i: number) => {
         page.setLoading(true)
-        navigate(`/markup?id=${_id}&i=0`)
+        navigate(`/markup?id=${_id}&i=${i}`)
         page.setLoading(false)
     }
     return (
-        <div style={{border: '10px solid black', width: '100%', height: '26px'}} onClick={() => HandleClick(props._id, props.i)}>
+        <div onClick={() => HandleClick(props._id, props.i)}>
             <h1>Hello</h1>
         </div>
     )

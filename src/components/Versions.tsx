@@ -1,8 +1,8 @@
-import React, { FC, useContext, useEffect, useState } from "react";
+import React, { FC, useContext, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Context } from "../main";
 import { MagnetogramVersion, MagnetogramVersionsData } from "../modules/api";
-import { List, VersionCard } from "../modules/components";
+import { List, VersionCard, VersionsList } from "../modules/components";
 import MagnetogramCard from "../modules/components/MagnetogramCard";
 import { version } from "os";
 import { Checkbox } from "@mantine/core";
@@ -20,28 +20,19 @@ const Versions: FC = () => {
         console.log(response)
         setData(response.info)
     }
+    let isSelected = useMemo(() => selection, [selection])
+    let sel = true
     return (
         <>
-            <div style={{display: 'flex'}}>
+            <div>
                 <h1>Создать разметку</h1>
-                {selection
-                ? <button onClick={() => setSelection(true)}>Сравнить</button>
-                : <button>Выбрать</button>
-                }
+                {/* {isSelected
+                ? <h1 onClick={() => setSelection(true)}>Сравнить</h1>
+                : <h1>Выбрать</h1>
+                } */}
+                <VersionsList selection={selection} setSelection={setSelection} data={data}/>
             </div>
-            {selection == false
-            // ? <List items={data} renderItem={(item: MagnetogramVersion) => <VersionCard _id={searchParams.get("id") || '0'}/>}
-            ? data?.map((markup_version, index) => 
-                <VersionCard _id={searchParams.get("id") || '0'} i={index} date={markup_version.date}/>
-            )
-            : <Checkbox.Group value={checkboxvalue} onChange={setCheckboxvalue}>
-                {data?.map((markup_version, index) =>
-                    <Checkbox value={String(index)}>
-                        <VersionCard _id={searchParams.get("id") || '0'} i={index} date={markup_version.date}/>
-                    </Checkbox>
-                )}
-            </Checkbox.Group>
-            }
         </>
     )
 }
+export default Versions

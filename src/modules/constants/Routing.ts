@@ -6,6 +6,7 @@ import { LoginPage } from "../../pages/index";
 import IRouting from "./IRouting.ts";
 import MarkupPage from "../../pages/MarkupPage.tsx";
 import ComparisonPage from "../../pages/ComparisonPage.tsx";
+import VersionsPage from "../../pages/VersionsPage.tsx";
 
 export const publicRouting: IRouting[] = [
   {
@@ -39,6 +40,10 @@ export const firstRouting: IRouting[] = [
   {
     path: 'formdata',
     component: FormDataTest
+  },
+  {
+    path: 'versions',
+    component: VersionsPage
   }
 ]
 export const secondRouting: IRouting[] = [
