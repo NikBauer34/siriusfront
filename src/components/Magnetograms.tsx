@@ -36,7 +36,7 @@ const Magnetograms: FC<MagnetogramsProps> = ({pipe_id}) => {
             ? <div className="grid_items">
                 <List 
                     items={data} 
-                    notFoundMessage="Не найдено разметок"
+                    notFoundMessage="Не найдено магнитограмм"
                     renderItem={(magnetograms: MagnetogramResponse) => <MagnetogramCard key={magnetograms._id} magnetogram={magnetograms}/>}
                     lastComponentItems={[0]}
                     renderLastComponentItems={(item: any) => <CreateMarkupCard key={item}/>}
@@ -46,4 +46,4 @@ const Magnetograms: FC<MagnetogramsProps> = ({pipe_id}) => {
         </>
     )
 }
-export default Magnetograms
+export default Magnetograms;
