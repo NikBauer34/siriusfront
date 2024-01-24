@@ -8,6 +8,7 @@ import '@mantine/charts/styles.css';
 import '@mantine/dropzone/styles.css';
 import MagnetogramStore from './modules/store/MagnetogramStore.ts';
 import PageStore from './modules/store/PageStore.ts';
+
 const theme = createTheme({
   fontFamily: 'Montserrat, sans-serif'
 });

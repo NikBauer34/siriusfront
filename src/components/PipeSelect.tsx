@@ -9,7 +9,7 @@ import { GetSquareAmount } from "../modules/helpers";
 interface PipeSelectProps {
     mode: 'pipe' | 'magnetogram'
 }
-const PipeSelect: FC<PipeSelectProps> = ({mode}) => {
+const PipeSelect: FC<PipeSelectProps> = ({ mode }) => {
     const ref = useRef(null)
     const { pipe } = useContext(Context);
     const [selectedPipeValue, setSelectedPipeValue] = useState<MapResponse | null>({} as MapResponse)
@@ -18,7 +18,7 @@ const PipeSelect: FC<PipeSelectProps> = ({mode}) => {
         pipe.checkPipes()
     }, [])
     const getPipeList = () => {
-        if (pipe.userpipes == null || pipe.userpipes == undefined) { 
+        if (pipe.userpipes == null || pipe.userpipes == undefined) {
             return null
         } else {
             let PipeList = pipe.userpipes.map(obj => obj.title)
@@ -42,8 +42,8 @@ const PipeSelect: FC<PipeSelectProps> = ({mode}) => {
             <button onClick={() => console.log(GetSquareAmount(ref, 5, 1, 3))}>ClickMe</button> */}
             <DefaultSelect label="Выберите трубу" data={[...new Set(PipeList)]} onChange={(value: string) => onSelected(value)} />
             {selectedPipeValue != null
-            ? mode == 'pipe' ? <Statistics pipe_id={selectedPipeValue._id}/> : <Magnetograms pipe_id={selectedPipeValue._id}/>
-            : <h1>Ничего</h1>
+                ? mode == 'pipe' ? <Statistics pipe_id={selectedPipeValue._id} /> : <Magnetograms pipe_id={selectedPipeValue._id} />
+                : <h1>Ничего</h1>
             }
         </>
     )

@@ -3,15 +3,16 @@ import React, { FC, useContext } from "react";
 import { Colors } from "../constants";
 import { GradientButton } from "../../ui";
 import { useDisclosure } from "@mantine/hooks";
-import CreateMarkupModal from "./CreateMarkupModal";
 import { Context } from "../../main";
+import { ModalAddMag } from ".";
+import MagnetogramCard from "./MagnetogramCard";
 interface CreateMagnetogramCardProps {
     pipe_id: string
 }
-const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = ({pipe_id}) => {
+const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = ({ pipe_id }) => {
     const [opened, { open, close }] = useDisclosure(false);
-    const {magnetogram} = useContext(Context)
-    const onModalConfirmed = async(title: string, file: File | null) => {
+    const { magnetogram } = useContext(Context)
+    const onModalConfirmed = async (title: string, file: File | null) => {
         const formdata = new FormData()
         formdata.append("pipe_id", pipe_id)
         formdata.append("version", "1.0.0")
@@ -25,13 +26,11 @@ const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = ({pipe_id}) => {
     }
     return (
         <>
-            <div className="">
-                {/* <h1>Hi</h1>
-                <Divider my="sm" />
-                <Button style={{ marginTop: 15 }} fullWidth >Подробнее</Button> */}
+            <div>
+                {/* <MagnetogramCard /> */}
                 <GradientButton onClick={open}>Создать</GradientButton>
             </div>
-            <CreateMarkupModal opened={opened} onClose={close} onModalConfirmed={onModalConfirmed}/>
+            <ModalAddMag withCloseButton={false} title="Создать новую магнитограмму" opened={opened} onClose={close} onModalConfirmed={onModalConfirmed} />
         </>
     )
 }

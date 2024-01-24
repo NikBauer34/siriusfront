@@ -1,7 +1,7 @@
 import { useForm } from "@mantine/form";
 import React, { FC, useState } from "react";
-import { UnderlineInput } from "../../ui";
-import { Button, Center, Text } from "@mantine/core";
+import { GradientButton, UnderlineInput } from "../../ui";
+import { Center, Text } from "@mantine/core";
 import { Dropzone } from "@mantine/dropzone";
 interface MarkupModalFormProps {
     onSubmit: (title: string, form: File | null) => void
@@ -12,7 +12,7 @@ interface FormValues {
 }
 const MarkupModalForm: FC<MarkupModalFormProps> = (props) => {
     const MarkupModalHookForm = useForm<FormValues>({
-        initialValues: { title: '', file: null},
+        initialValues: { title: '', file: null },
         validateInputOnChange: true,
         validate: {
             title: (val: string) => (val.length > 3 ? null : 'Название разметки не может быть меньше 4 символов'),
@@ -26,10 +26,10 @@ const MarkupModalForm: FC<MarkupModalFormProps> = (props) => {
     return (
         <form onSubmit={MarkupModalHookForm.onSubmit((val) => props.onSubmit(val.title, val.file))}>
             <UnderlineInput placeholder="Введите название" {...MarkupModalHookForm.getInputProps('title')} />
-            <Dropzone 
-            maxSize={5 * 1024 ** 2} 
-            onDrop={(files) => onDrop(files)}
-            onReject={() => MarkupModalHookForm.setFieldError('files', 'Select images only')}
+            <Dropzone
+                maxSize={5 * 1024 ** 2}
+                onDrop={(files) => onDrop(files)}
+                onReject={() => MarkupModalHookForm.setFieldError('files', 'Select images only')}
             >
                 <Center h={120}>
                     <Dropzone.Idle>Drop files here</Dropzone.Idle>
@@ -43,8 +43,8 @@ const MarkupModalForm: FC<MarkupModalFormProps> = (props) => {
                     {selectedFile.name}
                 </Text>
             }
-            <Button style={{ marginTop: 15 }} fullWidth type="submit">Создать</Button>
+            <GradientButton type="submit">Создать</GradientButton>
         </form>
     )
 }
-export default MarkupModalForm
+export default MarkupModalForm;

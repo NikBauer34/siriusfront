@@ -1,5 +1,5 @@
 import { FC, useContext, useEffect, useMemo, useRef, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+// import { useSearchParams } from "react-router-dom";  
 import { Context } from "../main";
 import { MagnetogramMarkupData } from "../modules/api";
 import { Loader } from "@mantine/core";
@@ -9,7 +9,7 @@ import { FilledSquare } from "../ui";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { randomId } from "@mantine/hooks";
 const Markup: FC = () => {
-    const [searchParams, setSearchParams] = useSearchParams();
+    // const [searchParams, setSearchParams] = useSearchParams();
     let ref = useRef(null);
     const { magnetogram } = useContext(Context);
     const [data, setData] = useState<MagnetogramMarkupData | null>(null);

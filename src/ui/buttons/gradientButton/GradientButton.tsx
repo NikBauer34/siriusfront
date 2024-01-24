@@ -3,18 +3,19 @@ import React, { FC, ReactNode } from 'react';
 
 interface gradientprops {
     type?: "button" | "submit" | "reset" | undefined;
-    onClick?: (navigate: any) => void ;
+    onClick?: (navigate: any) => void;
     children: ReactNode;
 }
 
 
 const GradientButton: FC<gradientprops> = (props) => {
-    return(
+    return (
         <Button
-            fullWidth 
+            fullWidth
+            mt={20}
             className="gradientbutton"
-            type={props.type} 
-            onClick={props.onClick} 
+            type={props.type}
+            onClick={props.onClick}
             variant="gradient"
             gradient={{ from: 'rgba(64, 159, 255, 1)', to: 'rgba(210, 225, 250, 1)', deg: 90 }}
         >

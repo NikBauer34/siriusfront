@@ -53,10 +53,12 @@ const MainPanel: FC = () => {
           <div className="commonDiv">
             <div
               className={`menu ${location.pathname === "/main" ? "menu-main" : "menu"}`}
+              style={{cursor:'pointer'}}
               onClick={() => navigate('/main')}
             >Сводка</div>
             <div
               className={`menu ${location.pathname === "/marking" ? "menu-layouts" : "menu"}`}
+              style={{cursor:'pointer'}}
               onClick={() => navigate('/marking')}
             >Магнитограммы</div>
           </div>
