@@ -6,18 +6,19 @@ import { GetSquareAmount } from "../modules/helpers";
 import { List } from "../modules/components";
 import { TriangleSquare } from "../ui";
 import { Loader } from "@mantine/core";
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 // import { GetSquareAmount } from "../modules/helpers";
 
 const Comparison: FC = () => {
     const [searchParams, setSearchParams] = useSearchParams()
     let ref = useRef(null)
-    const {magnetogram} = useContext(Context)
+    const { magnetogram } = useContext(Context)
     const [data, setData] = useState<MagnetogramVersionsComparison | null>(null)
     let [i, setI] = useState(0)
     useEffect(() => {
         getMarkup()
     }, [])
-    const getMarkup = async() => {
+    const getMarkup = async () => {
         const response = await magnetogram.getMagnetogramVersionsComparison(searchParams.get("id") || '0', Number(searchParams.get("first_version")), Number(searchParams.get("second_version")))
         console.log(response)
         setData(response)
@@ -58,16 +59,16 @@ const Comparison: FC = () => {
         return <Loader h={300} />
     }
     if (magnetogram.isError) {
-        return <h1>Ошибочка</h1>
+        return <h1>Ошибка</h1>
     }
     return (
-        <div ref={ref} style={{width: "100%", height: "100%"}}>
+        <div ref={ref} style={{ width: "100%", height: "100%" }}>
             <List items={currentArray} renderItem={(triangle_square: number[]) => <TriangleSquare key={String(new Date())} firstTriangle={`10px solid ${triangle_square[0] == 1 ? 'red' : 'grey'}`} secondTriangle={`10px solid ${triangle_square[1] == 1 ? 'red' : 'grey'}`} />} />
             {i != 0 &&
-                <button onClick={() => setI(i--)}>Влево</button>
+                <IconChevronLeft onClick={() => setI(i--)}>Влево</IconChevronLeft>
             }
             {dataMatrix[i++] == undefined &&
-                <button onClick={() => setI(i++)}>Вправо</button>
+                <IconChevronRight onClick={() => setI(i++)}>Вправо</IconChevronRight>
             }
         </div>
     )

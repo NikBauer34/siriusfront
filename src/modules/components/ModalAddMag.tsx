@@ -21,7 +21,7 @@ const ModalAddMag: FC<modalprops> = (props) => {
             }}
         >
             {props.children}
-            
+
         </Modal>
     )
 }
