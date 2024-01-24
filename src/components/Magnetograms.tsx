@@ -1,6 +1,6 @@
 import React, { FC, useContext, useEffect, useState } from "react";
 import { Context } from "../main";
-import { List } from "../modules/components";
+import { GridList } from "../modules/components";
 import MagnetogramCard from "../modules/components/MagnetogramCard";
 import { Loader } from "@mantine/core";
 import { MagnetogramResponse } from "../modules/api";
@@ -31,8 +31,9 @@ const Magnetograms: FC<MagnetogramsProps> = ({pipe_id}) => {
     return (
         <>
             {data != null 
-            ? <List 
+            ? <GridList 
             items={data} 
+            notFoundMessage=""
             renderItem={(magnetograms: MagnetogramResponse) => <MagnetogramCard key={magnetograms._id} magnetogram={magnetograms}/>}/>
             : <h1>У трубы нет магнитограмм</h1>}
         </>

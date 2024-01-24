@@ -1,19 +1,17 @@
-import { Grid } from '@mantine/core';
-interface ListProps<T> {
-    items: T[] | null;
+import React, { FC } from "react";
+import '../../ui/styles/grid.css'
+interface GridListProps<T> {
+    items: T[] | null | string;
     renderItem: (item: T) => React.ReactNode
     notFoundMessage: string
 }
-
-export default function List<T>(props: ListProps<T>) {
-    console.log('items')
-    console.log(props.items)
+export default function GridList<T>(props: GridListProps<T>) {
     return (
-        <Grid>
+        <div className="grid_items">
             {props.items != null && typeof props.items != 'string'
             ? props.items && props.items?.map(props.renderItem)
             : <h1>{props.notFoundMessage}</h1>
             }
-        </Grid>
+        </div>
     )
 }
