@@ -16,6 +16,6 @@ export default class MagnetogramService {
         return $api.get<MagnetogramVersionsComparison>(`/magnetogram/get_magnetogram_versions_comparison?id=${id}&first_version=${first_version}&second_version=${second_version}`)
     }
     static async createMagnetogram(formdata: FormData): Promise<AxiosResponse<MagnetogramCreation>> {
-        return $api.post<MagnetogramCreation>('/magnetogram/', {formdata})
+        return $api.post<MagnetogramCreation>('/magnetogram/create_magnetogram', {formdata})
     }
 }

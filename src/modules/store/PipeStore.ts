@@ -4,6 +4,8 @@ import { AxiosResponse } from "axios";
 import StatisticsService from "../api/services/StatisticsService";
 import { StatisticsResponse } from "../api/http/StatisticsResponse";
 import { GetMergedArrays } from "../helpers";
+import MagnetogramService from "../api/services/MagnetogramService";
+import { MagnetogramCreation } from "../api/http/MagnetogramResponse";
 
 export default class PipeStore {
     userpipes = [] as MapResponse[]

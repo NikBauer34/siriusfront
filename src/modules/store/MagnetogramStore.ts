@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import MagnetogramService from "../api/services/MagnetogramService";
-import { MagnetogramMarkupData, MagnetogramResponse, MagnetogramVersionsComparison, MagnetogramVersionsData } from "../api/http/MagnetogramResponse";
+import { MagnetogramCreation, MagnetogramMarkupData, MagnetogramResponse, MagnetogramVersionsComparison, MagnetogramVersionsData } from "../api/http/MagnetogramResponse";
 
 export default class MagnetogramStore {
     isLoading = false;
@@ -64,6 +64,20 @@ export default class MagnetogramStore {
         } catch (e: any) {
             this.setError(true)
             return e?.response?.data?.message
+        } finally {
+            this.setLoading(false)
+        }
+    }
+    async createMagnetogram(formdata: FormData): Promise<MagnetogramCreation> {
+        try {
+            this.setLoading(true)
+            const magnetogram = await MagnetogramService.createMagnetogram(formdata)
+            this.setError(false)
+            return magnetogram.data
+        } catch (e: any) {
+            this.setError(true)
+            console.log(e.response?.data?.message)
+            return e.response?.data?.message
         } finally {
             this.setLoading(false)
         }

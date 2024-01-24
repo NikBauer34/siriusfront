@@ -4,6 +4,7 @@ import MagnetogramCard from "../modules/components/MagnetogramCard";
 import { Loader } from "@mantine/core";
 import { MagnetogramResponse } from "../modules/api";
 import { CreateMarkupCard, List } from "../modules/components";
+import { randomId } from "@mantine/hooks";
 import '../ui/styles/grid.css'
 interface MagnetogramsProps {
     pipe_id: string

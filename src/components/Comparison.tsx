@@ -6,6 +6,7 @@ import { GetSquareAmount } from "../modules/helpers";
 import { List } from "../modules/components";
 import { TriangleSquare } from "../ui";
 import { Loader } from "@mantine/core";
+import { randomId } from "@mantine/hooks";
 // import { GetSquareAmount } from "../modules/helpers";
 
 const Comparison: FC = () => {
@@ -62,7 +63,7 @@ const Comparison: FC = () => {
     }
     return (
         <div ref={ref} style={{width: "100%", height: "100%"}}>
-            <List items={currentArray} notFoundMessage='Не найдены координаты дефектов' renderItem={(triangle_square: number[]) => <TriangleSquare key={String(new Date())} firstTriangle={`10px solid ${triangle_square[0] == 1 ? 'red' : 'grey'}`} secondTriangle={`10px solid ${triangle_square[1] == 1 ? 'red' : 'grey'}`} />} />
+            <List items={currentArray} notFoundMessage='Не найдены координаты дефектов' renderItem={(triangle_square: number[]) => <TriangleSquare key={randomId()} firstTriangle={`10px solid ${triangle_square[0] == 1 ? 'red' : 'grey'}`} secondTriangle={`10px solid ${triangle_square[1] == 1 ? 'red' : 'grey'}`} />} />
             {i != 0 &&
                 <button onClick={() => setI(i--)}>Влево</button>
             }
