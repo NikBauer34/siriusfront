@@ -74,4 +74,4 @@ const Comparison: FC = () => {
     )
 
 }
-export default Comparison
+export default Comparison;

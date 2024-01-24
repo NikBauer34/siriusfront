@@ -6,4 +6,4 @@ const ComparisonPage: FC = () => {
         <Comparison />
     )
 }
-export default ComparisonPage
+export default ComparisonPage;

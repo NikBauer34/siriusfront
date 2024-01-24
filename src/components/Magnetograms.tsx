@@ -4,7 +4,7 @@ import MagnetogramCard from "../modules/components/MagnetogramCard";
 import { Loader } from "@mantine/core";
 import { MagnetogramResponse } from "../modules/api";
 import { CreateMarkupCard, List } from "../modules/components";
-import '../ui/styles/grid.css'
+import '../ui/styles/grid.css';
 interface MagnetogramsProps {
     pipe_id: string
 }
@@ -35,7 +35,7 @@ const Magnetograms: FC<MagnetogramsProps> = ({pipe_id}) => {
             ? <div className="grid_items">
                 <List 
                     items={data} 
-                    notFoundMessage="Не найдено разметок"
+                    notFoundMessage="Не найдено магнитограмм"
                     renderItem={(magnetograms: MagnetogramResponse) => <MagnetogramCard key={magnetograms._id} magnetogram={magnetograms}/>}
                     lastComponentItems={[0]}
                     renderLastComponentItems={(item: any) => <CreateMarkupCard/>}
@@ -45,4 +45,4 @@ const Magnetograms: FC<MagnetogramsProps> = ({pipe_id}) => {
         </>
     )
 }
-export default Magnetograms
+export default Magnetograms;

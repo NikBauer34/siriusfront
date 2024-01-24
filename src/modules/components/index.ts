@@ -4,7 +4,7 @@ import YMapModal from "./YMapModal";
 import List from "./List";
 import VersionCard from "./VersionCard";
 import CreateMarkupCard from "./CreateMarkupCard";
-import ArrowBack from "./ArrowBack";
+import ArrowBack from "../../ui/else/ArrowBack";
 import ModalAddMag from "./ModalAddMag";
 
 
