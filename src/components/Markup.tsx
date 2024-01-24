@@ -1,5 +1,5 @@
 import { FC, useContext, useEffect, useMemo, useRef, useState } from "react";
-// import { useSearchParams } from "react-router-dom";  
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Context } from "../main";
 import { MagnetogramMarkupData } from "../modules/api";
 import { Loader } from "@mantine/core";
@@ -8,9 +8,11 @@ import { List } from "../modules/components";
 import { FilledSquare } from "../ui";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { randomId } from "@mantine/hooks";
+import { Button } from "@mantine/core";
 const Markup: FC = () => {
-    // const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
     let ref = useRef(null);
+    let navigate = useNavigate()
     const { magnetogram } = useContext(Context);
     const [data, setData] = useState<MagnetogramMarkupData | null>(null);
     let [i, setI] = useState(0);
@@ -60,6 +62,7 @@ const Markup: FC = () => {
             {dataMatrix[i++] == undefined &&
                 <IconChevronRight onClick={() => setI(i++)}>Вправо</IconChevronRight>
             }
+            <Button onClick={() => navigate(`/versions?id=${searchParams.get("id")}`)}>Посмотреть все версии</Button>
         </div>
     )
 }

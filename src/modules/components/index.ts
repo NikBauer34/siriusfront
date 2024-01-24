@@ -6,7 +6,7 @@ import VersionCard from "./VersionCard";
 import CreateMarkupCard from "./CreateMarkupCard";
 import ArrowBack from "../../ui/else/ArrowBack";
 import ModalAddMag from "./ModalAddMag";
-
+import VersionsList from "./VersionsList";
 
 export {
   LoginForm,
@@ -16,5 +16,6 @@ export {
   VersionCard,
   ArrowBack,
   ModalAddMag,
-  CreateMarkupCard
+  CreateMarkupCard,
+  VersionsList
 }
