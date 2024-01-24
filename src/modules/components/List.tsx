@@ -1,8 +1,11 @@
 import { Grid } from '@mantine/core';
+import { ReactNode } from 'react';
 interface ListProps<T> {
     items: T[] | null;
     renderItem: (item: T) => React.ReactNode
     notFoundMessage: string
+    lastComponentItems?: any
+    renderLastComponentItems?: (item: any) => React.ReactNode
 }
 
 export default function List<T>(props: ListProps<T>) {
@@ -13,6 +16,9 @@ export default function List<T>(props: ListProps<T>) {
             {props.items != null && typeof props.items != 'string'
             ? props.items && props.items?.map(props.renderItem)
             : <h1>{props.notFoundMessage}</h1>
+            }
+            {
+                props?.lastComponentItems?.map(props.renderLastComponentItems)
             }
         </Grid>
     )

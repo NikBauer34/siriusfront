@@ -1,9 +1,10 @@
 import React, { FC, useContext, useEffect, useState } from "react";
 import { Context } from "../main";
-import { GridList } from "../modules/components";
 import MagnetogramCard from "../modules/components/MagnetogramCard";
 import { Loader } from "@mantine/core";
 import { MagnetogramResponse } from "../modules/api";
+import { CreateMarkupCard, List } from "../modules/components";
+import '../ui/styles/grid.css'
 interface MagnetogramsProps {
     pipe_id: string
 }
@@ -31,10 +32,15 @@ const Magnetograms: FC<MagnetogramsProps> = ({pipe_id}) => {
     return (
         <>
             {data != null 
-            ? <GridList 
-            items={data} 
-            notFoundMessage=""
-            renderItem={(magnetograms: MagnetogramResponse) => <MagnetogramCard key={magnetograms._id} magnetogram={magnetograms}/>}/>
+            ? <div className="grid_items">
+                <List 
+                    items={data} 
+                    notFoundMessage="Не найдено разметок"
+                    renderItem={(magnetograms: MagnetogramResponse) => <MagnetogramCard key={magnetograms._id} magnetogram={magnetograms}/>}
+                    lastComponentItems={[0]}
+                    renderLastComponentItems={(item: any) => <CreateMarkupCard/>}
+                    />
+            </div>
             : <h1>У трубы нет магнитограмм</h1>}
         </>
     )
