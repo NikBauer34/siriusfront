@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { $api, MapService } from "..";
-import { MagnetogramCreation, MagnetogramMarkupData, MagnetogramResponse, MagnetogramVersionsComparison, MagnetogramVersionsData } from "../http/MagnetogramResponse";
+import { MagnetogramCreation, MagnetogramMarkupData, MagnetogramResponse, MagnetogramVersion, MagnetogramVersionsComparison, MagnetogramVersionsData } from "../http/MagnetogramResponse";
 
 export default class MagnetogramService {
     static async getPipeMagnetograms(pipe_id: string): Promise<AxiosResponse<MagnetogramResponse[] | []>> {
@@ -17,5 +17,8 @@ export default class MagnetogramService {
     }
     static async createMagnetogram(formdata: FormData): Promise<AxiosResponse<MagnetogramCreation>> {
         return $api.post<MagnetogramCreation>('/magnetogram/create_magnetogram', formdata)
+    }
+    static async createMagnetogramVersion(formdata: FormData): Promise<AxiosResponse<MagnetogramVersion>> {
+        return $api.post<MagnetogramVersion>('/magnetogram/create_magnetogram_version', formdata)
     }
 }

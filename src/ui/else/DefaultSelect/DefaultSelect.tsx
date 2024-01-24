@@ -13,6 +13,7 @@ const DefaultSelect: FC<DefaultSelectProps> = (props) => {
             {props.data !== null
             ? <Select
                 searchable
+                value={searchValue}
                 searchValue={searchValue}
                 onSearchChange={setSearchValue}
                 className="select"
