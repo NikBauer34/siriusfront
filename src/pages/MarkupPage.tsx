@@ -23,7 +23,7 @@ const MarkupPage: FC = () => {
                     <img src={Fedya} style={{width:'165px', height:'165px'}}/>
                 </div> */}
             </ModalAddMag>
-            
+
         </>
 
     )

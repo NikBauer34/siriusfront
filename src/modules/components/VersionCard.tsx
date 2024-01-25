@@ -16,12 +16,15 @@ const VersionCard: FC<VersionCardProps> = (props) => {
         page.setLoading(false)
     }
     return (
-        <div style={{ cursor: 'pointer' }} onClick={() => HandleClick(props._id, props.i)}>
-            <h1>{props.i+1}</h1>
+        <div
+            style={{ cursor: 'pointer' }}
+            onClick={() => HandleClick(props._id, props.i)}
+        >
+            <h1>{props.i + 1}</h1>
             <div>
                 <span>ID: {props._id}</span>
-                <div/>
-                <span>{`Дата поста: ${date.getFullYear()}.${date.getMonth()+1}.${date.getDate()}`}</span>
+                <div />
+                <span>{`Дата поста: ${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`}</span>
             </div>
         </div>
     )

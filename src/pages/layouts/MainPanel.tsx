@@ -55,7 +55,7 @@ const MainPanel: FC = () => {
           <div style={{ marginLeft: '8px' }} onClick={logout}>Выйти</div>
         </div>
       </AppShell.Navbar>
-      <AppShell.Main display={'flex'}>
+      <AppShell.Main style={{display:'flex', flexDirection:'column'}}>
         <Outlet />
       </AppShell.Main>
     </AppShell>
