@@ -4,27 +4,29 @@ import './DS.css'
 interface DefaultSelectProps {
     label?: string;
     data: string[] | null;
-    onChange: (value: string) => void
+    onChange: (value: string) => void;
+    width?: string;
 }
 const DefaultSelect: FC<DefaultSelectProps> = (props) => {
     const [searchValue, setSearchValue] = useState('');
     return (
         <>
             {props.data !== null
-            ? <Select
-                searchable
-                value={searchValue}
-                searchValue={searchValue}
-                onSearchChange={setSearchValue}
-                className="select"
-                label={props.label}
-                data={props.data}
-                allowDeselect
-                mt="md"
-                nothingFoundMessage="Nothing found..."
-                onChange={() => props.onChange(searchValue)}
-            />
-            : <Select disabled/>
+                ? <Select
+                    style={{width:`${props.width}`}}
+                    searchable
+                    value={searchValue}
+                    searchValue={searchValue}
+                    onSearchChange={setSearchValue}
+                    className="select"
+                    label={props.label}
+                    data={props.data}
+                    allowDeselect
+                    mt="md"
+                    nothingFoundMessage="Nothing found..."
+                    onChange={() => props.onChange(searchValue)}
+                />
+                : <Select disabled />
             }
         </>
     )

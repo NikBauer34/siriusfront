@@ -35,7 +35,7 @@ const ModalAddMag: FC<modalprops> = (props) => {
                 <Modal.Title>{props.title}</Modal.Title>
                 <Modal.CloseButton style={{ border: '0' }} />
             </Modal.Header>
-            <Modal.Body p={30} style={{ display: 'flex' }}>
+            <Modal.Body p={30}>
                 {props.children}
                 <MarkupModalForm onSubmit={(title, file) => props.onModalConfirmed(title, file)} />
             </Modal.Body>

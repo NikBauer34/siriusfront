@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Markup } from "../components";
 import { ArrowBack, ModalAddMag } from "../modules/components";
 import { useNavigate } from "react-router-dom";
-import Fedya from '../img/Fedya.png';
+// import Fedya from '../img/Fedya.png';
 
 const MarkupPage: FC = () => {
     const navigate = useNavigate();
@@ -10,6 +10,7 @@ const MarkupPage: FC = () => {
 
     return (
         <>
+            <ArrowBack onClick={() => navigate('/marking')} />
             <Markup />
             <ModalAddMag
                 withCloseButton={false}
@@ -18,11 +19,11 @@ const MarkupPage: FC = () => {
                 onClose={() => true}
                 onModalConfirmed={() => false}
             >
-                <div>
+                {/* <div>
                     <img src={Fedya} style={{width:'165px', height:'165px'}}/>
-                </div>
+                </div> */}
             </ModalAddMag>
-            <ArrowBack onClick={() => navigate('/marking')} />
+            
         </>
 
     )

@@ -2,6 +2,7 @@ import { Modal } from "@mantine/core";
 import React, { FC } from "react";
 import { Button } from "@mantine/core";
 import VersionModalForm from "./VersionModalForm";
+import { ModalAddMag } from ".";
 interface CreateMarkupModalProps {
     opened: boolean;
     onClose: () => void;
@@ -9,10 +10,10 @@ interface CreateMarkupModalProps {
 }
 const CreateVersionModal: FC<CreateMarkupModalProps> = (props) => {
     return (
-        <Modal opened={props.opened} onClose={props.onClose} title="Создать новую версию" centered>
+        <ModalAddMag opened={props.opened} onClose={props.onClose} title="Создать новую версию" onModalConfirmed={() => false}>
             {/* <MarkupModalForm onSubmit={(title, file) => props.onModalConfirmed(title, file)}/> */}
-            <VersionModalForm onSubmit={(file: File | null, version: string) => props.onModalConfirmed(file, version)}/>
-        </Modal>
+            <VersionModalForm onSubmit={(file: File | null, version: string) => props.onModalConfirmed(file, version)} />
+        </ModalAddMag>
     )
 }
 export default CreateVersionModal

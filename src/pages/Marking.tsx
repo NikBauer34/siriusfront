@@ -1,16 +1,13 @@
 import React, { FC } from 'react';
 import PipeSelect from '../components/PipeSelect';
-
+import '../ui/styles/mainDivSelect2.css';
 
 
 const Marking: FC = () => {
-
     return (
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-start' }}>
-            <div style={{ width: '100%' }}>
-                <PipeSelect mode='magnetogram' />
-            </div>
-        </div>
+        <>
+            <PipeSelect className='mainDivSelect2' mode='magnetogram' />
+        </>
     );
 };
 

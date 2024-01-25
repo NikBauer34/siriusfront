@@ -34,8 +34,10 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
     // }
     return (
         <>
+            
             {data != null
                 ? <div className="grid_items">
+                    
                     <List
                         items={data}
                         notFoundMessage="Не найдено магнитограмм"

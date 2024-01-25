@@ -25,7 +25,7 @@ const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = ({ pipe_id }) => {
     }
     return (
         <>
-            <div className="magCard" color="#4a9dce">
+            <div className="magCard" style={{textAlign:'center', width:'calc(100%/4)'}}>
                 {/* <MagnetogramCard /> */}
                 <IconCirclePlus style={{cursor:'pointer', width:'90px', height:'90px', margin:0}}  onClick={open}/>
                 <h3 style={{margin:0}} >Создать новую магнитограмму</h3>

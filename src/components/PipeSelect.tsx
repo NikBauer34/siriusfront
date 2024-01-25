@@ -7,9 +7,10 @@ import Statistics from "./Statistics";
 import Magnetograms from "./Magnetograms";
 import { GetSquareAmount } from "../modules/helpers";
 interface PipeSelectProps {
-    mode: 'pipe' | 'magnetogram'
+    mode: 'pipe' | 'magnetogram';
+    className?:string;
 }
-const PipeSelect: FC<PipeSelectProps> = ({ mode }) => {
+const PipeSelect: FC<PipeSelectProps> = ({ mode, className }) => {
     const ref = useRef(null)
     const { pipe } = useContext(Context);
     const [selectedPipeValue, setSelectedPipeValue] = useState<MapResponse | null>({} as MapResponse)
@@ -37,15 +38,15 @@ const PipeSelect: FC<PipeSelectProps> = ({ mode }) => {
         }
     }
     return (
-        <>
+        <div className={className}>
             {/* <div style={{height: 30, width: 30}} ref={ref}></div>
             <button onClick={() => console.log(GetSquareAmount(ref, 5, 1, 3))}>ClickMe</button> */}
-            <DefaultSelect label="Выберите трубу" data={[...new Set(PipeList)]} onChange={(value: string) => onSelected(value)} />
+            <DefaultSelect width="100%" label="Выберите трубу" data={[...new Set(PipeList)]} onChange={(value: string) => onSelected(value)} />
             {selectedPipeValue != null
                 ? mode == 'pipe' ? <Statistics pipe_id={selectedPipeValue._id} /> : <Magnetograms pipe_id={selectedPipeValue._id} />
                 : <h1>Ничего</h1>
             }
-        </>
+        </div>
     )
 }
 export default PipeSelect

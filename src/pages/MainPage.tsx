@@ -5,7 +5,7 @@ import PipeSelect from '../components/PipeSelect';
 // import { Loader, Button } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import '../ui/styles/divMain.css';
-
+import '../ui/styles/mainDivSelect.css';
 
 const MainPage: FC = () => {
     // const { pipe, user, page } = useContext(Context)
@@ -31,7 +31,7 @@ const MainPage: FC = () => {
                 {/* <React.Suspense fallback={<Loader h={300} />}> */}
                 <YMap />
                 {/* </React.Suspense> */}
-                <PipeSelect mode='pipe' />
+                <PipeSelect className='mainDivSelect' mode='pipe' />
                 {/* <Statistics /> */}
             </div>
 

@@ -9,6 +9,7 @@ import { FilledSquare } from "../ui";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { randomId } from "@mantine/hooks";
 import { Button } from "@mantine/core";
+import { IconDownload } from "@tabler/icons-react";
 
 const Markup: FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -55,14 +56,40 @@ const Markup: FC = () => {
         return <h1>Ошибка</h1>
     }
     return (
-        <div ref={ref} style={{width: "100%", height: "100%", color:'#4a9dce'}}>
-            <List items={currentArray} notFoundMessage='Магнитограмма не найдена' renderItem={(square: number) => <FilledSquare key={randomId()} background={square == 1 ? 'red' : 'grey'}/>}/>
+        <div
+            ref={ref}
+            style={{
+                width: "100vh",
+                height: "100vh",
+                color: '#4a9dce',
+                margin: 'auto',
+                display: 'flex',
+                flexDirection: 'column',
+                alignContent: 'center',
+                alignItems: 'center'
+            }}>
+            <List
+                items={currentArray}
+                notFoundMessage='Магнитограмма не найдена'
+                renderItem={(square: number) => <FilledSquare key={randomId()} background={square == 1 ? 'red' : '#b6b6b6'} />}
+            />
             {i != 0 &&
                 <IconChevronLeft onClick={() => setI(i--)}>Влево</IconChevronLeft>
             }
             {dataMatrix[i++] == undefined &&
                 <IconChevronRight onClick={() => setI(i++)}>Вправо</IconChevronRight>
             }
+            <div style={{
+                height: 'max-content',
+                width: 'max-content',
+                display: 'flex',
+                alignItems: 'center',
+                cursor: 'pointer',
+                margin: '25px'
+            }}>
+                <IconDownload />
+                <span style={{ fontSize: '20px' }}>Скачать таблицу по данной магнитограмме</span>
+            </div>
             <Button onClick={() => navigate(`/versions?id=${searchParams.get("id")}`)}>Посмотреть все версии</Button>
         </div>
     )

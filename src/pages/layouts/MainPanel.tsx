@@ -83,10 +83,10 @@ const MainPanel: FC = () => {
           <IconArrowBarLeft className="iconLogout" />
           <div style={{ marginLeft: '8px' }} onClick={logout}>Выйти</div>
         </div>
-        {/* <Skeleton h={28} mt="sm" animate={true} /> */}
+        {/* <Skeleton h={28} mt="sm" animate={true} />             style={{marginTop:'15%'}}*/}
 
       </AppShell.Navbar>
-      <AppShell.Main display={'flex'} style={{ justifyContent: 'center' }}>
+      <AppShell.Main display={'flex'}>
         <Outlet />
       </AppShell.Main>
     </AppShell>

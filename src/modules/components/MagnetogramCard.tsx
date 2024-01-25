@@ -1,6 +1,6 @@
 import { Divider, Button, Container } from "@mantine/core";
 import React, { FC, useContext } from "react";
-import { Colors } from "../constants";
+// import { Colors } from "../constants";
 import { useNavigate } from "react-router-dom";
 import { MagnetogramResponse } from "../api/http/MagnetogramResponse";
 import { Context } from "../../main";
@@ -27,7 +27,6 @@ const MagnetogramCard: FC<MagnetogramCardProps> = (props) => {
             }}>
                 {props.magnetogram.title}
             </h3>
-            {/* <Divider my="sm" color={Colors.gradientFirst} /> */}
             <Button style={{ marginTop: 15 }} fullWidth onClick={() => onButtonClick(props.magnetogram._id)}>Подробнее</Button>
         </div>
     )
