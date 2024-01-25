@@ -5,7 +5,7 @@ import { MagnetogramVersion } from "../modules/api";
 import { VersionsList } from "../modules/components";
 import { useDisclosure } from "@mantine/hooks";
 import CreateVersionModal from "../modules/components/CreateVersionModal";
-import '../ui/styles/mainDivSelect2.css';
+import '../ui/styles/mainDivSelect.css';
 import { IconCirclePlus } from "@tabler/icons-react";
 
 
@@ -38,10 +38,10 @@ const Versions: FC = () => {
     let isSelected = useMemo(() => selection, [selection])
     let sel = true
     return (
-        <div style={{ marginTop: '1%' }} className="mainDivSelect2">
-            <div style={{color:'rgb(37, 135, 255)', display:'flex', alignItems:'center'}}>
-                <IconCirclePlus width={90} height={90}/>
-                <h1 onClick={open}>Создать новую версию магнитограммы</h1>
+        <div className="mainDivSelect">
+            <div onClick={open} style={{ color: 'rgb(37, 135, 255)', display: 'flex', alignItems: 'center',cursor:'pointer' }}>
+                <IconCirclePlus width={90} height={90} />
+                <h1 >Создать новую версию магнитограммы</h1>
             </div>
             {/* {isSelected
                 ? <h1 onClick={() => setSelection(true)}>Сравнить</h1>
@@ -52,4 +52,4 @@ const Versions: FC = () => {
         </div>
     )
 }
-export default Versions
+export default Versions;

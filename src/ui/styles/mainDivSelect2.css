@@ -1,5 +1,4 @@
 .mainDivSelect2{
-    /* width: calc(100%/2); */
     display: flex;
     flex-direction: column;
     margin: auto;

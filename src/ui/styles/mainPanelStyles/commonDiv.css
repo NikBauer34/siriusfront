@@ -1,25 +1,24 @@
-.commonDiv{
+.commonDiv {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    width: 100%;
+    color: #607ddd;
+    height: 12%;
     align-items: center;
-    justify-items: center;
-    width: 17%;
-    color:#dcdbdb;
-    height: 100%;
-    margin: auto;
+    justify-content: center;
+    border: 1px solid #e9e9e9;
 }
 
-
 .menu:hover{
-    color: white;
+    color: rgb(35, 88, 212);;
 }
 
 .menu-main{
-    color:white
+    color:rgb(35, 88, 212);
 }
 
 .menu-layouts{
-    color: white;
+    color: rgb(35, 88, 212);;
 }
 
 .logoImg{

@@ -8,7 +8,7 @@ import Magnetograms from "./Magnetograms";
 import { GetSquareAmount } from "../modules/helpers";
 interface PipeSelectProps {
     mode: 'pipe' | 'magnetogram';
-    className?:string;
+    className?: string;
 }
 const PipeSelect: FC<PipeSelectProps> = ({ mode, className }) => {
     const ref = useRef(null)
@@ -49,4 +49,4 @@ const PipeSelect: FC<PipeSelectProps> = ({ mode, className }) => {
         </>
     )
 }
-export default PipeSelect
+export default PipeSelect;

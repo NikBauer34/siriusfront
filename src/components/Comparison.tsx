@@ -63,7 +63,7 @@ const Comparison: FC = () => {
         return <h1>Ошибка</h1>
     }
     return (
-        <div ref={ref} style={{width: "100%", height: "100%"}}>
+        <div ref={ref} style={{ width: "100%", height: "100%" }}>
             <List items={currentArray} notFoundMessage='Не найдены координаты дефектов' renderItem={(triangle_square: number[]) => <TriangleSquare key={randomId()} firstTriangle={`10px solid ${triangle_square[0] == 1 ? 'red' : 'grey'}`} secondTriangle={`10px solid ${triangle_square[1] == 1 ? 'red' : 'grey'}`} />} />
             {i > 1 &&
                 <IconChevronLeft onClick={() => setI(i-4)}>Влево</IconChevronLeft>

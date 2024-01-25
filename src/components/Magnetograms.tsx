@@ -36,7 +36,6 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
     }
     return (
         <>
-            
             {data != null
                 ? <div className="grid_items" style={{marginTop: "55%"}}>
 {/*                     

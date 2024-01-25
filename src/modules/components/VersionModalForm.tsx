@@ -47,4 +47,4 @@ const VersionModalForm: FC<VersionModalFormProps> = (props) => {
         </form>
     )
 }
-export default VersionModalForm
+export default VersionModalForm;
