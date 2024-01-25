@@ -17,7 +17,7 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
         getMagnetograms()
         console.log('pipe_id effected')
     }, [pipe_id])
-    
+
     const getMagnetograms = async () => {
         const response = await magnetogram.getPipeMagnetograms(pipe_id)
         console.log('tyiff')
@@ -34,10 +34,9 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
     // }
     return (
         <>
-            
             {data != null
                 ? <div className="grid_items">
-                    
+
                     <List
                         items={data}
                         notFoundMessage="Не найдено магнитограмм"
