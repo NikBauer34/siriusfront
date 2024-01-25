@@ -2,7 +2,7 @@ import { useForm } from "@mantine/form";
 import React, { FC, useState } from "react";
 import { GradientButton, UnderlineInput } from "../../ui";
 import { Center, Text } from "@mantine/core";
-import { Dropzone } from "@mantine/dropzone";
+import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
 interface MarkupModalFormProps {
     onSubmit: (title: string, form: File | null) => void
 }

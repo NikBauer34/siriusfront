@@ -5,21 +5,27 @@ export interface MagnetogramResponse {
     pipe: string
 }
 export interface MagnetogramMarkupData {
-    markup: number[]
+    version: string,
+    date: Date,
+    defects_count?: number,
+    markup: number[],
+    data_table: string
 }
 export interface MagnetogramVersionsData {
     info: [{
         version: string,
         date: Date,
         defects_count?: number,
-        markup: number[]
+        markup: number[],
+        data_table: string
     }]
 }
 export interface MagnetogramVersion {
     version: string,
     date: Date,
     defects_count?: number,
-    markup: number[]
+    markup: number[],
+    data_table: string
 }
 export interface MagnetogramVersionsComparison {
     first_version: MagnetogramVersion,
@@ -34,6 +40,7 @@ export interface MagnetogramCreation {
         version: string,
         date: Date,
         defects_count?: number,
-        markup: number[]
+        markup: number[],
+        data_table: string
     }]
 }

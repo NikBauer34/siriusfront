@@ -38,7 +38,7 @@ const Versions: FC = () => {
     let isSelected = useMemo(() => selection, [selection])
     let sel = true
     return (
-        <div style={{ marginTop: '83%' }} className="mainDivSelect2">
+        <div style={{ marginTop: '1%' }} className="mainDivSelect2">
             <div style={{color:'rgb(37, 135, 255)', display:'flex', alignItems:'center'}}>
                 <IconCirclePlus width={90} height={90}/>
                 <h1 onClick={open}>Создать новую версию магнитограммы</h1>

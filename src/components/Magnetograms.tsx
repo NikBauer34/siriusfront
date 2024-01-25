@@ -6,6 +6,7 @@ import { MagnetogramResponse } from "../modules/api";
 import { CreateMarkupCard, List } from "../modules/components";
 import { randomId } from "@mantine/hooks";
 import '../ui/styles/grid.css'
+import MagnetogramList from "../modules/components/MagnetogramList";
 interface MagnetogramsProps {
     pipe_id: string
 }
@@ -14,10 +15,11 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
     const [data, setData] = useState<MagnetogramResponse[] | null>(null)
 
     useEffect(() => {
+        console.log(data)
+    }, [data])
+    useEffect(() => {
         getMagnetograms()
-        console.log('pipe_id effected')
     }, [pipe_id])
-    
     const getMagnetograms = async () => {
         const response = await magnetogram.getPipeMagnetograms(pipe_id)
         console.log('tyiff')
@@ -29,21 +31,27 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
     if (magnetogram.isLoading) {
         return <Loader h={300} />
     }
-    // if (magnetogram.isError) {
-    //     return <h1>Труба не выбрана</h1>
-    // }
+    if (magnetogram.isError) {
+        return <h1>Труба не выбрана</h1>
+    }
     return (
         <>
             
             {data != null
-                ? <div className="grid_items">
-                    
-                    <List
+                ? <div className="grid_items" style={{marginTop: "55%"}}>
+{/*                     
+                    //<List
                         items={data}
                         notFoundMessage="Не найдено магнитограмм"
                         renderItem={(magnetograms: MagnetogramResponse) => <MagnetogramCard key={magnetograms._id} magnetogram={magnetograms} />}
-                        lastComponentItems={[0]}
+                        lastComponentItems={data != null ? null : [0]}
                         renderLastComponentItems={(item: any) => <CreateMarkupCard key={item} pipe_id={data[0].pipe} />}
+                    /> */}
+                    <MagnetogramList 
+                        items={data}
+                        notFoundMessage="Не найдено магнитограмм"
+                        pipe_id={data[0].pipe}
+                        renderItem={(magnetograms: MagnetogramResponse) => <MagnetogramCard key={magnetograms._id} magnetogram={magnetograms} />}
                     />
                 </div>
                 : <h1>У трубы нет магнитограмм</h1>}
