@@ -1,5 +1,5 @@
 import React, { FC, useContext, useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Context } from "../main";
 import { MagnetogramVersion } from "../modules/api";
 import { VersionsList } from "../modules/components";
@@ -17,6 +17,7 @@ const Versions: FC = () => {
     const [opened, { open, close }] = useDisclosure(false)
     let [selection, setSelection] = useState(false)
     let [checkboxvalue, setCheckboxvalue] = useState<string[]>([])
+    let navigate = useNavigate()
     useEffect(() => {
         getVersions()
     }, [])

@@ -38,10 +38,12 @@ const Comparison: FC = () => {
         return []
     }
     const getCurrentArray = () => {
-        if (dataMatrix[0] != undefined) {
+        if (dataMatrix[i++] != undefined) {
             let size = 2
             let subarray = []
             while (dataMatrix[i].length) {
+                console.log('datamaz[i]')
+                console.log(dataMatrix[i])
                 subarray.push(dataMatrix[i].splice(0, size))
             }
             console.log(subarray)
@@ -63,13 +65,23 @@ const Comparison: FC = () => {
         return <h1>Ошибка</h1>
     }
     return (
-        <div ref={ref} style={{ width: "100%", height: "100%" }}>
-            <List items={currentArray} notFoundMessage='Не найдены координаты дефектов' renderItem={(triangle_square: number[]) => <TriangleSquare key={randomId()} firstTriangle={`10px solid ${triangle_square[0] == 1 ? 'red' : 'grey'}`} secondTriangle={`10px solid ${triangle_square[1] == 1 ? 'red' : 'grey'}`} />} />
+        <div ref={ref} style={{
+            width: "100vh",
+            height: "100vh",
+            color: '#4a9dce',
+            margin: 'auto',
+            marginTop: "30%",
+            display: 'flex',
+            flexDirection: 'column',
+            alignContent: 'center',
+            alignItems: 'center'
+        }}>
+            <List items={currentArray} notFoundMessage='Не долистали до конца' renderItem={(triangle_square: number[]) => <TriangleSquare key={randomId()} firstTriangle={`10px solid ${triangle_square[0] == 1 ? 'red' : 'grey'}`} secondTriangle={`10px solid ${triangle_square[1] == 1 ? 'red' : 'grey'}`} />} />
             {i > 1 &&
-                <IconChevronLeft onClick={() => setI(i-4)}>Влево</IconChevronLeft>
+                <IconChevronLeft onClick={() => setI(i-2)}>Влево</IconChevronLeft>
             }
             {dataMatrix[i++] != undefined &&
-                <IconChevronRight onClick={() => setI(i++)}>Вправо</IconChevronRight>
+                <IconChevronRight onClick={() => setI(i+2)}>Вправо</IconChevronRight>
             }
         </div>
     )

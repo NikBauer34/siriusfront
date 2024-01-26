@@ -29,7 +29,7 @@ const VersionsList: FC<VersionList> = (props) => {
                 ? <Checkbox.Group value={checkboxvalue} onChange={setCheckboxvalue} >
                     {props.data?.map((markup_version, index) =>
                         <div key={randomId()}>
-                            <VersionCard _id={searchParams.get("id") || '0'} i={index} date={markup_version.date} key={randomId()} />
+                            <VersionCard _id={searchParams.get("id") || '0'} i={index} date={markup_version.date} version={markup_version.version} key={randomId()} />
                             <Checkbox value={String(index)} variant="outline" indeterminate={indeterminate} key={randomId()}>
 
                             </Checkbox>
@@ -37,7 +37,7 @@ const VersionsList: FC<VersionList> = (props) => {
                     )}
                 </Checkbox.Group>
                 : props.data?.map((markup_version, index) =>
-                    <VersionCard _id={searchParams.get("id") || '0'} i={index} date={markup_version.date} key={randomId()} />
+                    <VersionCard _id={searchParams.get("id") || '0'} i={index} date={markup_version.date} version={markup_version.version} key={randomId()} />
                 )
             }
         </>
