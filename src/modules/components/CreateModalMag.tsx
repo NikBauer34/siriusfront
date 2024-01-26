@@ -5,7 +5,7 @@ import { ModalAddMag } from ".";
 interface CreateModalMagProps {
     opened: boolean;
     onClose: () => void;
-    onModalConfirmed: (file: File | null, title: string) => void;
+    onModalConfirmed: (title: string, file: File | null) => void;
 }
 const CreateModalMag: FC<CreateModalMagProps> = (props) => {
     return (
@@ -17,7 +17,7 @@ const CreateModalMag: FC<CreateModalMagProps> = (props) => {
             onModalConfirmed={() => false}
         >
             {/* <MarkupModalForm onSubmit={(file, title) => props.onModalConfirmed(title, file)}/> */}
-            <MarkupModalForm onSubmit={(title: string, file: File | null) => props.onModalConfirmed(file, title)} />
+            <MarkupModalForm onSubmit={(title: string, file: File | null) => props.onModalConfirmed(title, file)} />
         </ModalAddMag>
     )
 }

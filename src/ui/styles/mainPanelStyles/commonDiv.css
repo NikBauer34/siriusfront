@@ -2,15 +2,22 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    color: #607ddd;
+    color: #4282ea;
     height: 12%;
     align-items: center;
     justify-content: center;
-    border: 1px solid #e9e9e9;
+}
+
+.menu{
+    cursor: pointer;
+    height: -webkit-fill-available;
+    width: 100%;
+    padding: 10px 15px;
 }
 
 .menu:hover{
-    color: rgb(35, 88, 212);;
+    color:white;
+    background: rgb(66, 130, 234);
 }
 
 .menu-main{

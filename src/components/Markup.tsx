@@ -10,7 +10,9 @@ import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { randomId } from "@mantine/hooks";
 import { Button } from "@mantine/core";
 import { IconDownload } from "@tabler/icons-react";
+
 export const API_URL = 'http://localhost:4000'
+
 const Markup: FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     let ref = useRef(null);
@@ -79,10 +81,24 @@ const Markup: FC = () => {
                 renderItem={(square: number) => <FilledSquare key={randomId()} background={square == 1 ? 'red' : '#b6b6b6'} />}
             />
             {i > 1 &&
-                <IconChevronLeft onClick={() => setI(i-4)}>Влево</IconChevronLeft>
+                <IconChevronLeft
+                    style={{
+                        color: '#4282ea',
+                        width: '50px',
+                        height: '50px'
+                    }}
+                    onClick={() => setI(i - 4)}
+                >Влево</IconChevronLeft>
             }
             {dataMatrix[i++] != undefined &&
-                <IconChevronRight onClick={() => setI(i++)}>Вправо</IconChevronRight>
+                <IconChevronRight
+                    style={{
+                        color: '#4282ea',
+                        width: '50px',
+                        height: '50px'
+                    }}
+                    onClick={() => setI(i++)}
+                >Вправо</IconChevronRight>
             }
             <div style={{
                 height: 'max-content',
@@ -93,9 +109,14 @@ const Markup: FC = () => {
                 margin: '25px'
             }}>
                 <IconDownload />
-                <span style={{ fontSize: '20px' }} onClick={() => window.open(`${API_URL}/${data?.data_table}`)}>Скачать таблицу по данной магнитограмме</span>
+                <span
+                    style={{ fontSize: '20px' }}
+                    onClick={() => window.open(`${API_URL}/${data?.data_table}`)}
+                >Скачать таблицу по данной магнитограмме</span>
             </div>
-            <Button onClick={() => navigate(`/versions?id=${searchParams.get("id")}`)}>Посмотреть все версии</Button>
+            <Button
+                onClick={() => navigate(`/versions?id=${searchParams.get("id")}`)}
+            >Посмотреть все версии</Button>
         </div>
     )
 }

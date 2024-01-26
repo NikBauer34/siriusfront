@@ -3,7 +3,7 @@ import { Title, Text, Button, Container, Group } from '@mantine/core';
 import './Error404.modules.css';
 import { Context } from '../../main';
 import { useNavigate } from 'react-router-dom';
-
+import error404 from '../../img/404.png';
 
 const Error404: FC = () => {
   const { user } = useContext(Context)
@@ -20,15 +20,16 @@ const Error404: FC = () => {
 
   return (
     <Container className='root'>
-      <div className='label'>404</div>
-      <Title className='title'>You have found a secret place.</Title>
+      <div className='label'>
+        <img src={error404} width={'400px'}/>
+      </div>
+      <Title className='title'>Вы нашли секретное место.</Title>
       <Text c="dimmed" size="lg" ta="center" className='description'>
-        Unfortunately, this is only a 404 page. You may have mistyped the address, or the page has
-        been moved to another URL.
+        К сожалению, это всего лишь страница 404. Вы могли ошибиться в адресе сайта, или страница была перемещена на другой URL.
       </Text>
       <Group justify="center">
         <Button onClick={backHome} variant="subtle" size="md">
-          Take me back to home page
+          Вернуться на главную страницу
         </Button>
       </Group>
     </Container>

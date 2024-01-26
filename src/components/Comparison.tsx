@@ -8,6 +8,8 @@ import { TriangleSquare } from "../ui";
 import { Loader } from "@mantine/core";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { randomId } from "@mantine/hooks";
+import memo from '../img/memo.png';
+
 // import { GetSquareAmount } from "../modules/helpers";
 
 const Comparison: FC = () => {
@@ -63,14 +65,42 @@ const Comparison: FC = () => {
         return <h1>Ошибка</h1>
     }
     return (
-        <div ref={ref} style={{ width: "100%", height: "100%" }}>
-            <List items={currentArray} notFoundMessage='Не найдены координаты дефектов' renderItem={(triangle_square: number[]) => <TriangleSquare key={randomId()} firstTriangle={`10px solid ${triangle_square[0] == 1 ? 'red' : 'grey'}`} secondTriangle={`10px solid ${triangle_square[1] == 1 ? 'red' : 'grey'}`} />} />
+        <div ref={ref} style={{ width: "100%", height: "100%", marginTop: '90px' }}>
+            <List
+                items={currentArray}
+                notFoundMessage='Не найдены координаты дефектов'
+                renderItem={(triangle_square: number[]) => <TriangleSquare
+                    key={randomId()}
+                    firstTriangle={`10px solid ${triangle_square[0] == 1 ? 'red' : 'grey'}`}
+                    secondTriangle={`10px solid ${triangle_square[1] == 1 ? 'red' : 'grey'}`}
+                />}
+            />
             {i > 1 &&
-                <IconChevronLeft onClick={() => setI(i-4)}>Влево</IconChevronLeft>
+                <IconChevronLeft
+                    style={{
+                        color: '#4282ea',
+                        width: '50px',
+                        height: '50px'
+                    }}
+                    onClick={() => setI(i - 4)}
+                >Влево</IconChevronLeft>
             }
             {dataMatrix[i++] != undefined &&
-                <IconChevronRight onClick={() => setI(i++)}>Вправо</IconChevronRight>
+                <IconChevronRight
+                    style={{
+                        color: '#4282ea',
+                        width: '50px',
+                        height: '50px'
+                    }}
+                    onClick={() => setI(i++)}
+                >Вправо</IconChevronRight>
             }
+            <div style={{
+                display: 'flex',
+                justifyContent: 'flex-end'
+            }}>
+                <img width={'450px'} src={memo} />
+            </div>
         </div>
     )
 

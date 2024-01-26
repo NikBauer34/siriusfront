@@ -1,0 +1,8 @@
+.versionGridDiv{
+    width: 95%;
+    display: grid;
+    gap: 33px 0px;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    justify-items: center;
+}

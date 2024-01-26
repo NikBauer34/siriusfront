@@ -4,6 +4,8 @@ import { Checkbox } from "@mantine/core";
 import VersionCard from "./VersionCard";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { randomId } from "@mantine/hooks";
+import '../../ui/styles/customH1.css';
+
 interface VersionList {
     selection: boolean;
     setSelection: React.Dispatch<SetStateAction<boolean>>;
@@ -21,13 +23,17 @@ const VersionsList: FC<VersionList> = (props) => {
 
     return (
         <>
-            <div>
+            <div style={{ gridColumn: 3 }}>
                 {props.selection
-                    ? <h1 onClick={HandleComparison}>Сравнить</h1>
-                    : <h1 onClick={() => props.setSelection(true)}>Выбрать</h1>
+                    ? <span
+                        className="customH1"
+                        onClick={HandleComparison}>Сравнить</span>
+                    : <span
+                        className="customH1"
+                        onClick={() => props.setSelection(true)}>Выбрать</span>
                 }
             </div>
-            <div>
+            <div style={{ gridRowEnd: 4, gridColumn: 2 }}>
                 {props.selection
                     ? <Checkbox.Group value={checkboxvalue} onChange={setCheckboxvalue} >
                         {props.data?.map((markup_version, index) =>

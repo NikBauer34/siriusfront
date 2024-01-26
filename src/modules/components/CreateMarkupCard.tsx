@@ -16,7 +16,7 @@ const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = ({ pipe_id }) => {
     const onModalConfirmed = async (title: string, file: File | null) => {
 
         const formdata = new FormData()
-        
+
         formdata.append("pipe_id", pipe_id)
         formdata.append("version", "1.0.0")
         formdata.append("title", title)
@@ -24,7 +24,7 @@ const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = ({ pipe_id }) => {
         if (file != null) {
             formdata.append("file", file)
         }
-        
+
         const response = await magnetogram.createMagnetogram(formdata)
         console.log(response)
         close()

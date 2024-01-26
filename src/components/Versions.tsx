@@ -6,6 +6,7 @@ import { VersionsList } from "../modules/components";
 import { useDisclosure } from "@mantine/hooks";
 import CreateVersionModal from "../modules/components/CreateVersionModal";
 import '../ui/styles/mainDivSelect.css';
+import '../ui/styles/versionGridDiv.css';
 import { IconCirclePlus } from "@tabler/icons-react";
 
 
@@ -38,8 +39,8 @@ const Versions: FC = () => {
     let isSelected = useMemo(() => selection, [selection])
     let sel = true
     return (
-        <div className="mainDivSelect">
-            <div>
+        <div style={{width:'100%'}} className="mainDivSelect">
+            <div className="versionGridDiv">
                 <div
                     onClick={open}
                     style={{
@@ -49,19 +50,25 @@ const Versions: FC = () => {
                         cursor: 'pointer'
                     }}>
                     <IconCirclePlus width={90} height={90} />
-                    <h1 >Создать новую версию магнитограммы</h1>
+                    <h3 >Создать новую версию магнитограммы</h3>
                 </div>
                 {/* {isSelected
                     ? <h1 onClick={() => setSelection(true)}>Сравнить</h1>
                     : <h1>Выбрать</h1>
                     } */}
-                <VersionsList selection={selection} setSelection={setSelection} data={data} />
+                <VersionsList
+                    
+                    selection={selection}
+                    setSelection={setSelection}
+                    data={data}
+                />
             </div>
             <CreateVersionModal
                 opened={opened}
                 onClose={close}
-                onModalConfirmed={(file: File | null, version: string) => onModalConfirmed(file, version)} />
-        </div>
+                onModalConfirmed={(file: File | null, version: string) => onModalConfirmed(file, version)}
+            />
+        </div >
     )
 }
 export default Versions;

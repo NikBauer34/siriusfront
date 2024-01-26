@@ -7,8 +7,8 @@ import '../../ui/styles/mainPanelStyles/userImg.css';
 import '../../ui/styles/mainPanelStyles/commonDiv.css';
 import '../../ui/styles/mainPanelStyles/leftnavdiv.css';
 import '../../ui/styles/mainPanelStyles/iconLogout.css';
-import { IconArrowBarLeft, IconUser } from "@tabler/icons-react";
-
+import { IconArrowBarLeft } from "@tabler/icons-react";
+import logo from '../../img/DefectAI.png';
 
 const MainPanel: FC = () => {
   const location = useLocation();
@@ -27,6 +27,17 @@ const MainPanel: FC = () => {
       padding="md"
     >
       <AppShell.Navbar p="0" className="navbar">
+        <div>
+          <img
+            style={{
+              width: '184px',
+              margin: '7px',
+              cursor:'pointer'
+            }}
+            src={logo}
+            onClick={() => navigate('/main')}
+          />
+        </div>
         <div className="commonDiv">
           <div
             className={`menu ${location.pathname === "/main" ? "menu-main" : "menu"}`}
@@ -55,7 +66,7 @@ const MainPanel: FC = () => {
           <div style={{ marginLeft: '8px' }} onClick={logout}>Выйти</div>
         </div>
       </AppShell.Navbar>
-      <AppShell.Main style={{display:'flex', flexDirection:'column'}}>
+      <AppShell.Main style={{ display: 'flex', flexDirection: 'column' }}>
         <Outlet />
       </AppShell.Main>
     </AppShell>
