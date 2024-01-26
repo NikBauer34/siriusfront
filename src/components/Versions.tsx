@@ -60,8 +60,7 @@ const Versions: FC = () => {
                     ? <h1 onClick={() => setSelection(true)}>Сравнить</h1>
                     : <h1>Выбрать</h1>
                     } */}
-                <VersionsList
-                    
+                <VersionsList                    
                     selection={selection}
                     setSelection={setSelection}
                     data={data}

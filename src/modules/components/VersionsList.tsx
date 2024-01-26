@@ -37,7 +37,14 @@ const VersionsList: FC<VersionList> = (props) => {
                 {props.selection
                     ? <Checkbox.Group value={checkboxvalue} onChange={setCheckboxvalue} >
                         {props.data?.map((markup_version, index) =>
-                            <div key={randomId()}>
+                            <div
+                                style={{
+                                    cursor: 'pointer',
+                                    border: '1px solid #cbcbcb',
+                                    borderRadius: '10px',
+                                    padding: '7px 13px',
+                                }}
+                                key={randomId()}>
                                 <VersionCard
                                     _id={searchParams.get("id") || '0'}
                                     i={index} date={markup_version.date}
