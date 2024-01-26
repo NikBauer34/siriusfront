@@ -1,5 +1,5 @@
 import { AppShell } from "@mantine/core";
-import React, { FC, useContext } from "react";
+import React, { FC, useContext, useEffect } from "react";
 import { Context } from "../../main.tsx";
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import '../../ui/styles/mainPanelStyles/iconUser.css';
@@ -14,7 +14,9 @@ const MainPanel: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, pipe } = useContext(Context);
-
+  useEffect(() => {
+    user.checkAuth()
+  }, [])
   const logout = () => {
     user.logout();
     navigate('/registration');

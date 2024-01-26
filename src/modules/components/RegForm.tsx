@@ -43,6 +43,7 @@ const RegForm: FC = () => {
         user.registration(name, surname, nikname, password, role)
         if (!user.isError) {
             pipe.checkPipes()
+            user.checkAuth()
             navigate('/main')
         }
     }
