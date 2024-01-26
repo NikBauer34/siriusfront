@@ -21,25 +21,41 @@ const VersionsList: FC<VersionList> = (props) => {
 
     return (
         <>
-            {props.selection
-                ? <h1 onClick={HandleComparison}>Сравнить</h1>
-                : <h1 onClick={() => props.setSelection(true)}>Выбрать</h1>
-            }
-            {props.selection
-                ? <Checkbox.Group value={checkboxvalue} onChange={setCheckboxvalue} >
-                    {props.data?.map((markup_version, index) =>
-                        <div key={randomId()}>
-                            <VersionCard _id={searchParams.get("id") || '0'} i={index} date={markup_version.date} version={markup_version.version} key={randomId()} />
-                            <Checkbox value={String(index)} variant="outline" indeterminate={indeterminate} key={randomId()}>
-
-                            </Checkbox>
-                        </div>
-                    )}
-                </Checkbox.Group>
-                : props.data?.map((markup_version, index) =>
-                    <VersionCard _id={searchParams.get("id") || '0'} i={index} date={markup_version.date} version={markup_version.version} key={randomId()} />
-                )
-            }
+            <div>
+                {props.selection
+                    ? <h1 onClick={HandleComparison}>Сравнить</h1>
+                    : <h1 onClick={() => props.setSelection(true)}>Выбрать</h1>
+                }
+            </div>
+            <div>
+                {props.selection
+                    ? <Checkbox.Group value={checkboxvalue} onChange={setCheckboxvalue} >
+                        {props.data?.map((markup_version, index) =>
+                            <div key={randomId()}>
+                                <VersionCard
+                                    _id={searchParams.get("id") || '0'}
+                                    i={index} date={markup_version.date}
+                                    key={randomId()}
+                                />
+                                <Checkbox
+                                    value={String(index)}
+                                    variant="outline"
+                                    indeterminate={indeterminate}
+                                    key={randomId()}
+                                >
+                                </Checkbox>
+                            </div>
+                        )}
+                    </Checkbox.Group>
+                    : props.data?.map((markup_version, index) =>
+                        <VersionCard
+                            _id={searchParams.get("id") || '0'}
+                            i={index} date={markup_version.date}
+                            key={randomId()}
+                        />
+                    )
+                }
+            </div>
         </>
     )
 }

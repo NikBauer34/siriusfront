@@ -40,16 +40,28 @@ const Versions: FC = () => {
     let sel = true
     return (
         <div className="mainDivSelect">
-            <div onClick={open} style={{ color: 'rgb(37, 135, 255)', display: 'flex', alignItems: 'center',cursor:'pointer' }}>
-                <IconCirclePlus width={90} height={90} />
-                <h1 >Создать новую версию магнитограммы</h1>
+            <div>
+                <div
+                    onClick={open}
+                    style={{
+                        color: 'rgb(37, 135, 255)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        cursor: 'pointer'
+                    }}>
+                    <IconCirclePlus width={90} height={90} />
+                    <h1 >Создать новую версию магнитограммы</h1>
+                </div>
+                {/* {isSelected
+                    ? <h1 onClick={() => setSelection(true)}>Сравнить</h1>
+                    : <h1>Выбрать</h1>
+                    } */}
+                <VersionsList selection={selection} setSelection={setSelection} data={data} />
             </div>
-            {/* {isSelected
-                ? <h1 onClick={() => setSelection(true)}>Сравнить</h1>
-                : <h1>Выбрать</h1>
-                } */}
-            <VersionsList selection={selection} setSelection={setSelection} data={data} />
-            <CreateVersionModal opened={opened} onClose={close} onModalConfirmed={(file: File | null, version: string) => onModalConfirmed(file, version)} />
+            <CreateVersionModal
+                opened={opened}
+                onClose={close}
+                onModalConfirmed={(file: File | null, version: string) => onModalConfirmed(file, version)} />
         </div>
     )
 }

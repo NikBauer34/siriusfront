@@ -4,15 +4,15 @@ import React, { FC, useState } from "react";
 import { UnderlineInput } from "../../ui";
 import { Dropzone } from "@mantine/dropzone";
 interface VersionModalFormProps {
-    onSubmit: (file: File | null, version: string) => void
+    onSubmit: (file: File | null, version: string) => void;
 }
 interface FormValues {
-    file: File | null,
-    version: string
+    file: File | null;
+    version: string;
 }
 const VersionModalForm: FC<VersionModalFormProps> = (props) => {
     const VersionModalHookForm = useForm<FormValues>({
-        initialValues: { file: null, version: ''},
+        initialValues: { file: null, version: '' },
         validateInputOnChange: true,
         validate: {
             version: matches(/^(\d+\.)?(\d+\.)?(\*|\d+)$/, 'Введите коректное описание версии')
@@ -26,10 +26,10 @@ const VersionModalForm: FC<VersionModalFormProps> = (props) => {
     return (
         <form onSubmit={VersionModalHookForm.onSubmit((values) => props.onSubmit(values.file, values.version))}>
             <UnderlineInput placeholder="Введите версию" {...VersionModalHookForm.getInputProps('version')} />
-            <Dropzone 
-            maxSize={5 * 1024 ** 2} 
-            onDrop={(files) => onDrop(files)}
-            onReject={() => VersionModalHookForm.setFieldError('files', 'Select images only')}
+            <Dropzone
+                maxSize={5 * 1024 ** 2}
+                onDrop={(files) => onDrop(files)}
+                onReject={() => VersionModalHookForm.setFieldError('files', 'Select images only')}
             >
                 <Center h={120}>
                     <Dropzone.Idle>Drop files here</Dropzone.Idle>
@@ -43,7 +43,7 @@ const VersionModalForm: FC<VersionModalFormProps> = (props) => {
                     {selectedFile.name}
                 </Text>
             }
-             <Button style={{ marginTop: 15 }} fullWidth type="submit">Создать</Button>
+            <Button style={{ marginTop: 15 }} fullWidth type="submit">Создать</Button>
         </form>
     )
 }

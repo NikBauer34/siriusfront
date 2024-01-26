@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import { Modal } from '@mantine/core';
 import '../../ui/styles/modalStyles/modalHeader.css';
-import MarkupModalForm from './MarkupModalForm';
+// import MarkupModalForm from './MarkupModalForm';
 interface modalprops {
     title?: string;
     children?: ReactNode;
@@ -37,10 +37,7 @@ const ModalAddMag: FC<modalprops> = (props) => {
             </Modal.Header>
             <Modal.Body p={30}>
                 {props.children}
-               
             </Modal.Body>
-
-
         </Modal>
     )
 }

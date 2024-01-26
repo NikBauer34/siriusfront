@@ -31,7 +31,7 @@ const MainPage: FC = () => {
                 {/* <React.Suspense fallback={<Loader h={300} />}> */}
                 <YMap />
                 {/* </React.Suspense> */}
-                <PipeSelect className='mainDivSelect' mode='pipe' />
+                <PipeSelect width='39%' className='mainDivSelect' mode='pipe' />
                 {/* <Statistics /> */}
             </div>
 

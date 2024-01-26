@@ -6,7 +6,7 @@ import '../ui/styles/mainDivSelect.css';
 const Marking: FC = () => {
     return (
         <>
-            <PipeSelect className='mainDivSelect' mode='magnetogram' />
+            <PipeSelect width='50%' className='mainDivSelect' mode='magnetogram' />
         </>
     );
 };

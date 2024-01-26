@@ -4,18 +4,18 @@ import { GradientButton, UnderlineInput } from "../../ui";
 import { Center, Text } from "@mantine/core";
 import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
 interface MarkupModalFormProps {
-    onSubmit: (title: string, form: File | null) => void
+    onSubmit: (title: string, form: File | null) => void;
 }
 interface FormValues {
-    title: string
-    file: File | null
+    file: File | null;
+    title: string;
 }
 const MarkupModalForm: FC<MarkupModalFormProps> = (props) => {
     const MarkupModalHookForm = useForm<FormValues>({
-        initialValues: { title: '', file: null },
+        initialValues: { file: null, title: '' },
         validateInputOnChange: true,
         validate: {
-            title: (val: string) => (val.length > 3 ? null : 'Название разметки не может быть меньше 4 символов'),
+            title: (val: string) => (val.length > 3 ? null : 'Название магнитограммы не может быть меньше 4 символов'),
         }
     })
     let [selectedFile, setSelectedFile] = useState<File | null>(null)
