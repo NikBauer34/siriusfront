@@ -26,6 +26,7 @@ const MarkupModalForm: FC<MarkupModalFormProps> = (props) => {
     return (
         <form onSubmit={MarkupModalHookForm.onSubmit((val) => props.onSubmit(val.title, val.file))}>
             <UnderlineInput placeholder="Введите название" {...MarkupModalHookForm.getInputProps('title')} />
+            <div/>
             <Dropzone
                 maxSize={5 * 1024 ** 2}
                 onDrop={(files) => onDrop(files)}

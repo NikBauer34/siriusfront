@@ -35,6 +35,9 @@ const Versions: FC = () => {
         }
         const response = await magnetogram.createMagnetogramVersion(formdata)
         console.log(response)
+        if (data != null) {
+            setData([...data, response])
+        }
     }
     let isSelected = useMemo(() => selection, [selection])
     let sel = true
@@ -50,7 +53,7 @@ const Versions: FC = () => {
                         cursor: 'pointer'
                     }}>
                     <IconCirclePlus width={90} height={90} />
-                    <h1 >Создать новую версию магнитограммы</h1>
+                    <h1>Создать новую версию магнитограммы</h1>
                 </div>
                 {/* {isSelected
                     ? <h1 onClick={() => setSelection(true)}>Сравнить</h1>

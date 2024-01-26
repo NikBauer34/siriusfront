@@ -7,6 +7,7 @@ import { MagnetogramResponse } from "../modules/api";
 // import { randomId } from "@mantine/hooks";
 import '../ui/styles/grid.css'
 import MagnetogramList from "../modules/components/MagnetogramList";
+import { MagnetogramCreation } from "../modules/api/http/MagnetogramResponse";
 
 interface MagnetogramsProps {
     pipe_id: string
@@ -27,6 +28,12 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
         console.log(response)
         if (response.length != 0) {
             setData(response)
+        }
+    }
+    const onModalConfirmed = (response: MagnetogramCreation) => {
+        console.log('Done')
+        if (data != null) {
+            setData([...data, response])
         }
     }
     if (magnetogram.isLoading) {
@@ -51,6 +58,7 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
                         items={data}
                         notFoundMessage="Не найдено магнитограмм"
                         pipe_id={data[0].pipe}
+                        onModalConfirmed={(response) => onModalConfirmed(response)}
                         renderItem={(magnetograms: MagnetogramResponse) => <MagnetogramCard
                             key={magnetograms._id}
                             magnetogram={magnetograms}
