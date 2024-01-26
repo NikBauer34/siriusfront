@@ -36,6 +36,7 @@ const VersionsList: FC<VersionList> = (props) => {
                                     _id={searchParams.get("id") || '0'}
                                     i={index} date={markup_version.date}
                                     key={randomId()}
+                                    version={markup_version.version}
                                 />
                                 <Checkbox
                                     value={String(index)}
@@ -52,6 +53,7 @@ const VersionsList: FC<VersionList> = (props) => {
                             _id={searchParams.get("id") || '0'}
                             i={index} date={markup_version.date}
                             key={randomId()}
+                            version={markup_version.version}
                         />
                     )
                 }

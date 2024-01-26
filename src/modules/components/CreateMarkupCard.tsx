@@ -13,7 +13,7 @@ const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = ({ pipe_id }) => {
     const [opened, { open, close }] = useDisclosure(false);
     const { magnetogram } = useContext(Context)
 
-    const onModalConfirmed = async (title: string, file: File | null) => {
+    const onModalConfirmed = async (file: File | null, title: string) => {
 
         const formdata = new FormData()
         
@@ -27,7 +27,7 @@ const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = ({ pipe_id }) => {
         
         const response = await magnetogram.createMagnetogram(formdata)
         console.log(response)
-        close()
+        window.location.reload()
     }
     return (
         <>
