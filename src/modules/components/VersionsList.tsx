@@ -18,7 +18,11 @@ const VersionsList: FC<VersionList> = (props) => {
     let [indeterminate, setIndeterminate] = useState(false)
 
     const HandleComparison = () => {
-        navigate(`/comparison?id=${searchParams.get("id") || '0'}&first_version=${Number(checkboxvalue[0])}&second_version=${Number(checkboxvalue[1])}`)
+        if (checkboxvalue.length == 2) {
+            navigate(`/comparison?id=${searchParams.get("id") || '0'}&first_version=${Number(checkboxvalue[0])}&second_version=${Number(checkboxvalue[1])}`)
+        } else {
+            alert('Можно сравнивать только две версии магнитограммы!')
+        }
     }
 
     return (

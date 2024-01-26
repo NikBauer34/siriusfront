@@ -38,6 +38,9 @@ const LoginForm: FC = () => {
     if (user.isLoading) {
         return <Loader h={300} />
     }
+    if (user.isError) {
+        alert('Вы указали неправильный логин или пароль')
+    }
     return (
         <div className="formContainer">
             <form className="authForm" onSubmit={LoginHookForm.onSubmit((val) => FormOnSubmit(val))}>

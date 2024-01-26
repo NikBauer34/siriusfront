@@ -47,7 +47,12 @@ const RegForm: FC = () => {
             navigate('/main')
         }
     }
-
+    if (user.isLoading) {
+        return <Loader h={300} />
+    }
+    if (user.isError) {
+        alert('Данный логин уже занят')
+    }
     return (
         <div className="formContainer">
             <form className="authForm" onSubmit={RegHookForm.onSubmit((val) => FormOnSubmit(val))}>

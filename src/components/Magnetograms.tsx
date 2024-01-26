@@ -15,6 +15,7 @@ interface MagnetogramsProps {
 const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
     const { magnetogram } = useContext(Context)
     const [data, setData] = useState<MagnetogramResponse[] | null>(null)
+    const [isLoading, setLoading] = useState(false)
 
     useEffect(() => {
         console.log(data)
@@ -23,11 +24,15 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
         getMagnetograms()
     }, [pipe_id])
     const getMagnetograms = async () => {
-        const response = await magnetogram.getPipeMagnetograms(pipe_id)
-        console.log('tyiff')
-        console.log(response)
-        if (response.length != 0) {
-            setData(response)
+        if (pipe_id != undefined) {
+            setLoading(true)
+            const response = await magnetogram.getPipeMagnetograms(pipe_id)
+            setLoading(false)
+            console.log('tyiff')
+            console.log(response)
+            if (response.length != 0) {
+                setData(response)
+            }
         }
     }
     const onModalConfirmed = (response: MagnetogramCreation) => {
@@ -36,7 +41,7 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
             setData([...data, response])
         }
     }
-    if (magnetogram.isLoading) {
+    if (isLoading) {
         return <Loader h={300} />
     }
     if (magnetogram.isError) {
@@ -49,6 +54,7 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
     }
     return (
         <>
+
             {data != null
                 ? <div className="grid_items" style={{ marginTop: "55%" }}>
                     {/*                     
@@ -71,7 +77,7 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
                         />}
                     />
                 </div>
-                : <h1>У трубы нет магнитограмм</h1>}
+                : <h1 style={{ margin: 'auto' }}>Выберите трубу</h1>}
         </>
     )
 }

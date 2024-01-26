@@ -48,12 +48,12 @@ const PipeSelect: FC<PipeSelectProps> = ({ mode, className, width }) => {
                 data={[...new Set(PipeList)]}
                 onChange={(value: string) => onSelected(value)}
             />
-            {selectedPipeValue != null
+            <>{selectedPipeValue != null
                 ? mode == 'pipe'
                     ? <Statistics pipe_id={selectedPipeValue._id} />
                     : <Magnetograms pipe_id={selectedPipeValue._id} />
                 : <h1>Ничего</h1>
-            }
+            }</>
         </>
     )
 }

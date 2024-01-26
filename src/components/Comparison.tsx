@@ -18,13 +18,16 @@ const Comparison: FC = () => {
     const { magnetogram } = useContext(Context)
     const [data, setData] = useState<MagnetogramVersionsComparison | null>(null)
     let [i, setI] = useState(0)
+    const [isLoading, setLoading] = useState(false)
     useEffect(() => {
         getMarkup()
     }, [])
     const getMarkup = async () => {
+        setLoading(true)
         const response = await magnetogram.getMagnetogramVersionsComparison(searchParams.get("id") || '0', Number(searchParams.get("first_version")), Number(searchParams.get("second_version")))
         console.log(response)
         setData(response)
+        setLoading(false)
     }
     const getDataMatrix = () => {
         if (data?.first_version.markup != undefined) {
@@ -60,7 +63,7 @@ const Comparison: FC = () => {
     console.log('currentarray')
     console.log(currentArray)
     console.log('i: ' + i)
-    if (magnetogram.isLoading) {
+    if (isLoading) {
         return <Loader h={300} />
     }
     if (magnetogram.isError) {
@@ -79,7 +82,7 @@ const Comparison: FC = () => {
             alignContent: 'center',
             alignItems: 'center'
         }}>
-            <List items={currentArray} notFoundMessage='Не долистали до конца' renderItem={(triangle_square: number[]) => <TriangleSquare key={randomId()} firstTriangle={`10px solid ${triangle_square[0] == 1 ? 'red' : 'grey'}`} secondTriangle={`10px solid ${triangle_square[1] == 1 ? 'red' : 'grey'}`} />} />
+            <List items={currentArray} notFoundMessage='Вы долистали до конца' renderItem={(triangle_square: number[]) => <TriangleSquare key={randomId()} firstTriangle={`10px solid ${triangle_square[0] == 1 ? 'red' : 'grey'}`} secondTriangle={`10px solid ${triangle_square[1] == 1 ? 'red' : 'grey'}`} />} />
             <div>
                 {i > 1 &&
                     <IconChevronLeft
@@ -88,7 +91,7 @@ const Comparison: FC = () => {
                             width: '50px',
                             height: '50px'
                         }}
-                        onClick={() => setI(i - 4)}
+                        onClick={() => setI(i - 2)}
                     >Влево</IconChevronLeft>
                 }
                 {dataMatrix[i++] != undefined &&
@@ -98,7 +101,7 @@ const Comparison: FC = () => {
                             width: '50px',
                             height: '50px'
                         }}
-                        onClick={() => setI(i++)}
+                        onClick={() => setI(i + 2)}
                     >Вправо</IconChevronRight>
                 }
             </div>
