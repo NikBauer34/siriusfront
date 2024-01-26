@@ -9,29 +9,15 @@ import { MagnetogramCreation } from "../api/http/MagnetogramResponse";
 
 interface CreateMagnetogramCardProps {
     pipe_id: string,
-    onModalConfirmed: (response: MagnetogramCreation) => void
+    setItems: (res: MagnetogramCreation) => void
 }
 const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = (props) => {
     const [opened, { open, close }] = useDisclosure(false);
     const { magnetogram } = useContext(Context)
 
-    const onModalConfirmed = async (title: string, file: File | null) => {
-
-        const formdata = new FormData()
-
-        formdata.append("pipe_id", props.pipe_id)
-        formdata.append("version", "1.0.0")
-        formdata.append("title", title)
-
-        if (file != null) {
-            formdata.append("file", file)
-        }
-
-        const response = await magnetogram.createMagnetogram(formdata)
-        console.log(response)
-    }
     return (
         <>
+
             <div className="magCard" style={{ textAlign: 'center', width: 'calc(100%/4)' }}>
                 {/* <MagnetogramCard /> */}
                 <IconCirclePlus
@@ -45,7 +31,7 @@ const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = (props) => {
                 />
                 <h3 style={{ margin: 0 }} >Создать новую магнитограмму</h3>
             </div>
-            <CreateModalMag opened={opened} onClose={close} onModalConfirmed={(title, file) => onModalConfirmed(title, file)} />
+            <CreateModalMag opened={opened} onClose={close} pipe_id={props.pipe_id} setItems={(res: MagnetogramCreation) => props.setItems(res)}/>
             {/* <ModalAddMag
                 withCloseButton={false}
                 title="Создать новую магнитограмму"

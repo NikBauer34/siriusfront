@@ -42,6 +42,11 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
     if (magnetogram.isError) {
         return <h1 style={{ margin: 'auto' }}>Труба не выбрана</h1>
     }
+    const setItems = (response: MagnetogramCreation) => {
+        if (data != null) {
+            setData([...data, response])
+        }
+    }
     return (
         <>
             {data != null
@@ -56,6 +61,7 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
                     /> */}
                     <MagnetogramList
                         items={data}
+                        setItems={(res: MagnetogramCreation) => setItems(res)}
                         notFoundMessage="Не найдено магнитограмм"
                         pipe_id={data[0].pipe}
                         onModalConfirmed={(response) => onModalConfirmed(response)}

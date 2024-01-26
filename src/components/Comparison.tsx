@@ -80,26 +80,28 @@ const Comparison: FC = () => {
             alignItems: 'center'
         }}>
             <List items={currentArray} notFoundMessage='Не долистали до конца' renderItem={(triangle_square: number[]) => <TriangleSquare key={randomId()} firstTriangle={`10px solid ${triangle_square[0] == 1 ? 'red' : 'grey'}`} secondTriangle={`10px solid ${triangle_square[1] == 1 ? 'red' : 'grey'}`} />} />
-            {i > 1 &&
-                <IconChevronLeft
-                    style={{
-                        color: '#4282ea',
-                        width: '50px',
-                        height: '50px'
-                    }}
-                    onClick={() => setI(i - 4)}
-                >Влево</IconChevronLeft>
-            }
-            {dataMatrix[i++] != undefined &&
-                <IconChevronRight
-                    style={{
-                        color: '#4282ea',
-                        width: '50px',
-                        height: '50px'
-                    }}
-                    onClick={() => setI(i++)}
-                >Вправо</IconChevronRight>
-            }
+            <div>
+                {i > 1 &&
+                    <IconChevronLeft
+                        style={{
+                            color: '#4282ea',
+                            width: '50px',
+                            height: '50px'
+                        }}
+                        onClick={() => setI(i - 4)}
+                    >Влево</IconChevronLeft>
+                }
+                {dataMatrix[i++] != undefined &&
+                    <IconChevronRight
+                        style={{
+                            color: '#4282ea',
+                            width: '50px',
+                            height: '50px'
+                        }}
+                        onClick={() => setI(i++)}
+                    >Вправо</IconChevronRight>
+                }
+            </div>
             <div style={{
                 display: 'flex',
                 justifyContent: 'flex-end'

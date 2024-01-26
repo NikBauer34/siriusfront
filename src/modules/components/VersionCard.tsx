@@ -8,7 +8,11 @@ interface VersionCardProps {
     version: string;
 }
 const VersionCard: FC<VersionCardProps> = (props) => {
-    const date = new Date(props.date)
+    let date = new Date(props.date)
+    console.log('date')
+    if (date == null || date == undefined || Number.isNaN(date.getFullYear())) {
+        date = new Date()
+    }
     const { page } = useContext(Context)
     const navigate = useNavigate()
     const HandleClick = (_id: string, i: number) => {

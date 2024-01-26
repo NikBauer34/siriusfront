@@ -27,17 +27,9 @@ const Versions: FC = () => {
         console.log(response)
         setData(response.info)
     }
-    const onModalConfirmed = async (file: File | null, version: string) => {
-        const formdata = new FormData()
-        formdata.append("id", searchParams.get("id") || '0')
-        formdata.append("version", version)
-        if (file != null) {
-            formdata.append("file", file)
-        }
-        const response = await magnetogram.createMagnetogramVersion(formdata)
-        console.log(response)
+    const setItems = (res: MagnetogramVersion) => {
         if (data != null) {
-            setData([...data, response])
+            setData([...data, res])
         }
     }
     let isSelected = useMemo(() => selection, [selection])
@@ -68,6 +60,7 @@ const Versions: FC = () => {
                 />
             </div>
             <CreateVersionModal
+                setItems={(res: MagnetogramVersion) => setItems(res)}
                 opened={opened}
                 onClose={close}
                 onModalConfirmed={(file: File | null, version: string) => onModalConfirmed(file, version)}
