@@ -43,7 +43,7 @@ const Comparison: FC = () => {
         return []
     }
     const getCurrentArray = () => {
-        if (dataMatrix[i++] != undefined) {
+        if (dataMatrix[i++] != undefined && dataMatrix[i].length != undefined) {
             let size = 2
             let subarray = []
             while (dataMatrix[i].length) {
@@ -63,9 +63,9 @@ const Comparison: FC = () => {
     console.log('currentarray')
     console.log(currentArray)
     console.log('i: ' + i)
-    if (isLoading) {
-        return <Loader h={300} />
-    }
+    // if (isLoading) {
+    //     return <Loader h={300} />
+    // }
     if (magnetogram.isError) {
         return <h1>Ошибка</h1>
     }
@@ -91,7 +91,7 @@ const Comparison: FC = () => {
                             width: '50px',
                             height: '50px'
                         }}
-                        onClick={() => setI(i - 2)}
+                        onClick={() => setI(i - 3)}
                     >Влево</IconChevronLeft>
                 }
                 {dataMatrix[i++] != undefined &&

@@ -14,10 +14,11 @@ const MainPanel: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, pipe } = useContext(Context);
-  useEffect(() => {
-    user.checkAuth()
-  }, [])
+  // useEffect(() => {
+  //   user.checkAuth()
+  // }, [])
   const logout = () => {
+    console.log('buttpn works')
     user.logout();
     navigate('/registration');
   }

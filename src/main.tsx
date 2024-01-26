@@ -8,6 +8,7 @@ import '@mantine/charts/styles.css';
 import '@mantine/dropzone/styles.css';
 import MagnetogramStore from './modules/store/MagnetogramStore.ts';
 import PageStore from './modules/store/PageStore.ts';
+import { Notifications } from '@mantine/notifications';
 
 const theme = createTheme({
   fontFamily: 'Montserrat, sans-serif'
@@ -44,6 +45,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   }}>
     <MantineProvider defaultColorScheme='light' theme={theme}>
       <App />
+      <Notifications />
     </MantineProvider>
   </Context.Provider>
 )

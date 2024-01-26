@@ -8,13 +8,19 @@ import { Error404 } from "./index.ts";
 import { Loader } from "@mantine/core";
 
 const AppRouter: FC = () => {
-  const { user, page } = useContext(Context)
-  
+  const { user, page, pipe } = useContext(Context)
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      user.checkAuth()
+      pipe.checkPipes()
+    }
+  }, [])
   if (page.isLoading) {
     return <Loader h={300} />
   }
   return (
     <Routes>
+      <Route path="*" Component={Error404} />
       {publicRouting.map(({ path, component }) =>
         <Route key={path} path={path} Component={component} />
       )}
@@ -25,7 +31,6 @@ const AppRouter: FC = () => {
           )}
         </Route>
       }  
-      <Route path="*" Component={Error404} />
     </Routes>
   )
 }

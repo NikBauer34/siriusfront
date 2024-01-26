@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import { YMap } from '../components';
 import PipeSelect from '../components/PipeSelect';
 // import { Context } from '../main';
@@ -6,32 +6,27 @@ import PipeSelect from '../components/PipeSelect';
 import { useNavigate } from 'react-router-dom';
 import '../ui/styles/divMain.css';
 import '../ui/styles/mainDivSelect.css';
+import { Context } from '../main';
+import { MapResponse } from '../modules/api';
 
 const MainPage: FC = () => {
-    // const { pipe, user, page } = useContext(Context)
-    const navigate = useNavigate()
-    // useEffect(() => {
-    //     console.log('observer')
-    // }, [pipe.userpipes])
-    // useEffect(() => {
-    //     checkPipes()
-    // }, [pipe.userpipes, pipe.pipes])
-    // useEffect(() => {
-    //     page.setLoading(false)
-    //     checkPipes()
-    // }, [])
-    // const checkPipes = () => {
-    //     user.checkAuth()
-    //     pipe.checkPipes()
-    // }
+    const {pipe, user} = useContext(Context)
+    const [userpipes, setUserpipes] = useState<MapResponse[]>([] as MapResponse[])
+    const NewUserPipe = (pipe: MapResponse) => {
+        setUserpipes([...userpipes, pipe])
+    }
+    useEffect(() => {
+        user.checkAuth()
+        pipe.checkPipes()
+    }, [])
 
     return (
         <>
             <div className='divMain'>
                 {/* <React.Suspense fallback={<Loader h={300} />}> */}
-                <YMap />
+                <YMap onModalConfirmed={(pipe: MapResponse) => NewUserPipe(pipe)}/>
                 {/* </React.Suspense> */}
-                <PipeSelect width='39%' className='mainDivSelect' mode='pipe' />
+                <PipeSelect width='39%' className='mainDivSelect' mode='pipe' pipes={userpipes}/>
                 {/* <Statistics /> */}
             </div>
 

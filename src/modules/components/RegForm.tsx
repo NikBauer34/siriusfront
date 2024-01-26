@@ -39,20 +39,23 @@ const RegForm: FC = () => {
         return <Loader h={300} />
     }
 
-    const FormOnSubmit = ({ name, surname, nikname, password, role }: regFormProps) => {
-        user.registration(name, surname, nikname, password, role)
+    const FormOnSubmit = async({ name, surname, nikname, password, role }: regFormProps) => {
+        const response = await user.registration(name, surname, nikname, password, role)
         if (!user.isError) {
             pipe.checkPipes()
             user.checkAuth()
-            navigate('/main')
+            navigate('/marking')
+        }
+        if (typeof response == 'string') {
+            alert(response)
         }
     }
-    if (user.isLoading) {
-        return <Loader h={300} />
-    }
-    if (user.isError) {
-        alert('Данный логин уже занят')
-    }
+    // if (user.isLoading) {
+    //     return <Loader h={300} />
+    // }
+    // if (user.isError) {
+    //     alert('Данный логин уже занят')
+    // }
     return (
         <div className="formContainer">
             <form className="authForm" onSubmit={RegHookForm.onSubmit((val) => FormOnSubmit(val))}>

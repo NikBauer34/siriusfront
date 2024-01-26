@@ -9,6 +9,7 @@ import '../../ui/styles/spanOr.css';
 import '../../ui/styles/body.css';
 import '../../ui/styles/formContainer.css';
 import { useNavigate } from "react-router-dom";
+import { notifications } from "@mantine/notifications";
 interface LoginProps {
     nikname: string;
     password: string;
@@ -27,20 +28,30 @@ const LoginForm: FC = () => {
         }
     })
 
-    const FormOnSubmit = ({ nikname, password }: LoginProps) => {
-        user.login(nikname, password)
+    const FormOnSubmit = async ({ nikname, password }: LoginProps) => {
+        const response = await user.login(nikname, password)
+        console.log(response)
         if (!user.isError) {
             pipe.checkPipes();
             user.checkAuth()
-            navigate('/main')
+            navigate('/marking')
+        }
+        if (typeof response == 'string') {
+            // console.log('hi')
+            // notifications.show({
+            //     color: 'red',
+            //     title: 'Notification with custom styles',
+            //     message: 'It is red',
+            // })
+            alert(response)
         }
     }
-    if (user.isLoading) {
-        return <Loader h={300} />
-    }
-    if (user.isError) {
-        alert('Вы указали неправильный логин или пароль')
-    }
+    // if (user.isLoading) {
+    //     return <Loader h={300} />
+    // }
+    // if (user.isError) {
+    //     alert('Вы указали неправильный логин или пароль')
+    // }
     return (
         <div className="formContainer">
             <form className="authForm" onSubmit={LoginHookForm.onSubmit((val) => FormOnSubmit(val))}>

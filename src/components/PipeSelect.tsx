@@ -10,6 +10,7 @@ interface PipeSelectProps {
     mode: 'pipe' | 'magnetogram';
     className?: string;
     width: string;
+    pipes?: MapResponse[]
 }
 const PipeSelect: FC<PipeSelectProps> = ({ mode, className, width }) => {
     const ref = useRef(null)

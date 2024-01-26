@@ -16,6 +16,7 @@
     "@mantine/dropzone": "^7.4.2",
     "@mantine/form": "^7.4.1",
     "@mantine/hooks": "^7.4.1",
+    "@mantine/notifications": "^7.5.0",
     "@mantinex/mantine-logo": "^1.0.1",
     "@tabler/icons-react": "^2.45.0",
     "@types/axios": "^0.14.0",
