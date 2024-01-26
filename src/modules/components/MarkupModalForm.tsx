@@ -3,6 +3,9 @@ import React, { FC, useState } from "react";
 import { GradientButton, UnderlineInput } from "../../ui";
 import { Center, Text } from "@mantine/core";
 import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
+import fedyaLeft from '../../img/Fedya.png';
+
+
 interface MarkupModalFormProps {
     onSubmit: (title: string, form: File | null) => void;
 }
@@ -26,25 +29,34 @@ const MarkupModalForm: FC<MarkupModalFormProps> = (props) => {
     return (
         <form onSubmit={MarkupModalHookForm.onSubmit((val) => props.onSubmit(val.title, val.file))}>
             <UnderlineInput placeholder="Введите название" {...MarkupModalHookForm.getInputProps('title')} />
-            <div/>
-            <Dropzone
-                maxSize={5 * 1024 ** 2}
-                onDrop={(files) => onDrop(files)}
-                onReject={() => MarkupModalHookForm.setFieldError('files', 'Select images only')}
-            >
-                <Center h={120}>
-                    <Dropzone.Idle>Drop files here</Dropzone.Idle>
-                    <Dropzone.Accept>Drop files here</Dropzone.Accept>
-                    <Dropzone.Reject>Files are invalid</Dropzone.Reject>
-                </Center>
-            </Dropzone>
-            {selectedFile != null &&
-                <Text mb={5} mt="md">
-                    Selected file:
-                    {selectedFile.name}
-                </Text>
-            }
-            <GradientButton type="submit">Создать</GradientButton>
+            <div style={{
+                display: 'flex',
+
+            }}>
+                <div>
+                    <img width={'150px'} src={fedyaLeft} />
+                </div>
+                <div style={{ width: '61%' }}>
+                    <Dropzone
+                        maxSize={5 * 1024 ** 2}
+                        onDrop={(files) => onDrop(files)}
+                        onReject={() => MarkupModalHookForm.setFieldError('files', 'Select images only')}
+                    >
+                        <Center h={120}>
+                            <Dropzone.Idle>Drop files here</Dropzone.Idle>
+                            <Dropzone.Accept>Drop files here</Dropzone.Accept>
+                            <Dropzone.Reject>Files are invalid</Dropzone.Reject>
+                        </Center>
+                    </Dropzone>
+                    {selectedFile != null &&
+                        <Text mb={5} mt="md">
+                            Selected file:
+                            {selectedFile.name}
+                        </Text>
+                    }
+                    <GradientButton type="submit">Создать</GradientButton>
+                </div>             
+            </div>
         </form>
     )
 }
