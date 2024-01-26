@@ -62,7 +62,6 @@ const Versions: FC = () => {
                 setItems={(res: MagnetogramVersion) => setItems(res)}
                 opened={opened}
                 onClose={close}
-                onModalConfirmed={(file: File | null, version: string) => onModalConfirmed(file, version)}
             />
         </div >
     )

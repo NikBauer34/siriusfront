@@ -10,7 +10,7 @@ interface CreateMarkupModalProps {
     opened: boolean;
     onClose: () => void;
     setItems: (res: MagnetogramVersion) => void
-    onModalConfirmed: (file: File | null, version: string) => void;
+    onModalConfirmed?: (file: File | null, version: string) => void;
 }
 const CreateVersionModal: FC<CreateMarkupModalProps> = (props) => {
     const [searchParams, setSearchParams] = useSearchParams()
