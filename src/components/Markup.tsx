@@ -77,7 +77,7 @@ const Markup: FC = () => {
             }}>
             <List
                 items={currentArray}
-                notFoundMessage='Магнитограмма не найдена'
+                notFoundMessage='Вы долистали до конца магнитограммы'
                 renderItem={(square: number) => <FilledSquare key={randomId()} background={square == 1 ? 'red' : '#b6b6b6'} />}
             />
             {i > 1 &&

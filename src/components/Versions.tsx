@@ -1,5 +1,5 @@
 import React, { FC, useContext, useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Context } from "../main";
 import { MagnetogramVersion } from "../modules/api";
 import { VersionsList } from "../modules/components";
@@ -17,7 +17,8 @@ const Versions: FC = () => {
     const [data, setData] = useState<MagnetogramVersion[] | null>(null)
     const [opened, { open, close }] = useDisclosure(false)
     let [selection, setSelection] = useState(false)
-    // let [checkboxvalue, setCheckboxvalue] = useState<string[]>([])
+    let [checkboxvalue, setCheckboxvalue] = useState<string[]>([])
+    let navigate = useNavigate()
     useEffect(() => {
         getVersions()
     }, [])
@@ -35,6 +36,9 @@ const Versions: FC = () => {
         }
         const response = await magnetogram.createMagnetogramVersion(formdata)
         console.log(response)
+        if (data != null) {
+            setData([...data, response])
+        }
     }
     let isSelected = useMemo(() => selection, [selection])
     let sel = true

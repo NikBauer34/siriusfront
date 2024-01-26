@@ -5,11 +5,13 @@ import { ModalAddMag } from ".";
 import { IconCirclePlus } from "@tabler/icons-react";
 import '../../ui/styles/magCard.css';
 import CreateModalMag from "./CreateModalMag";
+import { MagnetogramCreation } from "../api/http/MagnetogramResponse";
 
 interface CreateMagnetogramCardProps {
-    pipe_id: string
+    pipe_id: string,
+    onModalConfirmed: (response: MagnetogramCreation) => void
 }
-const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = ({ pipe_id }) => {
+const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = (props) => {
     const [opened, { open, close }] = useDisclosure(false);
     const { magnetogram } = useContext(Context)
 
@@ -17,7 +19,7 @@ const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = ({ pipe_id }) => {
 
         const formdata = new FormData()
 
-        formdata.append("pipe_id", pipe_id)
+        formdata.append("pipe_id", props.pipe_id)
         formdata.append("version", "1.0.0")
         formdata.append("title", title)
 
@@ -27,7 +29,6 @@ const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = ({ pipe_id }) => {
 
         const response = await magnetogram.createMagnetogram(formdata)
         console.log(response)
-        close()
     }
     return (
         <>
@@ -44,7 +45,7 @@ const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = ({ pipe_id }) => {
                 />
                 <h3 style={{ margin: 0 }} >Создать новую магнитограмму</h3>
             </div>
-            <CreateModalMag opened={opened} onClose={close} onModalConfirmed={onModalConfirmed} />
+            <CreateModalMag opened={opened} onClose={close} onModalConfirmed={(title, file) => onModalConfirmed(title, file)} />
             {/* <ModalAddMag
                 withCloseButton={false}
                 title="Создать новую магнитограмму"

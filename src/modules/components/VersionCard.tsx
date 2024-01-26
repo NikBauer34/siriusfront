@@ -5,6 +5,7 @@ interface VersionCardProps {
     _id: string;
     i: number;
     date: Date;
+    version: string;
 }
 const VersionCard: FC<VersionCardProps> = (props) => {
     const date = new Date(props.date)
@@ -23,8 +24,10 @@ const VersionCard: FC<VersionCardProps> = (props) => {
             <h1>{props.i + 1}</h1>
             <div>
                 <span>ID: {props._id}</span>
-                <div />
-                <span>{`Дата поста: ${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`}</span>
+                <div/>
+                <span>Версия: {props.version}</span>
+                <div/>
+                <span>{`Дата поста: ${date.getFullYear()}.${date.getMonth()+1}.${date.getDate()}`}</span>
             </div>
         </div>
     )

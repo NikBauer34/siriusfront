@@ -26,6 +26,7 @@ const VersionModalForm: FC<VersionModalFormProps> = (props) => {
     return (
         <form onSubmit={VersionModalHookForm.onSubmit((values) => props.onSubmit(values.file, values.version))}>
             <UnderlineInput placeholder="Введите версию" {...VersionModalHookForm.getInputProps('version')} />
+            <div/>
             <Dropzone
                 maxSize={5 * 1024 ** 2}
                 onDrop={(files) => onDrop(files)}

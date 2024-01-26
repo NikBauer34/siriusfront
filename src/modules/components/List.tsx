@@ -13,7 +13,7 @@ export default function List<T>(props: ListProps<T>) {
     console.log(props.items)
     return (
         <Grid>
-            {props.items != null && typeof props.items != 'string'
+            {props.items != null && typeof props.items != 'string' && props.items.length != 0
             ? props.items && props.items?.map(props.renderItem)
             : <h1>{props.notFoundMessage}</h1>
             }
