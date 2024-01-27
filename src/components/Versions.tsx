@@ -35,8 +35,8 @@ const Versions: FC = () => {
     let isSelected = useMemo(() => selection, [selection])
     let sel = true
     return (
-        <div style={{width:'100%'}} className="mainDivSelect">
-            <div className="versionGridDiv">
+        <div style={{width:'100%', marginTop: '0px'}} >
+            <div className="versionGridDiv" style={{marginTop: '0px'}}>
                 <div
                     onClick={open}
                     style={{

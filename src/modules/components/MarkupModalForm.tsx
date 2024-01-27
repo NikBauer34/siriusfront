@@ -34,7 +34,7 @@ const MarkupModalForm: FC<MarkupModalFormProps> = (props) => {
 
             }}>
                 <div>
-                    <img width={'150px'} src={fedyaLeft} />
+                    <img width={'150px'} src={fedyaLeft} height={'170px'}/>
                 </div>
                 <div style={{ width: '61%' }}>
                     <Dropzone
@@ -43,15 +43,14 @@ const MarkupModalForm: FC<MarkupModalFormProps> = (props) => {
                         onReject={() => MarkupModalHookForm.setFieldError('files', 'Select images only')}
                     >
                         <Center h={120}>
-                            <Dropzone.Idle>Drop files here</Dropzone.Idle>
-                            <Dropzone.Accept>Drop files here</Dropzone.Accept>
-                            <Dropzone.Reject>Files are invalid</Dropzone.Reject>
+                            <Dropzone.Idle>Загрузите файл</Dropzone.Idle>
+                            <Dropzone.Accept>Загрузите файл</Dropzone.Accept>
+                            <Dropzone.Reject>Файл не валиден</Dropzone.Reject>
                         </Center>
                     </Dropzone>
                     {selectedFile != null &&
                         <Text mb={5} mt="md">
-                            Selected file:
-                            {selectedFile.name}
+                            Выбранный файл: {selectedFile.name}
                         </Text>
                     }
                     <GradientButton type="submit">Создать</GradientButton>

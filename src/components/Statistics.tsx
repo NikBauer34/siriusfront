@@ -13,6 +13,7 @@ interface StatisticsProps {
 const Statistics: FC<StatisticsProps> = (props) => {
     const {pipe} = useContext(Context)
     const [data, setData] = useState<StatisticsResponse[] | null>(null) //заглушка
+    let [isLoading, setLoading] = useState(false)
 
     useEffect(() => {
         getStatistics()
@@ -20,14 +21,16 @@ const Statistics: FC<StatisticsProps> = (props) => {
 
     const getStatistics = async() => {
         if (props.pipe_id != undefined) {
+            setLoading(true)
             const response = await pipe.getPipeStatistics(props.pipe_id)
             setData(response)
+            setLoading(false)
         }
     }
     if (props.pipe_id == undefined) {
         return <h1>Не выбрана труба</h1>
     }
-    if (pipe.isLoading) {
+    if (pipe.isLoading || isLoading) {
         return <Loader h={300} />
     }
     return (

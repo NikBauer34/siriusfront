@@ -17,7 +17,8 @@ const VersionModalForm: FC<VersionModalFormProps> = (props) => {
         initialValues: { file: null, version: '' },
         validateInputOnChange: true,
         validate: {
-            version: matches(/^(\d+\.)?(\d+\.)?(\*|\d+)$/, 'Введите коректное описание версии')
+            version: matches(/^(\d+\.)?(\d+\.)?(\*|\d+)$/, 'Введите коректное описание версии'),
+            file: (val: File | null) => (val != null ? null : 'Обязательно Загрузите файл')
         }
     })
     let [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -40,21 +41,20 @@ const VersionModalForm: FC<VersionModalFormProps> = (props) => {
                         onReject={() => VersionModalHookForm.setFieldError('files', 'Select images only')}
                     >
                         <Center h={120}>
-                            <Dropzone.Idle>Drop files here</Dropzone.Idle>
-                            <Dropzone.Accept>Drop files here</Dropzone.Accept>
-                            <Dropzone.Reject>Files are invalid</Dropzone.Reject>
+                            <Dropzone.Idle>Загрузите файл</Dropzone.Idle>
+                            <Dropzone.Accept>Загрузите файл</Dropzone.Accept>
+                            <Dropzone.Reject>Файл не валиден</Dropzone.Reject>
                         </Center>
                     </Dropzone>
                     {selectedFile != null &&
                         <Text mb={5} mt="md">
-                            Selected file:
-                            {selectedFile.name}
+                            Выбранный файл: {selectedFile.name}
                         </Text>
                     }
                     <Button style={{ marginTop: 15 }} fullWidth type="submit">Создать</Button>
                 </div>
                 <div>
-                    <img width={'150px'} src={fedyaRight} />
+                    <img width={'150px'} src={fedyaRight} height={'175px'}/>
                 </div>
             </div>
         </form>
