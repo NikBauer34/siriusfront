@@ -82,7 +82,7 @@ const Comparison: FC = () => {
             alignContent: 'center',
             alignItems: 'center'
         }}>
-            <List items={currentArray} notFoundMessage='Вы долистали до конца' renderItem={(triangle_square: number[]) => <TriangleSquare key={randomId()} firstTriangle={`10px solid ${triangle_square[0] == 1 ? 'red' : 'grey'}`} secondTriangle={`10px solid ${triangle_square[1] == 1 ? 'red' : 'grey'}`} />} />
+            <List items={currentArray} notFoundMessage='Вы долистали до конца' renderItem={(triangle_square: number[]) => <TriangleSquare key={randomId()} firstTriangle={`10px solid ${triangle_square[0] == 1 ? '#FF8D8D' : '#b6b6b6'}`} secondTriangle={`10px solid ${triangle_square[1] == 1 ? '#FF8D8D' : '#b6b6b6'}`} />} />
             <div>
                 {i > 1 &&
                     <IconChevronLeft

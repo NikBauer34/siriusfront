@@ -78,28 +78,33 @@ const Markup: FC = () => {
             <List
                 items={currentArray}
                 notFoundMessage='Вы долистали до конца магнитограммы'
-                renderItem={(square: number) => <FilledSquare key={randomId()} background={square == 1 ? 'red' : '#b6b6b6'} />}
+                renderItem={(square: number) => <FilledSquare key={randomId()} background={square == 1 ? '#FF8D8D' : '#b6b6b6'} />}
             />
-            {i > 1 &&
-                <IconChevronLeft
-                    style={{
-                        color: '#4282ea',
-                        width: '50px',
-                        height: '50px'
-                    }}
-                    onClick={() => setI(i - 4)}
-                >Влево</IconChevronLeft>
-            }
-            {dataMatrix[i++] != undefined &&
-                <IconChevronRight
-                    style={{
-                        color: '#4282ea',
-                        width: '50px',
-                        height: '50px'
-                    }}
-                    onClick={() => setI(i++)}
-                >Вправо</IconChevronRight>
-            }
+            <div style={{
+                display: 'flex',
+                justifyContent: 'flex-end'
+            }}>
+                {i > 1 &&
+                    <IconChevronLeft
+                        style={{
+                            color: '#4282ea',
+                            width: '50px',
+                            height: '50px'
+                        }}
+                        onClick={() => setI(i - 4)}
+                    >Влево</IconChevronLeft>
+                }
+                {dataMatrix[i++] != undefined &&
+                    <IconChevronRight
+                        style={{
+                            color: '#4282ea',
+                            width: '50px',
+                            height: '50px'
+                        }}
+                        onClick={() => setI(i++)}
+                    >Вправо</IconChevronRight>
+                }
+            </div>
             <div style={{
                 height: 'max-content',
                 width: 'max-content',
