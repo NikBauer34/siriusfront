@@ -8,5 +8,5 @@ export {
   ButtonTypes,
   type SVGProps
 }
-export const API_URL = 'http://3.75.158.163:10000'
+export const API_URL = 'https://siriusprojectback.onrender.com'
 export const client_url = 'https://master--storied-mermaid-6b9f81.netlify.app/'

@@ -11,7 +11,7 @@ import { randomId } from "@mantine/hooks";
 import { Button } from "@mantine/core";
 import { IconDownload } from "@tabler/icons-react";
 
-export const API_URL = 'http://3.75.158.163:10000'
+export const API_URL = 'https://siriusprojectback.onrender.com'
 
 const Markup: FC = () => {
     const [searchParams] = useSearchParams();
