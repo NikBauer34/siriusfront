@@ -1,6 +1,6 @@
-import { Button, Center, Input, Text } from "@mantine/core";
+import { Button, Center, Text } from "@mantine/core";
 import { matches, useForm } from "@mantine/form";
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { UnderlineInput } from "../../ui";
 import { Dropzone } from "@mantine/dropzone";
 import fedyaRight from '../../img/fedyaRight.png';

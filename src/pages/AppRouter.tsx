@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect } from "react";
+import { FC, useContext, useEffect } from "react";
 import { Context } from "../main.tsx";
 import { Route, Routes } from "react-router-dom";
 import { MainPanel } from "./layouts/index.ts";

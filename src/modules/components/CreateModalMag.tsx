@@ -1,4 +1,4 @@
-import React, { FC, useContext, useState } from "react";
+import { FC, useContext, useState } from "react";
 import MarkupModalForm from "./MarkupModalForm";
 import { ModalAddMag } from ".";
 import { Context } from "../../main";

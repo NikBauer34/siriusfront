@@ -2,7 +2,7 @@ import { ActionIcon, useMantineColorScheme, useComputedColorScheme } from '@mant
 import { IconSun, IconMoon } from '@tabler/icons-react';
 import cx from 'clsx';
 import classes from './ST.module.css';
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 const SchemeToggle: FC = () => {
   const { setColorScheme } = useMantineColorScheme();

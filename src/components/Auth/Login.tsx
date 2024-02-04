@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect } from 'react';
+import { FC, useContext } from 'react';
 import { LoginForm } from '../../modules/components/index';
 // import { SchemeToggle } from '../../ui';
 import '../../ui/styles/title.css';

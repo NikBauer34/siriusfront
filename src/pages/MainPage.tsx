@@ -3,7 +3,6 @@ import { YMap } from '../components';
 import PipeSelect from '../components/PipeSelect';
 // import { Context } from '../main';
 // import { Loader, Button } from '@mantine/core';
-import { useNavigate } from 'react-router-dom';
 import '../ui/styles/divMain.css';
 import '../ui/styles/mainDivSelect.css';
 import { Context } from '../main';
@@ -12,10 +11,8 @@ import { Loader } from '@mantine/core';
 
 const MainPage: FC = () => {
     const {pipe, user} = useContext(Context)
-    const [userpipes, setUserpipes] = useState<MapResponse[]>([] as MapResponse[])
-    const NewUserPipe = (pipe: MapResponse) => {
-        setUserpipes([...userpipes, pipe])
-    }
+    const [userpipes] = useState<MapResponse[]>([] as MapResponse[])
+
     useEffect(() => {
         user.checkAuth()
         pipe.checkPipes()

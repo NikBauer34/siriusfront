@@ -1,5 +1,5 @@
-import React, { FC, useContext, useEffect, useMemo, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { FC, useContext, useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Context } from "../main";
 import { MagnetogramVersion } from "../modules/api";
 import { VersionsList } from "../modules/components";
@@ -12,13 +12,11 @@ import { IconCirclePlus } from "@tabler/icons-react";
 
 
 const Versions: FC = () => {
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [searchParams] = useSearchParams()
     const { magnetogram } = useContext(Context)
     const [data, setData] = useState<MagnetogramVersion[] | null>(null)
     const [opened, { open, close }] = useDisclosure(false)
     let [selection, setSelection] = useState(false)
-    let [checkboxvalue, setCheckboxvalue] = useState<string[]>([])
-    let navigate = useNavigate()
     useEffect(() => {
         getVersions()
     }, [])
@@ -32,8 +30,6 @@ const Versions: FC = () => {
             setData([...data, res])
         }
     }
-    let isSelected = useMemo(() => selection, [selection])
-    let sel = true
     return (
         <div style={{width:'100%', marginTop: '0px'}} >
             <div className="versionGridDiv" style={{marginTop: '0px'}}>

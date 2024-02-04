@@ -1,4 +1,4 @@
-import React, { FC, SetStateAction, useMemo, useState } from "react";
+import React, { FC, SetStateAction, useState } from "react";
 import { MagnetogramVersion } from "../api";
 import { Checkbox } from "@mantine/core";
 import VersionCard from "./VersionCard";
@@ -14,8 +14,8 @@ interface VersionList {
 const VersionsList: FC<VersionList> = (props) => {
     let [checkboxvalue, setCheckboxvalue] = useState<string[]>([])
     const navigate = useNavigate()
-    const [searchParams, setSearchParams] = useSearchParams()
-    let [indeterminate, setIndeterminate] = useState(false)
+    const [searchParams] = useSearchParams()
+    let [indeterminate] = useState(false)
 
     const HandleComparison = () => {
         if (checkboxvalue.length == 2) {

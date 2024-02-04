@@ -1,4 +1,4 @@
-import React, { FC, useContext, useState } from "react";
+import { FC, useContext, useState } from "react";
 import VersionModalForm from "./VersionModalForm";
 import { ModalAddMag } from ".";
 import { MagnetogramVersion } from "../api";
@@ -13,7 +13,7 @@ interface CreateMarkupModalProps {
     onModalConfirmed?: (file: File | null, version: string) => void;
 }
 const CreateVersionModal: FC<CreateMarkupModalProps> = (props) => {
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [searchParams] = useSearchParams()
     const {magnetogram} = useContext(Context)
     const [isLoading, setLoading] = useState(false)
     const onModalConfirmed = async (file: File | null, version: string) => {

@@ -1,5 +1,5 @@
 import { Button } from "@mantine/core";
-import React, { FC, MouseEventHandler, ReactNode } from "react";
+import { FC, MouseEventHandler, ReactNode } from "react";
 import './OutlinedButton.modules.css';
 interface outlinedprops {
     className?: string;

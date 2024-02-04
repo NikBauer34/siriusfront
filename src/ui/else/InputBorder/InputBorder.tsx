@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import './IB.css'
 const InputBorder: FC = (props: any) => {
     return (

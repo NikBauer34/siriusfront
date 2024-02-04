@@ -1,8 +1,8 @@
 import { useForm } from "@mantine/form";
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { GradientButton, UnderlineInput } from "../../ui";
 import { Center, Text } from "@mantine/core";
-import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
+import { Dropzone } from "@mantine/dropzone";
 import fedyaLeft from '../../img/Fedya.png';
 
 

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import Reg from "../components/Auth/Reg";
 import '../ui/styles/bg.css';
 import background from '../img/background.png';

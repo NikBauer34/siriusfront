@@ -1,10 +1,10 @@
-import React, { ChangeEvent, FC, useContext, useEffect, useState } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 import { MapResponse } from '../modules/api/index';
 import { Context } from '../main';
 import { YMaps, Map, Placemark, Button } from 'react-yandex-maps';
 import { LoadingOverlay } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { GetClosestMark, GetMergedArrays } from '../modules/helpers';
+import { GetClosestMark } from '../modules/helpers';
 import { YMapModal } from '../modules/components';
 import { toJS } from 'mobx';
 import '../ui/styles/map.css';

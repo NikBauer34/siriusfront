@@ -1,5 +1,5 @@
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
-import React, { Dispatch, FC, SetStateAction } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 interface ChevronProps {
     left: boolean,
     right: boolean,

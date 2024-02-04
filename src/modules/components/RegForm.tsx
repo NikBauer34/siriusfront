@@ -1,4 +1,4 @@
-import React, { FC, useContext, useState } from "react";
+import { FC, useContext } from "react";
 import '../../ui/styles/body.css';
 import '../../ui/styles/spanOr.css';
 import '../../ui/styles/formContainer.css';
@@ -19,9 +19,8 @@ interface regFormProps {
 }
 
 const RegForm: FC = () => {
-    const { user, pipe, page } = useContext(Context)
+    const { user, pipe } = useContext(Context)
     const navigate = useNavigate()
-    const [isLoading, setIsLoading] = useState(false);
 
     const RegHookForm = useForm({
         initialValues: { name: '', surname: '', nikname: '', password: '', confirmPassword: '', role: 'Мастер' },

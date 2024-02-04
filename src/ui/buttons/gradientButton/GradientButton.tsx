@@ -1,5 +1,5 @@
 import { Button } from '@mantine/core';
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 interface gradientprops {
     type?: "button" | "submit" | "reset" | undefined;

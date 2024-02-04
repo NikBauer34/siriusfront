@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler, useState } from "react";
+import { FC, useState } from "react";
 import { Select } from "@mantine/core";
 import './DS.css'
 interface DefaultSelectProps {

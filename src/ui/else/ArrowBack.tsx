@@ -1,5 +1,5 @@
 import { IconArrowLeft } from '@tabler/icons-react';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import '../../ui/styles/divForIconArrowLeft.css';
 
 interface arrowbackprops{

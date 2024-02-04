@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import { FC, useContext } from "react";
 import { Context } from "../main";
 import { Dropzone } from "@mantine/dropzone";
 import { Button } from "@mantine/core";

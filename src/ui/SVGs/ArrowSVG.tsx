@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { SVGProps } from '../../modules/constants'
 
 const ArrowSVG: FC<SVGProps> = (props) => {

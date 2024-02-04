@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { Context } from "../main";
 import MagnetogramCard from "../modules/components/MagnetogramCard";
 import { Loader } from "@mantine/core";

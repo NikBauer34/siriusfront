@@ -1,5 +1,5 @@
-import { Divider, Button, Container } from "@mantine/core";
-import React, { FC, useContext } from "react";
+import { Button } from "@mantine/core";
+import { FC, useContext } from "react";
 // import { Colors } from "../constants";
 import { useNavigate } from "react-router-dom";
 import { MagnetogramResponse } from "../api/http/MagnetogramResponse";

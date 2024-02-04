@@ -1,5 +1,5 @@
 import { PasswordInput } from "@mantine/core";
-import React, { FC } from "react";
+import { FC } from "react";
 import './PasswordInputDef.modules.css';
 
 interface passwordprops {

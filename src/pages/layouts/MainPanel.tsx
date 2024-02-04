@@ -1,5 +1,5 @@
 import { AppShell } from "@mantine/core";
-import React, { FC, useContext, useEffect } from "react";
+import { FC, useContext } from "react";
 import { Context } from "../../main.tsx";
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import '../../ui/styles/mainPanelStyles/iconUser.css';
@@ -13,7 +13,7 @@ import logo from '../../img/DefectAI.png';
 const MainPanel: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, pipe } = useContext(Context);
+  const { user } = useContext(Context);
   // useEffect(() => {
   //   user.checkAuth()
   // }, [])

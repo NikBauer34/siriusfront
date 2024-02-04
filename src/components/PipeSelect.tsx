@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { FC, useContext, useEffect, useMemo, useState } from "react";
 import { DefaultSelect } from "../ui";
 import { Context } from "../main";
 import { toJS } from "mobx";
@@ -12,8 +12,7 @@ interface PipeSelectProps {
     width: string;
     pipes?: MapResponse[]
 }
-const PipeSelect: FC<PipeSelectProps> = ({ mode, className, width }) => {
-    const ref = useRef(null)
+const PipeSelect: FC<PipeSelectProps> = ({ mode, width }) => {
     const { pipe } = useContext(Context);
     const [selectedPipeValue, setSelectedPipeValue] = useState<MapResponse | null>({} as MapResponse)
     let PipeList: string[] | null = null

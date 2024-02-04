@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import { FC, useContext } from "react";
 import '../../ui/styles/centerDiv.css';
 import '../../ui/styles/body.css';
 import { RegForm } from "../../modules/components";

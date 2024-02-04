@@ -1,5 +1,4 @@
 import { Grid } from '@mantine/core';
-import { ReactNode } from 'react';
 interface ListProps<T> {
     items: T[] | null;
     renderItem: (item: T) => React.ReactNode

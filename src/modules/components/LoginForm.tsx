@@ -1,6 +1,6 @@
 import { useForm } from "@mantine/form";
-import React, { FC, useContext, useState } from "react";
-import { Button, Loader } from "@mantine/core";
+import { FC, useContext } from "react";
+import { Button } from "@mantine/core";
 import { Context } from "../../main";
 import { OutlinedButton, PasswordInputDef, UnderlineInput } from "../../ui/index";
 import '../../ui/styles/authForm.css';
@@ -9,14 +9,13 @@ import '../../ui/styles/spanOr.css';
 import '../../ui/styles/body.css';
 import '../../ui/styles/formContainer.css';
 import { useNavigate } from "react-router-dom";
-import { notifications } from "@mantine/notifications";
 interface LoginProps {
     nikname: string;
     password: string;
 }
 
 const LoginForm: FC = () => {
-    const { user, pipe, page } = useContext(Context)
+    const { user, pipe } = useContext(Context)
     const navigate = useNavigate()
 
     const LoginHookForm = useForm({

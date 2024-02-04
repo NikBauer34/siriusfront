@@ -1,5 +1,5 @@
 import { TextInput } from "@mantine/core";
-import React, { FC } from "react";
+import { FC } from "react";
 import './UnderlineInput.modules.css';
 
 interface underlineprops {

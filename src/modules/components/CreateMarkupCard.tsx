@@ -1,7 +1,5 @@
-import React, { FC, useContext } from "react";
+import { FC } from "react";
 import { useDisclosure } from "@mantine/hooks";
-import { Context } from "../../main";
-import { ModalAddMag } from ".";
 import { IconCirclePlus } from "@tabler/icons-react";
 import '../../ui/styles/magCard.css';
 import CreateModalMag from "./CreateModalMag";
@@ -13,7 +11,6 @@ interface CreateMagnetogramCardProps {
 }
 const CreateMagnetogramCard: FC<CreateMagnetogramCardProps> = (props) => {
     const [opened, { open, close }] = useDisclosure(false);
-    const { magnetogram } = useContext(Context)
 
     return (
         <>

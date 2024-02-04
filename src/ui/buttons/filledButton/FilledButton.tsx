@@ -1,5 +1,5 @@
 import { Button } from "@mantine/core";
-import React, { FC } from "react";
+import { FC } from "react";
 import './FilledButton.modules.css';
 
 const FilledButton: FC = () => {

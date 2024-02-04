@@ -1,11 +1,10 @@
-import React, { FC, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { FC, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Context } from "../main";
 import { MagnetogramVersionsComparison } from "../modules/api/index";
 import { GetSquareAmount } from "../modules/helpers";
 import { List } from "../modules/components";
 import { TriangleSquare } from "../ui";
-import { Loader } from "@mantine/core";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { randomId } from "@mantine/hooks";
 import memo from '../img/memo.png';
@@ -13,21 +12,18 @@ import memo from '../img/memo.png';
 // import { GetSquareAmount } from "../modules/helpers";
 
 const Comparison: FC = () => {
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [searchParams] = useSearchParams()
     let ref = useRef(null)
     const { magnetogram } = useContext(Context)
     const [data, setData] = useState<MagnetogramVersionsComparison | null>(null)
     let [i, setI] = useState(0)
-    const [isLoading, setLoading] = useState(false)
     useEffect(() => {
         getMarkup()
     }, [])
     const getMarkup = async () => {
-        setLoading(true)
         const response = await magnetogram.getMagnetogramVersionsComparison(searchParams.get("id") || '0', Number(searchParams.get("first_version")), Number(searchParams.get("second_version")))
         console.log(response)
         setData(response)
-        setLoading(false)
     }
     const getDataMatrix = () => {
         if (data?.first_version.markup != undefined) {

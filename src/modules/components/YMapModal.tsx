@@ -1,17 +1,12 @@
 import { Modal, Text, Button } from "@mantine/core";
-import React, { FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { FC } from "react";
 interface YMapModalProps {
     opened: boolean;
     onClose: () => void;
     onModalConfirmed: () => void;
 }
 const YMapModal: FC<YMapModalProps> = (props) => {
-    const navigate = useNavigate()
-    const onModalConfirmed = () => {
-        props.onModalConfirmed()
-        navigate('/marking')
-    }
+
     return (
         <Modal opened={props.opened} onClose={props.onClose} transitionProps={{ transition: 'rotate-left' }}>
             <Text>Добавить новую трубу</Text>

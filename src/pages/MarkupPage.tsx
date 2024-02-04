@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Markup } from "../components";
 import { ArrowBack, ModalAddMag } from "../modules/components";
 import { useNavigate } from "react-router-dom";

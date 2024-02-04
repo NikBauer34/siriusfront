@@ -14,7 +14,7 @@ import { IconDownload } from "@tabler/icons-react";
 export const API_URL = 'http://localhost:4000'
 
 const Markup: FC = () => {
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     let ref = useRef(null);
     let navigate = useNavigate()
     const { magnetogram } = useContext(Context);

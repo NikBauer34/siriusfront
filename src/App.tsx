@@ -2,10 +2,10 @@ import { useContext, useEffect } from "react"
 import { Context } from "./main.tsx"
 import { BrowserRouter } from "react-router-dom"
 import { AppRouter } from "./pages/index.ts"
-import { Loader, useMantineColorScheme } from "@mantine/core"
+import { useMantineColorScheme } from "@mantine/core"
 
 function App() {
-  const { user, page, pipe } = useContext(Context)
+  const { user, pipe } = useContext(Context)
   const {setColorScheme} = useMantineColorScheme()
   useEffect(() => {
     if (localStorage.getItem('token')) {
