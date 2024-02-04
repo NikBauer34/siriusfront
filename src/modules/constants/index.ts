@@ -8,5 +8,5 @@ export {
   ButtonTypes,
   type SVGProps
 }
-export const API_URL = 'http://localhost:4000'
-export const client_url = 'http://localhost:5173'
+export const API_URL = 'http://3.75.158.163:10000'
+export const client_url = 'https://master--storied-mermaid-6b9f81.netlify.app/'
