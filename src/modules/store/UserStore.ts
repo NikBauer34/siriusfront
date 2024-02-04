@@ -65,6 +65,7 @@ export default class UserStore {
   async logout() {
     try {
       const response = await AuthService.logout()
+      console.log(response)
       localStorage.removeItem('token');
       this.setAuth(false);
       this.setUser({} as UserDto);

@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import { FC, useContext } from 'react';
 import { Title, Text, Button, Container, Group } from '@mantine/core';
 import './Error404.modules.css';
 import { Context } from '../../main';

@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { $api, MapService } from "..";
+import { $api } from "..";
 import { MagnetogramCreation, MagnetogramMarkupData, MagnetogramResponse, MagnetogramVersion, MagnetogramVersionsComparison, MagnetogramVersionsData } from "../http/MagnetogramResponse";
 
 export default class MagnetogramService {
