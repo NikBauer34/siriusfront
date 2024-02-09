@@ -41,7 +41,7 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
             setData([...data, response])
         }
     }
-    if (isLoading) {
+    if (magnetogram.isLoading) {
         return <Loader h={300} />
     }
     if (magnetogram.isError) {
