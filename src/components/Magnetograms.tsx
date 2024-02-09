@@ -15,7 +15,6 @@ interface MagnetogramsProps {
 const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
     const { magnetogram } = useContext(Context)
     const [data, setData] = useState<MagnetogramResponse[] | null>(null)
-    const [isLoading, setLoading] = useState(false)
 
     useEffect(() => {
         console.log(data)
@@ -25,9 +24,7 @@ const Magnetograms: FC<MagnetogramsProps> = ({ pipe_id }) => {
     }, [pipe_id])
     const getMagnetograms = async () => {
         if (pipe_id != undefined) {
-            setLoading(true)
             const response = await magnetogram.getPipeMagnetograms(pipe_id)
-            setLoading(false)
             console.log('tyiff')
             console.log(response)
             if (response.length != 0) {
